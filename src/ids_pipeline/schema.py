@@ -8,6 +8,7 @@ TARGET_COLUMNS = {
     "target",
     "attack_cat",
     "class",
+    "cluster_id",
 }
 
 RAW_IDENTITY_COLUMNS = {
@@ -29,6 +30,8 @@ RAW_IDENTITY_COLUMNS = {
 }
 
 DATASET_ID_COLUMNS = {"dataset_id", "source_dataset"}
+
+SERVICE_COLUMNS = {"service", "svc", "application", "app", "proto_service"}
 
 PROHIBITED_FEATURE_COLUMNS = TARGET_COLUMNS | RAW_IDENTITY_COLUMNS | DATASET_ID_COLUMNS
 
@@ -79,6 +82,8 @@ BEHAVIORAL_ALLOWED_HINTS = (
     "max",
     "sum",
     "avg",
+    "hour",
+    "day_of_week",
     "median",
     "iat",
     "jitter",

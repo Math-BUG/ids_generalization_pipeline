@@ -19,6 +19,13 @@ def _rss_mb() -> float | None:
 
 def _gpu_vram_mb() -> float | None:
     try:
+        import cupy as cp
+
+        free_bytes, total_bytes = cp.cuda.runtime.memGetInfo()
+        return (total_bytes - free_bytes) / (1024**2)
+    except Exception:  # pragma: no cover - optional dependency/runtime
+        pass
+    try:
         import torch
 
         if torch.cuda.is_available():
@@ -32,27 +39,36 @@ def _gpu_vram_mb() -> float | None:
 class Profiler:
     records: dict[str, dict[str, Any]] = field(default_factory=dict)
     peak_ram_mb: float | None = None
+    metadata: dict[str, Any] = field(default_factory=dict)
 
     @contextlib.contextmanager
     def track(self, name: str) -> Iterator[None]:
         before_ram = _rss_mb()
+        before_vram = _gpu_vram_mb()
         start = time.perf_counter()
         try:
             yield
         finally:
             elapsed = time.perf_counter() - start
             after_ram = _rss_mb()
+            after_vram = _gpu_vram_mb()
             candidates = [v for v in [self.peak_ram_mb, before_ram, after_ram] if v is not None]
             self.peak_ram_mb = max(candidates) if candidates else None
             self.records[name] = {
                 "seconds": elapsed,
                 "rss_before_mb": before_ram,
                 "rss_after_mb": after_ram,
+                "gpu_vram_before_mb": before_vram,
+                "gpu_vram_after_mb": after_vram,
             }
+
+    def add_metadata(self, **items: Any) -> None:
+        self.metadata.update(items)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "stages": self.records,
             "peak_ram_mb": self.peak_ram_mb,
-            "gpu_vram_max_mb": _gpu_vram_mb(),
+            "gpu_vram_current_mb": _gpu_vram_mb(),
+            **self.metadata,
         }

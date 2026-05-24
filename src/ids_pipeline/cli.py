@@ -7,20 +7,24 @@ import logging
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+
+from .backend import resolve_backend
 from .clustering import fit_predict_clustering
 from .config import PipelineConfig, config_to_dict, load_config
 from .data_loading import load_dataset
-from .feature_policy import FeaturePolicy
+from .feature_policy import FeaturePolicy, apply_proxy_feature_policies
 from .leakage_checks import write_forbidden_columns_check
 from .preprocessing import fit_transform_preprocessing
 from .profiling import Profiler
+from .representatives import build_cluster_representatives
 from .splitting import create_splits, save_splits
 from .supervised import train_random_forest
 from .utils import ensure_dir, set_seed, setup_logging, write_json
 
 LOGGER = logging.getLogger(__name__)
 
-STAGES = {"prepare", "all"}
+STAGES = {"prepare", "cluster", "representatives", "supervised", "all"}
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -57,6 +61,11 @@ def run_experiment(
     ensure_dir(output_dir / "artifacts")
     set_seed(config.random_state)
     profiler = Profiler()
+    effective_backend = resolve_backend(config.compute_backend)
+    profiler.add_metadata(
+        backend_requested=config.compute_backend,
+        backend_effective=effective_backend,
+    )
     write_json(output_dir / "config_resolved.json", config_to_dict(config))
 
     with profiler.track("data"):
@@ -77,11 +86,25 @@ def run_experiment(
     )
 
     policy = FeaturePolicy.from_name(config.feature_policy)
-    feature_cols = policy.select_features(df, label_col=config.label_col, type_col=config.type_col)
+    raw_feature_cols = policy.select_features(
+        df,
+        label_col=config.label_col,
+        type_col=config.type_col,
+        extra_target_cols=["cluster_id"],
+    )
+    df, feature_cols, proxy_metadata = apply_proxy_feature_policies(
+        df,
+        raw_feature_cols,
+        timestamp_col=config.timestamp_col,
+        timestamp_policy=config.timestamp_policy,
+        service_policy=config.service_policy,
+    )
     selected_payload = {
         "feature_policy": config.feature_policy,
+        "raw_selected_features_before_proxy_policy": raw_feature_cols,
         "selected_features": feature_cols,
         "n_selected_features": len(feature_cols),
+        **proxy_metadata,
     }
     write_json(output_dir / "selected_features.json", selected_payload)
     write_forbidden_columns_check(
@@ -96,7 +119,7 @@ def run_experiment(
 
     with profiler.track("split"):
         splits = create_splits(df, config)
-        save_splits(splits, output_dir)
+        save_splits(splits, output_dir, df=df, config=config)
 
     if stage == "prepare":
         profiling_payload = profiler.to_dict()
@@ -110,8 +133,52 @@ def run_experiment(
     with profiler.track("clustering"):
         clustering = fit_predict_clustering(X, df, splits, feature_cols, config, output_dir)
 
-    with profiler.track("random_forest"):
-        supervised_metrics = train_random_forest(X, df, splits, feature_cols, config, output_dir)
+    if stage == "cluster":
+        profiling_payload = profiler.to_dict()
+        write_json(output_dir / "profiling.json", profiling_payload)
+        LOGGER.info("Cluster stage complete. Outputs written to %s", output_dir)
+        return {
+            "selected_features": selected_payload,
+            "clustering": clustering["metrics"],
+            "profiling": profiling_payload,
+        }
+
+    with profiler.track("representatives"):
+        y_train_dict = _training_targets_for_representatives(df, splits, config, clustering["labels"])
+        representatives = build_cluster_representatives(
+            X["train"],
+            y_train_dict,
+            clustering["labels"]["train"],
+            clustering["distances"]["train"],
+            config,
+            effective_backend,
+            output_dir,
+            train_indices=splits["train"],
+        )
+
+    if stage == "representatives":
+        profiling_payload = profiler.to_dict()
+        write_json(output_dir / "profiling.json", profiling_payload)
+        LOGGER.info("Representatives stage complete. Outputs written to %s", output_dir)
+        return {
+            "selected_features": selected_payload,
+            "clustering": clustering["metrics"],
+            "representatives": representatives["metadata"],
+            "profiling": profiling_payload,
+        }
+
+    with profiler.track("supervised_total"):
+        supervised_metrics = train_random_forest(
+            X,
+            df,
+            splits,
+            feature_cols,
+            config,
+            output_dir,
+            cluster_labels=clustering["labels"],
+            representatives=representatives,
+            profiler=profiler,
+        )
 
     profiling_payload = profiler.to_dict()
     write_json(output_dir / "profiling.json", profiling_payload)
@@ -122,6 +189,26 @@ def run_experiment(
         "supervised": supervised_metrics,
         "profiling": profiling_payload,
     }
+
+
+def _training_targets_for_representatives(
+    df,
+    splits: dict[str, np.ndarray],
+    config: PipelineConfig,
+    cluster_labels: dict[str, np.ndarray],
+) -> dict[str, np.ndarray]:
+    y: dict[str, np.ndarray] = {}
+    train_idx = splits["train"]
+    for target in config.targets:
+        if target == "label":
+            y[target] = df.iloc[train_idx][config.label_col].astype(str).to_numpy()
+        elif target == "type":
+            y[target] = df.iloc[train_idx][config.type_col].astype(str).to_numpy()
+        elif target == "cluster_id":
+            y[target] = np.asarray(cluster_labels["train"]).astype(str)
+        else:
+            raise ValueError("targets must contain only: label, type, cluster_id")
+    return y
 
 
 if __name__ == "__main__":

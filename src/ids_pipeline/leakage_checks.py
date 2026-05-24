@@ -8,7 +8,7 @@ from typing import Any
 
 import pandas as pd
 
-from .schema import DATASET_ID_COLUMNS, IP_COLUMNS, PORT_COLUMNS, RAW_IDENTITY_COLUMNS, TARGET_COLUMNS
+from .schema import DATASET_ID_COLUMNS, IP_COLUMNS, RAW_IDENTITY_COLUMNS, SERVICE_COLUMNS, TARGET_COLUMNS
 from .utils import write_json
 
 
@@ -37,7 +37,7 @@ def forbidden_columns_for_policy(
     if feature_policy == "no_raw_ip_port":
         return always_forbidden | {normalize_col(c) for c in RAW_IDENTITY_COLUMNS}
     if feature_policy == "behavioral_strict":
-        return always_forbidden | {normalize_col(c) for c in RAW_IDENTITY_COLUMNS | {"service", "svc"}}
+        return always_forbidden | {normalize_col(c) for c in RAW_IDENTITY_COLUMNS | SERVICE_COLUMNS}
     raise ValueError(f"Unknown feature_policy={feature_policy!r}")
 
 

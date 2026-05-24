@@ -19,6 +19,10 @@ class PipelineConfig:
     compute_backend: str = "cpu"
 
     split_strategy: str = "random_stratified"
+    group_cols: list[str] = field(default_factory=list)
+    timestamp_col: str = "timestamp"
+    timestamp_policy: str = "keep"
+    service_policy: str = "keep"
     test_size: float = 0.25
     val_size: float = 0.20
 
@@ -33,6 +37,12 @@ class PipelineConfig:
     cluster_n_init: int = 3
     cluster_max_iter: int = 50
     silhouette_sample_size: int = 200
+
+    representative_strategy: str = "full"
+    use_representatives_for_supervised: bool = False
+    representatives_per_cluster: int = 20
+    boundary_per_cluster: int = 5
+    targets: list[str] = field(default_factory=lambda: ["label"])
 
     random_forest_estimators: int = 100
     random_state: int = 42

@@ -1,0 +1,56 @@
+#!/bin/bash
+#SBATCH --job-name=ton_iot_gpu
+#SBATCH --partition=scientific
+#SBATCH --qos=scientific-qos
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=128G
+#SBATCH --gres=gpu:1
+#SBATCH --time=12:00:00
+#SBATCH --output=job_%j.out
+#SBATCH --error=job_%j.err
+
+set -euo pipefail
+
+echo "SLURM_JOB_ID: ${SLURM_JOB_ID:-unset}"
+echo "SLURM_NODELIST: ${SLURM_NODELIST:-unset}"
+echo "CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-unset}"
+echo "hostname: $(hostname)"
+echo "date: $(date)"
+echo "pwd: $(pwd)"
+
+module --force purge
+module load GCCcore/12.2.0
+module load CUDA/12.6.0
+
+nvidia-smi
+
+PROJECT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
+cd "$PROJECT_DIR"
+echo "project_dir: $(pwd)"
+
+if [ -d ".venv" ]; then
+  source .venv/bin/activate
+fi
+
+export IDS_COMPUTE_BACKEND=gpu
+export PYTHONPATH="$PROJECT_DIR/src:${PYTHONPATH:-}"
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-32}"
+export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-32}"
+export OPENBLAS_NUM_THREADS="${SLURM_CPUS_PER_TASK:-32}"
+export NUMEXPR_NUM_THREADS="${SLURM_CPUS_PER_TASK:-32}"
+export BLIS_NUM_THREADS="${SLURM_CPUS_PER_TASK:-32}"
+
+DATA_PATH="$HOME/dados/datasets/TON_IoT_parquet"
+OUTPUT_DIR="$HOME/dados/ids_generalization_outputs/ton_iot_gpu_no_raw_ip_port_k30"
+mkdir -p "$OUTPUT_DIR"
+
+python3 -m ids_pipeline.cli \
+  --config configs/ton_iot_no_raw_ip_port_gpu.yaml \
+  --data-path "$DATA_PATH" \
+  --output-dir "$OUTPUT_DIR" \
+  --stage all
+
+find "$OUTPUT_DIR" -maxdepth 2 -type f | sort
+echo "Finalizado em: $(date)"

@@ -100,7 +100,11 @@ def stable_series_to_group_key(df: pd.DataFrame, cols: list[str]) -> pd.Series:
     existing = [c for c in cols if c in df.columns]
     if not existing:
         return pd.Series(np.arange(len(df)), index=df.index, name="row_group")
-    return df[existing].astype(str).agg("||".join, axis=1)
+    values = df[existing].astype("string").fillna("<NA>")
+    key = values[existing[0]]
+    for col in existing[1:]:
+        key = key + "||" + values[col]
+    return key.rename("group_key")
 
 
 def dataframe_from_matrix(matrix: Any, prefix: str = "z") -> pd.DataFrame:
