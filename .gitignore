@@ -14,3 +14,14 @@ outputs/*
 !outputs/.gitkeep
 
 *.log
+*.out
+*.err
+job_*.out
+job_*.err
+ids_debug_*.out
+ids_debug_*.err
+core
+core.*
+*.parquet
+*.csv
+dados/
