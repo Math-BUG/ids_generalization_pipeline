@@ -1,0 +1,46 @@
+#!/bin/bash
+#SBATCH --job-name=ton_iot_parquet
+#SBATCH --partition=scientific
+#SBATCH --qos=scientific-qos
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=64G
+#SBATCH --time=04:00:00
+#SBATCH --output=job_%j.out
+#SBATCH --error=job_%j.err
+
+set -euo pipefail
+
+echo "SLURM_JOB_ID: ${SLURM_JOB_ID:-unset}"
+echo "SLURM_NODELIST: ${SLURM_NODELIST:-unset}"
+echo "hostname: $(hostname)"
+echo "date: $(date)"
+echo "pwd: $(pwd)"
+
+module --force purge
+module load GCCcore/12.2.0
+module load CUDA/12.6.0
+
+PROJECT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
+cd "$PROJECT_DIR"
+echo "project_dir: $(pwd)"
+
+if [ -d ".venv" ]; then
+  source .venv/bin/activate
+fi
+
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-16}"
+export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-16}"
+export OPENBLAS_NUM_THREADS="${SLURM_CPUS_PER_TASK:-16}"
+export NUMEXPR_NUM_THREADS="${SLURM_CPUS_PER_TASK:-16}"
+export BLIS_NUM_THREADS="${SLURM_CPUS_PER_TASK:-16}"
+
+python3 scripts/convert_csv_to_parquet.py \
+  --input-dir "$HOME/dados/datasets/TON_IoT" \
+  --output-dir "$HOME/dados/datasets/TON_IoT_parquet" \
+  --overwrite
+
+find "$HOME/dados/datasets/TON_IoT_parquet" -maxdepth 2 -type f | sort
+
+echo "Finalizado em: $(date)"

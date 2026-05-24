@@ -1,0 +1,38 @@
+#!/bin/bash
+#SBATCH --job-name=ids_check_gpu
+#SBATCH --partition=scientific
+#SBATCH --qos=scientific-qos
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --gres=gpu:1
+#SBATCH --time=00:10:00
+#SBATCH --output=job_%j.out
+#SBATCH --error=job_%j.err
+
+set -euo pipefail
+
+echo "SLURM_JOB_ID: ${SLURM_JOB_ID:-unset}"
+echo "SLURM_NODELIST: ${SLURM_NODELIST:-unset}"
+echo "CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-unset}"
+echo "hostname: $(hostname)"
+echo "date: $(date)"
+echo "pwd: $(pwd)"
+
+module --force purge
+module load GCCcore/12.2.0
+module load CUDA/12.6.0
+
+nvidia-smi
+
+PROJECT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
+cd "$PROJECT_DIR"
+
+if [ -d ".venv" ]; then
+  source .venv/bin/activate
+fi
+
+bash scripts/check_gpu_rapids.sh
+
+echo "Finalizado em: $(date)"
