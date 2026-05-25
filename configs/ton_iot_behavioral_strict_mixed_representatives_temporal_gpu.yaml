@@ -7,7 +7,7 @@ compute_backend: gpu
 split_strategy: temporal
 timestamp_col: ts
 timestamp_unit: auto
-temporal_bucket_freq: "1s"
+temporal_bucket_freq: "10ms"
 timestamp_policy: drop
 service_policy: drop
 
