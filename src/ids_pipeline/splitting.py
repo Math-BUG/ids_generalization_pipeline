@@ -78,12 +78,15 @@ def _temporal_split(df: pd.DataFrame, config: PipelineConfig) -> dict[str, np.nd
     if config.timestamp_col not in df.columns:
         raise ValueError(f"temporal split requires timestamp_col={config.timestamp_col!r}")
 
-    parsed = pd.to_datetime(df[config.timestamp_col], errors="coerce")
+    parsed = parse_timestamp_series(df[config.timestamp_col], unit=config.timestamp_unit)
+    temporal_frame = pd.DataFrame({"row_index": np.arange(len(df)), "timestamp": parsed})
+    if config.temporal_bucket_freq:
+        temporal_frame["time_bucket"] = parsed.dt.floor(config.temporal_bucket_freq)
+        temporal_frame["time_bucket_key"] = temporal_frame["time_bucket"].astype("string").fillna("<NaT>")
+        return _temporal_bucket_split(temporal_frame, config)
+
     ordered = (
-        pd.DataFrame({"row_index": np.arange(len(df)), "timestamp": parsed})
-        .sort_values(["timestamp", "row_index"], na_position="last")
-        ["row_index"]
-        .to_numpy()
+        temporal_frame.sort_values(["timestamp", "row_index"], na_position="last")["row_index"].to_numpy()
     )
 
     n = len(ordered)
@@ -97,6 +100,53 @@ def _temporal_split(df: pd.DataFrame, config: PipelineConfig) -> dict[str, np.nd
     val_idx = ordered[train_n : train_n + val_n]
     test_idx = ordered[train_n + val_n :]
     return {"train": train_idx, "val": val_idx, "test": test_idx}
+
+
+def _temporal_bucket_split(temporal_frame: pd.DataFrame, config: PipelineConfig) -> dict[str, np.ndarray]:
+    ordered = temporal_frame.sort_values(["time_bucket", "timestamp", "row_index"], na_position="last")
+    bucket_rows = [
+        group["row_index"].to_numpy(dtype=int)
+        for _, group in ordered.groupby("time_bucket_key", sort=False, dropna=False)
+    ]
+    if len(bucket_rows) < 3:
+        sample_buckets = ordered["time_bucket_key"].drop_duplicates().head(5).tolist()
+        raise ValueError(
+            "temporal bucket split requires at least three distinct time buckets. "
+            f"Observed {len(bucket_rows)} with timestamp_col={config.timestamp_col!r}, "
+            f"timestamp_unit={config.timestamp_unit!r}, temporal_bucket_freq={config.temporal_bucket_freq!r}, "
+            f"sample_buckets={sample_buckets}. If the timestamp is numeric Unix time, use timestamp_unit='auto' "
+            "or set timestamp_unit explicitly to 's', 'ms', 'us', or 'ns'."
+        )
+
+    n = int(sum(len(rows) for rows in bucket_rows))
+    test_target = _bounded_count(n, config.test_size)
+    val_target = _bounded_count(n - test_target, config.val_size)
+
+    test_buckets, remaining = _take_buckets_from_end(bucket_rows, test_target)
+    val_buckets, train_buckets = _take_buckets_from_end(remaining, val_target)
+    if not train_buckets:
+        raise ValueError("temporal bucket split produced an empty train split")
+
+    return {
+        "train": np.concatenate(train_buckets).astype(int),
+        "val": np.concatenate(val_buckets).astype(int),
+        "test": np.concatenate(test_buckets).astype(int),
+    }
+
+
+def _take_buckets_from_end(
+    bucket_rows: list[np.ndarray],
+    target_rows: int,
+) -> tuple[list[np.ndarray], list[np.ndarray]]:
+    selected_reversed: list[np.ndarray] = []
+    selected_n = 0
+    remaining = list(bucket_rows)
+    while remaining and selected_n < target_rows:
+        rows = remaining.pop()
+        selected_reversed.append(rows)
+        selected_n += len(rows)
+    selected = list(reversed(selected_reversed))
+    return selected, remaining
 
 
 def _bounded_count(n: int, fraction: float) -> int:
@@ -170,6 +220,12 @@ def save_splits(
         if not report["ok"]:
             raise ValueError(f"Group overlap detected between splits: {report}")
 
+    if df is not None and config is not None and config.split_strategy == "temporal":
+        report = temporal_split_report(df, splits, config)
+        write_json(split_dir / "temporal_split_report.json", report)
+        if not report["ok"]:
+            raise ValueError(f"Temporal split overlap detected: {report}")
+
 
 def split_summary(
     splits: dict[str, np.ndarray],
@@ -180,6 +236,9 @@ def split_summary(
         payload["split_strategy"] = config.split_strategy
         payload["test_size"] = config.test_size
         payload["val_size"] = config.val_size
+        payload["timestamp_col"] = config.timestamp_col
+        payload["timestamp_unit"] = config.timestamp_unit
+        payload["temporal_bucket_freq"] = config.temporal_bucket_freq
     return payload
 
 
@@ -202,3 +261,70 @@ def group_overlap_report(
         "val_test_overlap": len(val_test),
         "ok": not train_val and not train_test and not val_test,
     }
+
+
+def temporal_split_report(
+    df: pd.DataFrame,
+    splits: dict[str, np.ndarray],
+    config: PipelineConfig,
+) -> dict[str, object]:
+    parsed = parse_timestamp_series(df[config.timestamp_col], unit=config.timestamp_unit)
+    if config.temporal_bucket_freq:
+        bucket = parsed.dt.floor(config.temporal_bucket_freq).astype("string").fillna("<NaT>")
+    else:
+        bucket = parsed.astype("string").fillna("<NaT>")
+
+    split_buckets = {name: set(bucket.iloc[idx].tolist()) for name, idx in splits.items()}
+    train_val = split_buckets["train"] & split_buckets["val"]
+    train_test = split_buckets["train"] & split_buckets["test"]
+    val_test = split_buckets["val"] & split_buckets["test"]
+    payload: dict[str, object] = {
+        "timestamp_col": config.timestamp_col,
+        "timestamp_unit": config.timestamp_unit,
+        "timestamp_unit_inferred": infer_timestamp_unit(df[config.timestamp_col]) if config.timestamp_unit in {None, "auto"} else config.timestamp_unit,
+        "temporal_bucket_freq": config.temporal_bucket_freq,
+        "n_train_time_buckets": len(split_buckets["train"]),
+        "n_val_time_buckets": len(split_buckets["val"]),
+        "n_test_time_buckets": len(split_buckets["test"]),
+        "train_val_bucket_overlap": len(train_val),
+        "train_test_bucket_overlap": len(train_test),
+        "val_test_bucket_overlap": len(val_test),
+        "ok": not train_val and not train_test and not val_test,
+    }
+    for name, idx in splits.items():
+        split_times = parsed.iloc[idx]
+        payload[f"{name}_timestamp_min"] = None if split_times.empty else str(split_times.min())
+        payload[f"{name}_timestamp_max"] = None if split_times.empty else str(split_times.max())
+    return payload
+
+
+def parse_timestamp_series(series: pd.Series, *, unit: str | None = "auto") -> pd.Series:
+    if unit and unit != "auto":
+        return pd.to_datetime(pd.to_numeric(series, errors="coerce"), unit=unit, errors="coerce")
+
+    inferred = infer_timestamp_unit(series)
+    if inferred is not None:
+        numeric = pd.to_numeric(series, errors="coerce")
+        return pd.to_datetime(numeric, unit=inferred, errors="coerce")
+    return pd.to_datetime(series, errors="coerce")
+
+
+def infer_timestamp_unit(series: pd.Series) -> str | None:
+    numeric = pd.to_numeric(series, errors="coerce")
+    valid_ratio = float(numeric.notna().mean()) if len(numeric) else 0.0
+    if valid_ratio < 0.9:
+        return None
+
+    non_null = numeric.dropna()
+    if non_null.empty:
+        return None
+    median_abs = float(non_null.abs().median())
+
+    # Unix epoch magnitudes: seconds ~1e9, ms ~1e12, us ~1e15, ns ~1e18.
+    if median_abs >= 1e17:
+        return "ns"
+    if median_abs >= 1e14:
+        return "us"
+    if median_abs >= 1e11:
+        return "ms"
+    return "s"

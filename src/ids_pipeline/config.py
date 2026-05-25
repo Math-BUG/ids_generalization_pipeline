@@ -22,6 +22,8 @@ class PipelineConfig:
     group_cols: list[str] = field(default_factory=list)
     timestamp_col: str = "timestamp"
     timestamp_policy: str = "keep"
+    timestamp_unit: str | None = "auto"
+    temporal_bucket_freq: str | None = "1s"
     service_policy: str = "keep"
     test_size: float = 0.25
     val_size: float = 0.20

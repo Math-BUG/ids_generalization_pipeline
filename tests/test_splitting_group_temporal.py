@@ -4,7 +4,13 @@ import pandas as pd
 from ids_pipeline.config import PipelineConfig
 from ids_pipeline.data_loading import make_synthetic_dataset
 from ids_pipeline.feature_policy import FeaturePolicy
-from ids_pipeline.splitting import create_splits, group_overlap_report
+from ids_pipeline.splitting import (
+    create_splits,
+    group_overlap_report,
+    infer_timestamp_unit,
+    parse_timestamp_series,
+    temporal_split_report,
+)
 
 
 def test_group_stratified_no_overlap():
@@ -45,6 +51,67 @@ def test_temporal_split_order():
 
     assert train_max <= val_min
     assert val_max <= test_min
+
+
+def test_temporal_split_keeps_same_time_bucket_together():
+    rows = []
+    for second in range(8):
+        for offset_ms in [1, 100, 900]:
+            rows.append(
+                {
+                    "timestamp": pd.Timestamp("2024-01-01 00:00:00")
+                    + pd.Timedelta(seconds=second, milliseconds=offset_ms),
+                    "label": second % 2,
+                    "type": "normal" if second % 2 == 0 else "attack",
+                    "duration": float(second),
+                    "src_bytes": second + offset_ms,
+                }
+            )
+    df = pd.DataFrame(rows)
+    config = PipelineConfig(
+        split_strategy="temporal",
+        timestamp_col="timestamp",
+        temporal_bucket_freq="1s",
+        test_size=0.25,
+        val_size=0.25,
+        random_state=24,
+    )
+
+    splits = create_splits(df, config)
+    report = temporal_split_report(df, splits, config)
+
+    assert report["ok"] is True
+    assert report["train_val_bucket_overlap"] == 0
+    assert report["train_test_bucket_overlap"] == 0
+    assert report["val_test_bucket_overlap"] == 0
+
+
+def test_temporal_split_parses_numeric_unix_seconds():
+    base = 1_700_000_000.0
+    df = pd.DataFrame(
+        {
+            "ts": [base + i + offset for i in range(8) for offset in [0.001, 0.100, 0.900]],
+            "label": [i % 2 for i in range(8) for _ in range(3)],
+            "type": ["normal" if i % 2 == 0 else "attack" for i in range(8) for _ in range(3)],
+            "duration": np.arange(24),
+        }
+    )
+    config = PipelineConfig(
+        split_strategy="temporal",
+        timestamp_col="ts",
+        timestamp_unit="auto",
+        temporal_bucket_freq="1s",
+        test_size=0.25,
+        val_size=0.25,
+    )
+
+    parsed = parse_timestamp_series(df["ts"], unit=config.timestamp_unit)
+    splits = create_splits(df, config)
+    report = temporal_split_report(df, splits, config)
+
+    assert infer_timestamp_unit(df["ts"]) == "s"
+    assert parsed.dt.year.min() >= 2023
+    assert report["ok"] is True
 
 
 def test_group_cols_not_forced_into_features():
