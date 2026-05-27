@@ -1,0 +1,36 @@
+dataset_name: ton_iot_network_full_temporal_per_class
+label_col: label
+type_col: type
+feature_policy: behavioral_strict
+compute_backend: gpu
+
+split_strategy: temporal_per_class
+timestamp_col: ts
+timestamp_unit: auto
+temporal_bucket_freq: "1s"
+timestamp_policy: drop
+service_policy: drop
+
+svd_components: 50
+onehot_min_frequency: 10
+gpu_max_categories_per_col: 64
+log1p_numeric: true
+log1p_patterns: ["bytes", "pkts", "packets", "count", "duration"]
+
+selected_k: 30
+cluster_batch_size: 16384
+cluster_n_init: 5
+cluster_max_iter: 100
+silhouette_sample_size: 20000
+
+representative_strategy: mixed
+use_representatives_for_supervised: true
+representatives_per_cluster: 20
+boundary_per_cluster: 5
+
+targets: ["label", "type", "cluster_id"]
+
+random_forest_estimators: 150
+random_state: 42
+n_jobs: 32
+log_level: INFO
