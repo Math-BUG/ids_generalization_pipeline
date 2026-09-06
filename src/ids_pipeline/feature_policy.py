@@ -7,21 +7,35 @@ from dataclasses import dataclass
 import pandas as pd
 
 from .schema import (
-    BEHAVIORAL_ALLOWED_HINTS,
     DATASET_ID_COLUMNS,
     IP_COLUMNS,
     PORT_COLUMNS,
     PROHIBITED_FEATURE_COLUMNS,
-    RAW_IDENTITY_COLUMNS,
     SERVICE_COLUMNS,
-    STABLE_IDENTIFIER_HINTS,
     TARGET_COLUMNS,
+    TON_IOT_SCHEMA,
+)
+
+BEHAVIORAL_STRICT_VERSION = "behavioral_strict/2.0.0"
+BEHAVIORAL_STRICT_FEATURES = (
+    "duration", "src_bytes", "dst_bytes", "conn_state", "missed_bytes",
+    "src_pkts", "src_ip_bytes", "dst_pkts", "dst_ip_bytes",
 )
 
 
 @dataclass(frozen=True)
 class FeaturePolicy:
     name: str
+
+    @property
+    def version(self) -> str | None:
+        return BEHAVIORAL_STRICT_VERSION if self.name == "behavioral_strict" else None
+
+    def selection_metadata(self, found: list[str]) -> dict:
+        requested = list(BEHAVIORAL_STRICT_FEATURES) if self.name == "behavioral_strict" else list(found)
+        return {"feature_policy_version": self.version, "requested_features": requested,
+                "found_features": list(found),
+                "semantic_types": {c: TON_IOT_SCHEMA[c].semantic_type for c in found if c in TON_IOT_SCHEMA}}
 
     @classmethod
     def from_name(cls, name: str) -> "FeaturePolicy":
@@ -41,33 +55,28 @@ class FeaturePolicy:
         target_like = set(TARGET_COLUMNS) | {label_col, type_col} | set(extra_target_cols or [])
         target_like = {c for c in target_like if c}
 
+        if self.name == "behavioral_strict":
+            if not df.columns.is_unique:
+                raise ValueError(f"{self.version}: duplicate column names")
+            missing = [c for c in BEHAVIORAL_STRICT_FEATURES if c not in df.columns]
+            conflicts = [c for c in BEHAVIORAL_STRICT_FEATURES if c.lower() in {t.lower() for t in target_like}]
+            if missing or conflicts:
+                raise ValueError(f"{self.version}: required features missing={missing}; target conflicts={conflicts}")
+            return list(BEHAVIORAL_STRICT_FEATURES)
+
         if self.name == "all_except_labels":
             remove = target_like | DATASET_ID_COLUMNS
         elif self.name == "no_raw_ip":
             remove = target_like | IP_COLUMNS | DATASET_ID_COLUMNS | {"uid", "flow_id", "id"}
         elif self.name == "no_raw_ip_port":
             remove = target_like | IP_COLUMNS | PORT_COLUMNS | DATASET_ID_COLUMNS | {"uid", "flow_id", "id"}
-        elif self.name == "behavioral_strict":
-            remove = target_like | RAW_IDENTITY_COLUMNS | DATASET_ID_COLUMNS | SERVICE_COLUMNS
         else:  # pragma: no cover - guarded by from_name
             raise ValueError(self.name)
 
         remove_lower = {c.lower() for c in remove}
         features = [c for c in df.columns if c.lower() not in remove_lower]
 
-        if self.name == "behavioral_strict":
-            features = [c for c in features if self._is_behavioral_column(c)]
-
         return features
-
-    @staticmethod
-    def _is_behavioral_column(column: str) -> bool:
-        name = column.lower()
-        if name in PROHIBITED_FEATURE_COLUMNS or name in SERVICE_COLUMNS:
-            return False
-        if any(hint in name for hint in STABLE_IDENTIFIER_HINTS):
-            return False
-        return any(hint in name for hint in BEHAVIORAL_ALLOWED_HINTS)
 
     def allowed_leakage_baseline_columns(self) -> set[str]:
         """Columns allowed only when the caller explicitly enables unsafe baselines."""

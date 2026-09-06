@@ -1,0 +1,7079 @@
+{
+  "schema_version": "ton_iot_network/1.0.0",
+  "target_rows": 869,
+  "sources": [
+    {
+      "path": "D:\\IC\\Dataset\\Network_dataset_1.csv",
+      "signature": {
+        "bytes": 146725605,
+        "mtime_ns": 1762784001696169700
+      },
+      "header": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "src_bytes",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type"
+      ],
+      "evidence_reused": true
+    },
+    {
+      "path": "D:\\IC\\Dataset\\dados\\dataset_parquet_total\\Network_dataset_1.parquet",
+      "signature": {
+        "bytes": 8129531,
+        "mtime_ns": 1779650490000000000
+      },
+      "source_unchanged": true,
+      "row_count": 1000000,
+      "row_groups_read": [
+        0
+      ],
+      "matched_positions": 175
+    },
+    {
+      "path": "D:\\IC\\Dataset\\dataset_parquet\\Network_dataset_1.parquet",
+      "signature": {
+        "bytes": 9999964,
+        "mtime_ns": 1775581552631083500
+      },
+      "source_unchanged": true,
+      "row_count": 1000000,
+      "row_groups_read": [
+        0
+      ],
+      "matched_positions": 175
+    },
+    {
+      "path": "D:\\IC\\Dataset\\Network_dataset_1.parquet",
+      "signature": {
+        "bytes": 8129531,
+        "mtime_ns": 1779650490000000000
+      },
+      "source_unchanged": true,
+      "row_count": 1000000,
+      "row_groups_read": [
+        0
+      ],
+      "matched_positions": 175
+    },
+    {
+      "path": "D:\\IC\\Dataset\\Network_dataset_22.csv",
+      "signature": {
+        "bytes": 153268181,
+        "mtime_ns": 1763755149255518500
+      },
+      "header": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "src_bytes",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type"
+      ],
+      "evidence_reused": true
+    },
+    {
+      "path": "D:\\IC\\Dataset\\dados\\dataset_parquet_total\\Network_dataset_22.parquet",
+      "signature": {
+        "bytes": 11845025,
+        "mtime_ns": 1779650635000000000
+      },
+      "source_unchanged": true,
+      "row_count": 1000000,
+      "row_groups_read": [
+        0
+      ],
+      "matched_positions": 690
+    },
+    {
+      "path": "D:\\IC\\Dataset\\dataset_parquet\\Network_dataset_22.parquet",
+      "signature": {
+        "bytes": 14554648,
+        "mtime_ns": 1775581735950808900
+      },
+      "source_unchanged": true,
+      "row_count": 1000000,
+      "row_groups_read": [
+        0
+      ],
+      "matched_positions": 690
+    },
+    {
+      "path": "D:\\IC\\Dataset\\Network_dataset_23.csv",
+      "signature": {
+        "bytes": 51705634,
+        "mtime_ns": 1763755162136255000
+      },
+      "header": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "src_bytes",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type"
+      ],
+      "evidence_reused": true
+    },
+    {
+      "path": "D:\\IC\\Dataset\\dados\\dataset_parquet_total\\Network_dataset_23.parquet",
+      "signature": {
+        "bytes": 2171261,
+        "mtime_ns": 1779650639000000000
+      },
+      "source_unchanged": true,
+      "row_count": 339021,
+      "row_groups_read": [
+        0
+      ],
+      "matched_positions": 4
+    },
+    {
+      "path": "D:\\IC\\Dataset\\dataset_parquet\\Network_dataset_23.parquet",
+      "signature": {
+        "bytes": 2818015,
+        "mtime_ns": 1775581738950849000
+      },
+      "source_unchanged": true,
+      "row_count": 339021,
+      "row_groups_read": [
+        0
+      ],
+      "matched_positions": 4
+    }
+  ],
+  "parquet_comparisons": [
+    {
+      "partition": 1,
+      "source": "D:\\IC\\Dataset\\dados\\dataset_parquet_total\\Network_dataset_1.parquet",
+      "rows_compared": 175,
+      "common_columns": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type",
+        "src_bytes"
+      ],
+      "semantic_mismatches": [],
+      "lexical_only_differences_by_column": {
+        "ts": 0,
+        "src_ip": 0,
+        "src_port": 0,
+        "dst_ip": 0,
+        "dst_port": 0,
+        "proto": 0,
+        "service": 0,
+        "duration": 163,
+        "dst_bytes": 0,
+        "conn_state": 0,
+        "missed_bytes": 0,
+        "src_pkts": 0,
+        "src_ip_bytes": 0,
+        "dst_pkts": 0,
+        "dst_ip_bytes": 0,
+        "dns_query": 0,
+        "dns_qclass": 0,
+        "dns_qtype": 0,
+        "dns_rcode": 0,
+        "dns_AA": 0,
+        "dns_RD": 0,
+        "dns_RA": 0,
+        "dns_rejected": 0,
+        "ssl_version": 0,
+        "ssl_cipher": 0,
+        "ssl_resumed": 0,
+        "ssl_established": 0,
+        "ssl_subject": 0,
+        "ssl_issuer": 0,
+        "http_trans_depth": 0,
+        "http_method": 0,
+        "http_uri": 0,
+        "http_referrer": 0,
+        "http_version": 0,
+        "http_request_body_len": 0,
+        "http_response_body_len": 0,
+        "http_status_code": 0,
+        "http_user_agent": 0,
+        "http_orig_mime_types": 0,
+        "http_resp_mime_types": 0,
+        "weird_name": 0,
+        "weird_addl": 0,
+        "weird_notice": 0,
+        "label": 0,
+        "type": 0
+      },
+      "extra_parquet_columns": [
+        "uid"
+      ],
+      "missing_parquet_columns": []
+    },
+    {
+      "partition": 1,
+      "source": "D:\\IC\\Dataset\\dataset_parquet\\Network_dataset_1.parquet",
+      "rows_compared": 175,
+      "common_columns": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type",
+        "src_bytes"
+      ],
+      "semantic_mismatches": [],
+      "lexical_only_differences_by_column": {
+        "ts": 0,
+        "src_ip": 0,
+        "src_port": 0,
+        "dst_ip": 0,
+        "dst_port": 0,
+        "proto": 0,
+        "service": 0,
+        "duration": 163,
+        "dst_bytes": 0,
+        "conn_state": 0,
+        "missed_bytes": 0,
+        "src_pkts": 0,
+        "src_ip_bytes": 0,
+        "dst_pkts": 0,
+        "dst_ip_bytes": 0,
+        "dns_query": 0,
+        "dns_qclass": 0,
+        "dns_qtype": 0,
+        "dns_rcode": 0,
+        "dns_AA": 0,
+        "dns_RD": 0,
+        "dns_RA": 0,
+        "dns_rejected": 0,
+        "ssl_version": 0,
+        "ssl_cipher": 0,
+        "ssl_resumed": 0,
+        "ssl_established": 0,
+        "ssl_subject": 0,
+        "ssl_issuer": 0,
+        "http_trans_depth": 0,
+        "http_method": 0,
+        "http_uri": 0,
+        "http_referrer": 0,
+        "http_version": 0,
+        "http_request_body_len": 0,
+        "http_response_body_len": 0,
+        "http_status_code": 0,
+        "http_user_agent": 0,
+        "http_orig_mime_types": 0,
+        "http_resp_mime_types": 0,
+        "weird_name": 0,
+        "weird_addl": 0,
+        "weird_notice": 0,
+        "label": 0,
+        "type": 0
+      },
+      "extra_parquet_columns": [],
+      "missing_parquet_columns": []
+    },
+    {
+      "partition": 1,
+      "source": "D:\\IC\\Dataset\\Network_dataset_1.parquet",
+      "rows_compared": 175,
+      "common_columns": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type",
+        "src_bytes"
+      ],
+      "semantic_mismatches": [],
+      "lexical_only_differences_by_column": {
+        "ts": 0,
+        "src_ip": 0,
+        "src_port": 0,
+        "dst_ip": 0,
+        "dst_port": 0,
+        "proto": 0,
+        "service": 0,
+        "duration": 163,
+        "dst_bytes": 0,
+        "conn_state": 0,
+        "missed_bytes": 0,
+        "src_pkts": 0,
+        "src_ip_bytes": 0,
+        "dst_pkts": 0,
+        "dst_ip_bytes": 0,
+        "dns_query": 0,
+        "dns_qclass": 0,
+        "dns_qtype": 0,
+        "dns_rcode": 0,
+        "dns_AA": 0,
+        "dns_RD": 0,
+        "dns_RA": 0,
+        "dns_rejected": 0,
+        "ssl_version": 0,
+        "ssl_cipher": 0,
+        "ssl_resumed": 0,
+        "ssl_established": 0,
+        "ssl_subject": 0,
+        "ssl_issuer": 0,
+        "http_trans_depth": 0,
+        "http_method": 0,
+        "http_uri": 0,
+        "http_referrer": 0,
+        "http_version": 0,
+        "http_request_body_len": 0,
+        "http_response_body_len": 0,
+        "http_status_code": 0,
+        "http_user_agent": 0,
+        "http_orig_mime_types": 0,
+        "http_resp_mime_types": 0,
+        "weird_name": 0,
+        "weird_addl": 0,
+        "weird_notice": 0,
+        "label": 0,
+        "type": 0
+      },
+      "extra_parquet_columns": [
+        "uid"
+      ],
+      "missing_parquet_columns": []
+    },
+    {
+      "partition": 22,
+      "source": "D:\\IC\\Dataset\\dados\\dataset_parquet_total\\Network_dataset_22.parquet",
+      "rows_compared": 690,
+      "common_columns": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type",
+        "src_bytes"
+      ],
+      "semantic_mismatches": [],
+      "lexical_only_differences_by_column": {
+        "ts": 0,
+        "src_ip": 0,
+        "src_port": 0,
+        "dst_ip": 0,
+        "dst_port": 0,
+        "proto": 0,
+        "service": 0,
+        "duration": 688,
+        "dst_bytes": 0,
+        "conn_state": 0,
+        "missed_bytes": 0,
+        "src_pkts": 0,
+        "src_ip_bytes": 0,
+        "dst_pkts": 0,
+        "dst_ip_bytes": 0,
+        "dns_query": 0,
+        "dns_qclass": 0,
+        "dns_qtype": 0,
+        "dns_rcode": 0,
+        "dns_AA": 0,
+        "dns_RD": 0,
+        "dns_RA": 0,
+        "dns_rejected": 0,
+        "ssl_version": 0,
+        "ssl_cipher": 0,
+        "ssl_resumed": 0,
+        "ssl_established": 0,
+        "ssl_subject": 0,
+        "ssl_issuer": 0,
+        "http_trans_depth": 0,
+        "http_method": 0,
+        "http_uri": 0,
+        "http_referrer": 0,
+        "http_version": 0,
+        "http_request_body_len": 0,
+        "http_response_body_len": 0,
+        "http_status_code": 0,
+        "http_user_agent": 0,
+        "http_orig_mime_types": 0,
+        "http_resp_mime_types": 0,
+        "weird_name": 0,
+        "weird_addl": 0,
+        "weird_notice": 0,
+        "label": 0,
+        "type": 0
+      },
+      "extra_parquet_columns": [
+        "uid"
+      ],
+      "missing_parquet_columns": []
+    },
+    {
+      "partition": 22,
+      "source": "D:\\IC\\Dataset\\dataset_parquet\\Network_dataset_22.parquet",
+      "rows_compared": 690,
+      "common_columns": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type",
+        "src_bytes"
+      ],
+      "semantic_mismatches": [],
+      "lexical_only_differences_by_column": {
+        "ts": 0,
+        "src_ip": 0,
+        "src_port": 0,
+        "dst_ip": 0,
+        "dst_port": 0,
+        "proto": 0,
+        "service": 0,
+        "duration": 688,
+        "dst_bytes": 0,
+        "conn_state": 0,
+        "missed_bytes": 0,
+        "src_pkts": 0,
+        "src_ip_bytes": 0,
+        "dst_pkts": 0,
+        "dst_ip_bytes": 0,
+        "dns_query": 0,
+        "dns_qclass": 0,
+        "dns_qtype": 0,
+        "dns_rcode": 0,
+        "dns_AA": 0,
+        "dns_RD": 0,
+        "dns_RA": 0,
+        "dns_rejected": 0,
+        "ssl_version": 0,
+        "ssl_cipher": 0,
+        "ssl_resumed": 0,
+        "ssl_established": 0,
+        "ssl_subject": 0,
+        "ssl_issuer": 0,
+        "http_trans_depth": 0,
+        "http_method": 0,
+        "http_uri": 0,
+        "http_referrer": 0,
+        "http_version": 0,
+        "http_request_body_len": 0,
+        "http_response_body_len": 0,
+        "http_status_code": 0,
+        "http_user_agent": 0,
+        "http_orig_mime_types": 0,
+        "http_resp_mime_types": 0,
+        "weird_name": 0,
+        "weird_addl": 0,
+        "weird_notice": 0,
+        "label": 0,
+        "type": 0
+      },
+      "extra_parquet_columns": [],
+      "missing_parquet_columns": []
+    },
+    {
+      "partition": 23,
+      "source": "D:\\IC\\Dataset\\dados\\dataset_parquet_total\\Network_dataset_23.parquet",
+      "rows_compared": 4,
+      "common_columns": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type",
+        "src_bytes"
+      ],
+      "semantic_mismatches": [],
+      "lexical_only_differences_by_column": {
+        "ts": 0,
+        "src_ip": 0,
+        "src_port": 0,
+        "dst_ip": 0,
+        "dst_port": 0,
+        "proto": 0,
+        "service": 0,
+        "duration": 4,
+        "dst_bytes": 0,
+        "conn_state": 0,
+        "missed_bytes": 0,
+        "src_pkts": 0,
+        "src_ip_bytes": 0,
+        "dst_pkts": 0,
+        "dst_ip_bytes": 0,
+        "dns_query": 0,
+        "dns_qclass": 0,
+        "dns_qtype": 0,
+        "dns_rcode": 0,
+        "dns_AA": 0,
+        "dns_RD": 0,
+        "dns_RA": 0,
+        "dns_rejected": 0,
+        "ssl_version": 0,
+        "ssl_cipher": 0,
+        "ssl_resumed": 0,
+        "ssl_established": 0,
+        "ssl_subject": 0,
+        "ssl_issuer": 0,
+        "http_trans_depth": 0,
+        "http_method": 0,
+        "http_uri": 0,
+        "http_referrer": 0,
+        "http_version": 0,
+        "http_request_body_len": 0,
+        "http_response_body_len": 0,
+        "http_status_code": 0,
+        "http_user_agent": 0,
+        "http_orig_mime_types": 0,
+        "http_resp_mime_types": 0,
+        "weird_name": 0,
+        "weird_addl": 0,
+        "weird_notice": 0,
+        "label": 0,
+        "type": 0
+      },
+      "extra_parquet_columns": [
+        "uid"
+      ],
+      "missing_parquet_columns": []
+    },
+    {
+      "partition": 23,
+      "source": "D:\\IC\\Dataset\\dataset_parquet\\Network_dataset_23.parquet",
+      "rows_compared": 4,
+      "common_columns": [
+        "ts",
+        "src_ip",
+        "src_port",
+        "dst_ip",
+        "dst_port",
+        "proto",
+        "service",
+        "duration",
+        "dst_bytes",
+        "conn_state",
+        "missed_bytes",
+        "src_pkts",
+        "src_ip_bytes",
+        "dst_pkts",
+        "dst_ip_bytes",
+        "dns_query",
+        "dns_qclass",
+        "dns_qtype",
+        "dns_rcode",
+        "dns_AA",
+        "dns_RD",
+        "dns_RA",
+        "dns_rejected",
+        "ssl_version",
+        "ssl_cipher",
+        "ssl_resumed",
+        "ssl_established",
+        "ssl_subject",
+        "ssl_issuer",
+        "http_trans_depth",
+        "http_method",
+        "http_uri",
+        "http_referrer",
+        "http_version",
+        "http_request_body_len",
+        "http_response_body_len",
+        "http_status_code",
+        "http_user_agent",
+        "http_orig_mime_types",
+        "http_resp_mime_types",
+        "weird_name",
+        "weird_addl",
+        "weird_notice",
+        "label",
+        "type",
+        "src_bytes"
+      ],
+      "semantic_mismatches": [],
+      "lexical_only_differences_by_column": {
+        "ts": 0,
+        "src_ip": 0,
+        "src_port": 0,
+        "dst_ip": 0,
+        "dst_port": 0,
+        "proto": 0,
+        "service": 0,
+        "duration": 4,
+        "dst_bytes": 0,
+        "conn_state": 0,
+        "missed_bytes": 0,
+        "src_pkts": 0,
+        "src_ip_bytes": 0,
+        "dst_pkts": 0,
+        "dst_ip_bytes": 0,
+        "dns_query": 0,
+        "dns_qclass": 0,
+        "dns_qtype": 0,
+        "dns_rcode": 0,
+        "dns_AA": 0,
+        "dns_RD": 0,
+        "dns_RA": 0,
+        "dns_rejected": 0,
+        "ssl_version": 0,
+        "ssl_cipher": 0,
+        "ssl_resumed": 0,
+        "ssl_established": 0,
+        "ssl_subject": 0,
+        "ssl_issuer": 0,
+        "http_trans_depth": 0,
+        "http_method": 0,
+        "http_uri": 0,
+        "http_referrer": 0,
+        "http_version": 0,
+        "http_request_body_len": 0,
+        "http_response_body_len": 0,
+        "http_status_code": 0,
+        "http_user_agent": 0,
+        "http_orig_mime_types": 0,
+        "http_resp_mime_types": 0,
+        "weird_name": 0,
+        "weird_addl": 0,
+        "weird_notice": 0,
+        "label": 0,
+        "type": 0
+      },
+      "extra_parquet_columns": [],
+      "missing_parquet_columns": []
+    }
+  ],
+  "schema_report": {
+    "schema_version": "ton_iot_network/1.0.0",
+    "rows_before": 869,
+    "rows_after": 869,
+    "index_preserved": true,
+    "unknown_columns": [],
+    "absent_columns": [
+      "uid"
+    ],
+    "columns": {
+      "proto": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal",
+        "model_treatment": "categorical",
+        "meaning": "Transport protocol",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "weird_name": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal",
+        "model_treatment": "categorical",
+        "meaning": "Zeek unusual-activity name",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "ts": {
+        "storage_dtype": "float64",
+        "semantic_type": "timestamp",
+        "model_treatment": "numeric",
+        "meaning": "Connection start time",
+        "unit": "Unix seconds",
+        "minimum": 0,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "ssl_version": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal",
+        "model_treatment": "categorical",
+        "meaning": "SSL/TLS version",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "weird_notice": {
+        "storage_dtype": "string",
+        "semantic_type": "boolean",
+        "model_treatment": "categorical",
+        "meaning": "Unusual activity also raised a notice",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "src_port": {
+        "storage_dtype": "Int64",
+        "semantic_type": "port",
+        "model_treatment": "categorical",
+        "meaning": "Source port",
+        "unit": null,
+        "minimum": 0,
+        "maximum": 65535,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "Int64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "http_response_body_len": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "HTTP response body length",
+        "unit": "bytes",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dns_RD": {
+        "storage_dtype": "string",
+        "semantic_type": "boolean",
+        "model_treatment": "categorical",
+        "meaning": "DNS recursion-desired flag",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dns_query": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "DNS query name",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "src_ip_bytes": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "Source IP-level bytes",
+        "unit": "bytes",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "http_method": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal",
+        "model_treatment": "categorical",
+        "meaning": "HTTP request method",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "dns_rcode": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal_code",
+        "model_treatment": "categorical",
+        "meaning": "DNS response code",
+        "unit": null,
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dst_ip": {
+        "storage_dtype": "string",
+        "semantic_type": "identifier",
+        "model_treatment": "categorical",
+        "meaning": "Destination IP address",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "http_trans_depth": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "HTTP transaction pipeline depth",
+        "unit": "transactions",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "conn_state": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal",
+        "model_treatment": "categorical",
+        "meaning": "Connection state",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "src_pkts": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "Source packets",
+        "unit": "packets",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dns_AA": {
+        "storage_dtype": "string",
+        "semantic_type": "boolean",
+        "model_treatment": "categorical",
+        "meaning": "DNS authoritative-answer flag",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dns_qclass": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal_code",
+        "model_treatment": "categorical",
+        "meaning": "DNS query class code",
+        "unit": null,
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dns_qtype": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal_code",
+        "model_treatment": "categorical",
+        "meaning": "DNS query type code",
+        "unit": null,
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "http_user_agent": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "HTTP user agent",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "label": {
+        "storage_dtype": "Int64",
+        "semantic_type": "binary_target",
+        "model_treatment": "target",
+        "meaning": "0 normal, 1 attack",
+        "unit": null,
+        "minimum": 0,
+        "maximum": 1,
+        "integral": true,
+        "nullable": false,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "Int64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "missing_required": {
+            "count": 0,
+            "examples": []
+          },
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "service": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal",
+        "model_treatment": "categorical",
+        "meaning": "Application service",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "ssl_subject": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "Certificate subject",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "dst_pkts": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "Destination packets",
+        "unit": "packets",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "weird_addl": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "Additional unusual-activity information",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "missed_bytes": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "Bytes missed in content gaps",
+        "unit": "bytes",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "duration": {
+        "storage_dtype": "float64",
+        "semantic_type": "continuous",
+        "model_treatment": "numeric",
+        "meaning": "Connection duration",
+        "unit": "seconds",
+        "minimum": 0,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dst_port": {
+        "storage_dtype": "Int64",
+        "semantic_type": "port",
+        "model_treatment": "categorical",
+        "meaning": "Destination port",
+        "unit": null,
+        "minimum": 0,
+        "maximum": 65535,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "Int64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "http_orig_mime_types": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "Originator MIME types (opaque serialized value)",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "http_referrer": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "HTTP referrer",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "dst_ip_bytes": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "Destination IP-level bytes",
+        "unit": "bytes",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "http_status_code": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal_code",
+        "model_treatment": "categorical",
+        "meaning": "HTTP response status code",
+        "unit": null,
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "src_ip": {
+        "storage_dtype": "string",
+        "semantic_type": "identifier",
+        "model_treatment": "categorical",
+        "meaning": "Source IP address",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "src_bytes": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "Source payload bytes",
+        "unit": "bytes",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 869,
+        "invalid_count": 869,
+        "issues": {
+          "conversion_failure": {
+            "count": 869,
+            "examples": [
+              {
+                "position": 0,
+                "index": "0",
+                "value": "0.0.0.0"
+              },
+              {
+                "position": 1,
+                "index": "1",
+                "value": "0.0.0.0"
+              },
+              {
+                "position": 2,
+                "index": "2",
+                "value": "0.0.0.0"
+              },
+              {
+                "position": 3,
+                "index": "3",
+                "value": "0.0.0.0"
+              },
+              {
+                "position": 4,
+                "index": "4",
+                "value": "0.0.0.0"
+              }
+            ]
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dns_RA": {
+        "storage_dtype": "string",
+        "semantic_type": "boolean",
+        "model_treatment": "categorical",
+        "meaning": "DNS recursion-available flag",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "dns_rejected": {
+        "storage_dtype": "string",
+        "semantic_type": "boolean",
+        "model_treatment": "categorical",
+        "meaning": "DNS query rejected flag",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "ssl_established": {
+        "storage_dtype": "string",
+        "semantic_type": "boolean",
+        "model_treatment": "categorical",
+        "meaning": "SSL/TLS session established flag",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "http_request_body_len": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "HTTP request body length",
+        "unit": "bytes",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "http_resp_mime_types": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "Responder MIME types (opaque serialized value)",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "dst_bytes": {
+        "storage_dtype": "float64",
+        "semantic_type": "count",
+        "model_treatment": "numeric",
+        "meaning": "Destination payload bytes",
+        "unit": "bytes",
+        "minimum": 0,
+        "maximum": null,
+        "integral": true,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": true,
+        "source_dtype": "object",
+        "normalized_dtype": "float64",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "conversion_failure": {
+            "count": 0,
+            "examples": []
+          },
+          "infinite": {
+            "count": 0,
+            "examples": []
+          },
+          "unsafe_integer_precision": {
+            "count": 0,
+            "examples": []
+          },
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "ssl_issuer": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "Certificate issuer",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "ssl_resumed": {
+        "storage_dtype": "string",
+        "semantic_type": "boolean",
+        "model_treatment": "categorical",
+        "meaning": "SSL/TLS session resumed flag",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {
+          "domain_violation": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "http_version": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal",
+        "model_treatment": "categorical",
+        "meaning": "HTTP version",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "type": {
+        "storage_dtype": "string",
+        "semantic_type": "multiclass_target",
+        "model_treatment": "target",
+        "meaning": "Attack type or normal",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": false,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 0,
+        "missing_after": 0,
+        "invalid_count": 0,
+        "issues": {
+          "missing_required": {
+            "count": 0,
+            "examples": []
+          }
+        }
+      },
+      "ssl_cipher": {
+        "storage_dtype": "string",
+        "semantic_type": "nominal",
+        "model_treatment": "categorical",
+        "meaning": "SSL/TLS cipher suite",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      },
+      "http_uri": {
+        "storage_dtype": "string",
+        "semantic_type": "text",
+        "model_treatment": "categorical",
+        "meaning": "HTTP request URI",
+        "unit": null,
+        "minimum": null,
+        "maximum": null,
+        "integral": false,
+        "nullable": true,
+        "missing_tokens": [
+          "",
+          "-"
+        ],
+        "log1p": false,
+        "source_dtype": "object",
+        "normalized_dtype": "string",
+        "native_missing_count": 0,
+        "sentinel_missing_count": 869,
+        "missing_after": 869,
+        "invalid_count": 0,
+        "issues": {}
+      }
+    },
+    "ok": false
+  },
+  "valid_ip_counts": {
+    "src_ip": 0,
+    "dst_ip": 869
+  },
+  "label_type_consistent": 869,
+  "structural_signatures": [
+    {
+      "signature": "(46, 46, 45, 0, 1, True)",
+      "count": 869
+    }
+  ],
+  "summaries": {
+    "partition": [
+      {
+        "value": "22",
+        "count": 690
+      },
+      {
+        "value": "1",
+        "count": 175
+      },
+      {
+        "value": "23",
+        "count": 4
+      }
+    ],
+    "label": [
+      {
+        "value": "0",
+        "count": 869
+      }
+    ],
+    "type": [
+      {
+        "value": "normal",
+        "count": 869
+      }
+    ],
+    "src_ip": [
+      {
+        "value": "0",
+        "count": 869
+      }
+    ],
+    "dst_ip": [
+      {
+        "value": "ff02::1:ff00:6bf2",
+        "count": 43
+      },
+      {
+        "value": "ff02::1:ffaa:955f",
+        "count": 41
+      },
+      {
+        "value": "ff02::1:ff11:d910",
+        "count": 41
+      },
+      {
+        "value": "ff02::1:ff08:6ac5",
+        "count": 41
+      },
+      {
+        "value": "ff02::1:ff72:bf47",
+        "count": 41
+      },
+      {
+        "value": "ff02::1:fff7:2593",
+        "count": 41
+      },
+      {
+        "value": "ff02::1:ffdd:190f",
+        "count": 41
+      },
+      {
+        "value": "ff02::1:ffb7:7044",
+        "count": 41
+      },
+      {
+        "value": "ff02::2",
+        "count": 39
+      },
+      {
+        "value": "ff02::1:ff37:3b49",
+        "count": 39
+      },
+      {
+        "value": "ff02::1:ff80:bd11",
+        "count": 39
+      },
+      {
+        "value": "ff02::1:ff0f:6773",
+        "count": 37
+      },
+      {
+        "value": "ff02::1:ffa6:159c",
+        "count": 22
+      },
+      {
+        "value": "ff02::1:ff26:7aca",
+        "count": 17
+      },
+      {
+        "value": "ff02::1:ff29:a7fd",
+        "count": 6
+      },
+      {
+        "value": "ff02::16",
+        "count": 6
+      },
+      {
+        "value": "ff02::1:ff7b:965c",
+        "count": 4
+      },
+      {
+        "value": "ff02::1:fff3:ac01",
+        "count": 4
+      },
+      {
+        "value": "ff02::1:ff46:d904",
+        "count": 3
+      },
+      {
+        "value": "ff02::1:ff69:5a3e",
+        "count": 3
+      },
+      {
+        "value": "ff02::1:ff6d:b496",
+        "count": 3
+      },
+      {
+        "value": "ff02::1:ff76:fcc9",
+        "count": 3
+      },
+      {
+        "value": "ff02::1:ff3f:f002",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff68:b60b",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff33:5b91",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff19:14f1",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffe5:9364",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff26:2e09",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffe2:8943",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff11:f133",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffc8:e340",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff44:8297",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff36:a84b",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff1b:1cc6",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:fff8:12a3",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff72:6755",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff9a:a304",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff1a:277f",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff8f:4252",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:fffd:103b",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff00:ecd",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:fff3:a583",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff6d:659",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff7f:b197",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff93:d19a",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffa0:8ac7",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff2a:fa04",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffb0:8826",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffdd:a721",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff13:1329",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffb3:252d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff22:cfc1",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffa7:6272",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff92:fd45",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff91:896d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff4a:a72",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff77:2080",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff29:9362",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff28:397f",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff75:3591",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff63:d88d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffa5:1d5d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff35:4614",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:fffc:911b",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:fff4:25a2",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff7c:38fb",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffe2:20b5",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff60:22b4",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff6b:8006",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffe3:864a",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffb5:387c",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffd0:f3f7",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff6a:ab52",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff79:eab5",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffc1:9413",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff02:4e6",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff67:688b",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffb0:60f7",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff5e:9f03",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:fff0:f2a2",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffd7:d9ee",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff11:f77",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff89:8ad8",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff13:992e",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff03:8b99",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:fff8:3fc8",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffeb:31c7",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffa4:ef61",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffed:807a",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff0f:c735",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff2e:fca",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffdb:f9a2",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff42:e9f4",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff2c:83c3",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff7e:35d0",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff9a:fb1b",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff00:9e5d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffac:8cc",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff72:3ec4",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff6b:f35d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffbe:f7fe",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff3d:b2a7",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffd3:2f10",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffe4:764d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff69:4f86",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffe5:1585",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff7c:b050",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff9c:db39",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff12:f635",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff49:5440",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffad:b59e",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff22:bc5a",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffea:21f2",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffc1:b533",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffb5:d9f6",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff18:82ce",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff3a:a54b",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffd0:1a5f",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff90:7b14",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff02:9d6",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff5c:e71d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff1b:e472",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:fff0:11f4",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff45:3e4d",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ffa9:9c41",
+        "count": 2
+      },
+      {
+        "value": "ff02::1:ff77:5ec2",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffad:5858",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffa4:15e0",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff37:6b70",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff5d:ad1b",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff62:a2e4",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff26:6ff8",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff72:752",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff5f:ea65",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff0a:90f3",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff1a:750f",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffc2:5cac",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff1a:dc27",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff32:2f3f",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffbe:2ba3",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffd2:57d4",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff70:702a",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff89:b4cd",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffa9:e16c",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:fff1:e53b",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff98:47f",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff95:7c49",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff56:2cff",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff9e:7fba",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff4e:4328",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff7c:2b6c",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff11:e5a9",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffe5:94e0",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffd3:995b",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff1c:a7b9",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffeb:c47b",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff09:e6e5",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffe9:8266",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff3e:9360",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff8c:f58a",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff1e:2f47",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff08:76f9",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff75:8e0f",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff1c:13f8",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff66:b002",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff7f:c0bc",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff60:cae1",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff63:caba",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff68:4dc6",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffbb:1f34",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff72:6f11",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff70:c547",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff88:624f",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff03:92d4",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff15:98bd",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff0e:cba0",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff3c:25a2",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffc5:84f3",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff12:325b",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff05:57f2",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff11:d200",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff9b:e9a6",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff8b:856f",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:fffd:1af4",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff13:a547",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff27:34b9",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff7a:4c8",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff74:e8a8",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffb6:b162",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffc9:2249",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffdc:cbd4",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff9e:ebc3",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffa6:2bdd",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff5d:8df1",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff3b:4170",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff9a:ee57",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff7c:70d5",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:fff2:61ff",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffed:19f7",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff19:3f3d",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff76:ddbb",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff8b:86ad",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff0b:17fd",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffe1:9707",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff38:3db9",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:fff2:e865",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff42:179",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff2d:3f0",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff09:6f2b",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff74:9155",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffa7:e083",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffbf:74b6",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff75:8460",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff89:2374",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff62:9099",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff00:3a00",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff71:5897",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffc1:a2f7",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffac:2d22",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffed:7f1f",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff2e:f32a",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff5b:3330",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffd8:bfe0",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff60:30ad",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff11:50aa",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff58:686",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff0f:fb14",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff1d:9a01",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ff06:a609",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffa7:90fa",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:ffd7:4fbf",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:fff9:1dd4",
+        "count": 1
+      },
+      {
+        "value": "ff02::1:fffd:735a",
+        "count": 1
+      }
+    ],
+    "src_port": [
+      {
+        "value": "135",
+        "count": 824
+      },
+      {
+        "value": "133",
+        "count": 39
+      },
+      {
+        "value": "143",
+        "count": 6
+      }
+    ],
+    "dst_port": [
+      {
+        "value": "136",
+        "count": 824
+      },
+      {
+        "value": "134",
+        "count": 39
+      },
+      {
+        "value": "0",
+        "count": 6
+      }
+    ],
+    "proto": [
+      {
+        "value": "icmp",
+        "count": 869
+      }
+    ],
+    "service": [
+      {
+        "value": "-",
+        "count": 869
+      }
+    ],
+    "conn_state": [
+      {
+        "value": "OTH",
+        "count": 869
+      }
+    ],
+    "date_utc": [
+      {
+        "value": "2019-04-28",
+        "count": 690
+      },
+      {
+        "value": "2019-04-03",
+        "count": 85
+      },
+      {
+        "value": "2019-04-04",
+        "count": 68
+      },
+      {
+        "value": "2019-04-02",
+        "count": 22
+      },
+      {
+        "value": "2019-04-29",
+        "count": 4
+      }
+    ]
+  },
+  "patterns": [
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff70:702a",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554220429,
+      "max_ts": 1554220429,
+      "example_row_0based": 12578
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffd2:57d4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554220429,
+      "max_ts": 1554220429,
+      "example_row_0based": 12580
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 39,
+      "min_ts": 1554220744,
+      "max_ts": 1554354703,
+      "example_row_0based": 12988
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff0f:6773",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 37,
+      "min_ts": 1554220744,
+      "max_ts": 1554354704,
+      "example_row_0based": 12989
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa6:159c",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 22,
+      "min_ts": 1554221281,
+      "max_ts": 1554363981,
+      "example_row_0based": 13706
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffbe:2ba3",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554221281,
+      "max_ts": 1554221281,
+      "example_row_0based": 13709
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff26:7aca",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 17,
+      "min_ts": 1554236652,
+      "max_ts": 1554363981,
+      "example_row_0based": 30859
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff89:b4cd",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554236653,
+      "max_ts": 1554236653,
+      "example_row_0based": 30862
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff32:2f3f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554243966,
+      "max_ts": 1554243966,
+      "example_row_0based": 38014
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe5:94e0",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554243966,
+      "max_ts": 1554243966,
+      "example_row_0based": 38016
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff11:e5a9",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554252698,
+      "max_ts": 1554252698,
+      "example_row_0based": 46528
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff3:ac01",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 4,
+      "min_ts": 1554253963,
+      "max_ts": 1554279972,
+      "example_row_0based": 47907
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa9:e16c",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554253964,
+      "max_ts": 1554253964,
+      "example_row_0based": 47916
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff1:e53b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554254074,
+      "max_ts": 1554254074,
+      "example_row_0based": 48268
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff95:7c49",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554255997,
+      "max_ts": 1554255997,
+      "example_row_0based": 50846
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff68:b60b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1554255997,
+      "max_ts": 1554288998,
+      "example_row_0based": 50850
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1a:dc27",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554269543,
+      "max_ts": 1554269543,
+      "example_row_0based": 72390
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff29:a7fd",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 6,
+      "min_ts": 1554269543,
+      "max_ts": 1554319389,
+      "example_row_0based": 72391
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff56:2cff",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554278172,
+      "max_ts": 1554278172,
+      "example_row_0based": 86586
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff9e:7fba",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554278641,
+      "max_ts": 1554278641,
+      "example_row_0based": 87431
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff00:ecd",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1554279224,
+      "max_ts": 1554279867,
+      "example_row_0based": 88541
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff4e:4328",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554279238,
+      "max_ts": 1554279238,
+      "example_row_0based": 88580
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7c:2b6c",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554279847,
+      "max_ts": 1554279847,
+      "example_row_0based": 89768
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1c:a7b9",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554279972,
+      "max_ts": 1554279972,
+      "example_row_0based": 90120
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffd3:995b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554288998,
+      "max_ts": 1554288998,
+      "example_row_0based": 106256
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff09:e6e5",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554293903,
+      "max_ts": 1554293903,
+      "example_row_0based": 114725
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::16",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1554294005,
+      "max_ts": 1554328405,
+      "example_row_0based": 114900
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffeb:c47b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554294006,
+      "max_ts": 1554294006,
+      "example_row_0based": 114901
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe9:8266",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554296292,
+      "max_ts": 1554296292,
+      "example_row_0based": 118268
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff3e:9360",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554296902,
+      "max_ts": 1554296902,
+      "example_row_0based": 119026
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff8c:f58a",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554297438,
+      "max_ts": 1554297438,
+      "example_row_0based": 119770
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1e:2f47",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554304694,
+      "max_ts": 1554304694,
+      "example_row_0based": 128438
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7b:965c",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 4,
+      "min_ts": 1554304694,
+      "max_ts": 1554354184,
+      "example_row_0based": 128439
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff08:76f9",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554315491,
+      "max_ts": 1554315491,
+      "example_row_0based": 141452
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff75:8e0f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554319389,
+      "max_ts": 1554319389,
+      "example_row_0based": 146011
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1c:13f8",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554328447,
+      "max_ts": 1554328447,
+      "example_row_0based": 156720
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff66:b002",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554354184,
+      "max_ts": 1554354184,
+      "example_row_0based": 185866
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff5f:ea65",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554361376,
+      "max_ts": 1554361376,
+      "example_row_0based": 196162
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff0a:90f3",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554361447,
+      "max_ts": 1554361447,
+      "example_row_0based": 196293
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1a:750f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554361644,
+      "max_ts": 1554361644,
+      "example_row_0based": 196620
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffc2:5cac",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554362206,
+      "max_ts": 1554362206,
+      "example_row_0based": 197662
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff5d:ad1b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554362637,
+      "max_ts": 1554362637,
+      "example_row_0based": 198359
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff62:a2e4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554362918,
+      "max_ts": 1554362918,
+      "example_row_0based": 198815
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff26:6ff8",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554363091,
+      "max_ts": 1554363091,
+      "example_row_0based": 199113
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff72:752",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554363120,
+      "max_ts": 1554363120,
+      "example_row_0based": 199163
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff77:5ec2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554363211,
+      "max_ts": 1554363211,
+      "example_row_0based": 199313
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffad:5858",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554363457,
+      "max_ts": 1554363457,
+      "example_row_0based": 199701
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa4:15e0",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554363646,
+      "max_ts": 1554363646,
+      "example_row_0based": 200062
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff98:47f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554363865,
+      "max_ts": 1554363865,
+      "example_row_0based": 200432
+    },
+    {
+      "partition": "1",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff37:6b70",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1554363981,
+      "max_ts": 1554363981,
+      "example_row_0based": 200632
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff3f:f002",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423398,
+      "max_ts": 1556423398,
+      "example_row_0based": 495380
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe2:8943",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423398,
+      "max_ts": 1556423398,
+      "example_row_0based": 495383
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff26:2e09",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423399,
+      "max_ts": 1556423399,
+      "example_row_0based": 495397
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff19:14f1",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423399,
+      "max_ts": 1556423399,
+      "example_row_0based": 495403
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe5:9364",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423400,
+      "max_ts": 1556423400,
+      "example_row_0based": 495417
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff11:f133",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423400,
+      "max_ts": 1556423400,
+      "example_row_0based": 495419
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1b:1cc6",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423401,
+      "max_ts": 1556423401,
+      "example_row_0based": 495430
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffc8:e340",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423401,
+      "max_ts": 1556423401,
+      "example_row_0based": 495432
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff36:a84b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423402,
+      "max_ts": 1556423402,
+      "example_row_0based": 495450
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff44:8297",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423402,
+      "max_ts": 1556423402,
+      "example_row_0based": 495461
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1a:277f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423404,
+      "max_ts": 1556423404,
+      "example_row_0based": 495468
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::16",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 4,
+      "min_ts": 1556423404,
+      "max_ts": 1556423407,
+      "example_row_0based": 495469
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff8f:4252",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423462,
+      "max_ts": 1556423462,
+      "example_row_0based": 496622
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fffd:103b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423522,
+      "max_ts": 1556423522,
+      "example_row_0based": 501056
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff4:25a2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423582,
+      "max_ts": 1556423582,
+      "example_row_0based": 501875
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff46:d904",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423642,
+      "max_ts": 1556423642,
+      "example_row_0based": 513989
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff76:fcc9",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423702,
+      "max_ts": 1556423702,
+      "example_row_0based": 540946
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff6d:b496",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423762,
+      "max_ts": 1556423762,
+      "example_row_0based": 542189
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff69:5a3e",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423822,
+      "max_ts": 1556423822,
+      "example_row_0based": 543648
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff33:5b91",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423882,
+      "max_ts": 1556423882,
+      "example_row_0based": 545115
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff72:6755",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556423942,
+      "max_ts": 1556423942,
+      "example_row_0based": 546670
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff9a:a304",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424002,
+      "max_ts": 1556424002,
+      "example_row_0based": 547847
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff00:6bf2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 43,
+      "min_ts": 1556424113,
+      "max_ts": 1556429205,
+      "example_row_0based": 550591
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff8:12a3",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424113,
+      "max_ts": 1556424113,
+      "example_row_0based": 550596
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffaa:955f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 41,
+      "min_ts": 1556424114,
+      "max_ts": 1556429206,
+      "example_row_0based": 550611
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff11:d910",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 41,
+      "min_ts": 1556424114,
+      "max_ts": 1556429206,
+      "example_row_0based": 550613
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff08:6ac5",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 41,
+      "min_ts": 1556424115,
+      "max_ts": 1556429207,
+      "example_row_0based": 550623
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff72:bf47",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 41,
+      "min_ts": 1556424115,
+      "max_ts": 1556429207,
+      "example_row_0based": 550640
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff7:2593",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 41,
+      "min_ts": 1556424116,
+      "max_ts": 1556429208,
+      "example_row_0based": 550672
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffdd:190f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 41,
+      "min_ts": 1556424116,
+      "max_ts": 1556429208,
+      "example_row_0based": 550744
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffb3:252d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424116,
+      "max_ts": 1556424116,
+      "example_row_0based": 550749
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffb7:7044",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 41,
+      "min_ts": 1556424117,
+      "max_ts": 1556429209,
+      "example_row_0based": 551092
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa7:6272",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424176,
+      "max_ts": 1556424176,
+      "example_row_0based": 552287
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff22:cfc1",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424236,
+      "max_ts": 1556424236,
+      "example_row_0based": 556328
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff37:3b49",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 39,
+      "min_ts": 1556424246,
+      "max_ts": 1556429209,
+      "example_row_0based": 557282
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff80:bd11",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 39,
+      "min_ts": 1556424247,
+      "max_ts": 1556429210,
+      "example_row_0based": 557328
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff92:fd45",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424296,
+      "max_ts": 1556424296,
+      "example_row_0based": 562399
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff91:896d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424356,
+      "max_ts": 1556424356,
+      "example_row_0based": 564098
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff4a:a72",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424416,
+      "max_ts": 1556424416,
+      "example_row_0based": 568245
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff77:2080",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424476,
+      "max_ts": 1556424476,
+      "example_row_0based": 570882
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff3:a583",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424536,
+      "max_ts": 1556424536,
+      "example_row_0based": 572756
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff6d:659",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424596,
+      "max_ts": 1556424596,
+      "example_row_0based": 573836
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7f:b197",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424656,
+      "max_ts": 1556424656,
+      "example_row_0based": 575537
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff93:d19a",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424716,
+      "max_ts": 1556424716,
+      "example_row_0based": 578614
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa0:8ac7",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424776,
+      "max_ts": 1556424776,
+      "example_row_0based": 579840
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff2a:fa04",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424836,
+      "max_ts": 1556424836,
+      "example_row_0based": 582378
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffb0:8826",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424896,
+      "max_ts": 1556424896,
+      "example_row_0based": 584910
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffdd:a721",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556424956,
+      "max_ts": 1556424956,
+      "example_row_0based": 586522
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff13:1329",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425016,
+      "max_ts": 1556425016,
+      "example_row_0based": 588566
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff28:397f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425076,
+      "max_ts": 1556425076,
+      "example_row_0based": 593489
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff75:3591",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425136,
+      "max_ts": 1556425136,
+      "example_row_0based": 595845
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff63:d88d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425196,
+      "max_ts": 1556425196,
+      "example_row_0based": 598573
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff29:9362",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425256,
+      "max_ts": 1556425256,
+      "example_row_0based": 600881
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff35:4614",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425316,
+      "max_ts": 1556425316,
+      "example_row_0based": 603289
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa5:1d5d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425376,
+      "max_ts": 1556425376,
+      "example_row_0based": 604869
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fffc:911b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425436,
+      "max_ts": 1556425436,
+      "example_row_0based": 607436
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff69:4f86",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425496,
+      "max_ts": 1556425496,
+      "example_row_0based": 610213
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe4:764d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425556,
+      "max_ts": 1556425556,
+      "example_row_0based": 614059
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffd3:2f10",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425616,
+      "max_ts": 1556425616,
+      "example_row_0based": 616346
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff3d:b2a7",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425676,
+      "max_ts": 1556425676,
+      "example_row_0based": 618210
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffbe:f7fe",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425736,
+      "max_ts": 1556425736,
+      "example_row_0based": 620342
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff6b:f35d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425796,
+      "max_ts": 1556425796,
+      "example_row_0based": 622325
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff72:3ec4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425856,
+      "max_ts": 1556425856,
+      "example_row_0based": 625021
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffac:8cc",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425916,
+      "max_ts": 1556425916,
+      "example_row_0based": 627912
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff00:9e5d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556425976,
+      "max_ts": 1556425976,
+      "example_row_0based": 629177
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff9a:fb1b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426036,
+      "max_ts": 1556426036,
+      "example_row_0based": 633451
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7e:35d0",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426096,
+      "max_ts": 1556426096,
+      "example_row_0based": 636922
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff2c:83c3",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426156,
+      "max_ts": 1556426156,
+      "example_row_0based": 638960
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff42:e9f4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426216,
+      "max_ts": 1556426216,
+      "example_row_0based": 641264
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffdb:f9a2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426276,
+      "max_ts": 1556426276,
+      "example_row_0based": 644526
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff2e:fca",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426336,
+      "max_ts": 1556426336,
+      "example_row_0based": 647106
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff0f:c735",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426396,
+      "max_ts": 1556426396,
+      "example_row_0based": 649314
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffed:807a",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426456,
+      "max_ts": 1556426456,
+      "example_row_0based": 651182
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa4:ef61",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426516,
+      "max_ts": 1556426516,
+      "example_row_0based": 653123
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffeb:31c7",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426576,
+      "max_ts": 1556426576,
+      "example_row_0based": 655679
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff8:3fc8",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426636,
+      "max_ts": 1556426636,
+      "example_row_0based": 657908
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff03:8b99",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426696,
+      "max_ts": 1556426696,
+      "example_row_0based": 659505
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff13:992e",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426756,
+      "max_ts": 1556426756,
+      "example_row_0based": 661698
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff89:8ad8",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426816,
+      "max_ts": 1556426816,
+      "example_row_0based": 663630
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff11:f77",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426876,
+      "max_ts": 1556426876,
+      "example_row_0based": 665911
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffd7:d9ee",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426936,
+      "max_ts": 1556426936,
+      "example_row_0based": 667611
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff0:f2a2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556426996,
+      "max_ts": 1556426996,
+      "example_row_0based": 670727
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff5e:9f03",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427056,
+      "max_ts": 1556427056,
+      "example_row_0based": 674375
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffb0:60f7",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427116,
+      "max_ts": 1556427116,
+      "example_row_0based": 676067
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff67:688b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427176,
+      "max_ts": 1556427176,
+      "example_row_0based": 679579
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff02:4e6",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427236,
+      "max_ts": 1556427236,
+      "example_row_0based": 682177
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffc1:9413",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427296,
+      "max_ts": 1556427296,
+      "example_row_0based": 684691
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff79:eab5",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427356,
+      "max_ts": 1556427356,
+      "example_row_0based": 686621
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff6a:ab52",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427416,
+      "max_ts": 1556427416,
+      "example_row_0based": 690212
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffd0:f3f7",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427476,
+      "max_ts": 1556427476,
+      "example_row_0based": 693324
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffb5:387c",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427536,
+      "max_ts": 1556427536,
+      "example_row_0based": 694934
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe3:864a",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427596,
+      "max_ts": 1556427596,
+      "example_row_0based": 698316
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff6b:8006",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427656,
+      "max_ts": 1556427656,
+      "example_row_0based": 701625
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff60:22b4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427716,
+      "max_ts": 1556427716,
+      "example_row_0based": 704432
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe2:20b5",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427776,
+      "max_ts": 1556427776,
+      "example_row_0based": 706171
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7c:38fb",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427836,
+      "max_ts": 1556427836,
+      "example_row_0based": 708893
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffc1:b533",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427896,
+      "max_ts": 1556427896,
+      "example_row_0based": 711297
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffb5:d9f6",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556427956,
+      "max_ts": 1556427956,
+      "example_row_0based": 712896
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff18:82ce",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428016,
+      "max_ts": 1556428016,
+      "example_row_0based": 715074
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff3a:a54b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428076,
+      "max_ts": 1556428076,
+      "example_row_0based": 717204
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffd0:1a5f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428136,
+      "max_ts": 1556428136,
+      "example_row_0based": 719425
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff90:7b14",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428196,
+      "max_ts": 1556428196,
+      "example_row_0based": 722923
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff02:9d6",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428256,
+      "max_ts": 1556428256,
+      "example_row_0based": 725345
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff5c:e71d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428316,
+      "max_ts": 1556428316,
+      "example_row_0based": 727085
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe5:1585",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428376,
+      "max_ts": 1556428376,
+      "example_row_0based": 728466
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7c:b050",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428436,
+      "max_ts": 1556428436,
+      "example_row_0based": 731143
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff9c:db39",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428496,
+      "max_ts": 1556428496,
+      "example_row_0based": 735688
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff12:f635",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428556,
+      "max_ts": 1556428556,
+      "example_row_0based": 737791
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff49:5440",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428616,
+      "max_ts": 1556428616,
+      "example_row_0based": 739930
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffad:b59e",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428676,
+      "max_ts": 1556428676,
+      "example_row_0based": 744521
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff22:bc5a",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428736,
+      "max_ts": 1556428736,
+      "example_row_0based": 746076
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffea:21f2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428796,
+      "max_ts": 1556428796,
+      "example_row_0based": 747997
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1b:e472",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428856,
+      "max_ts": 1556428856,
+      "example_row_0based": 749536
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff0:11f4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428916,
+      "max_ts": 1556428916,
+      "example_row_0based": 751895
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff45:3e4d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556428976,
+      "max_ts": 1556428976,
+      "example_row_0based": 753632
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa9:9c41",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 2,
+      "min_ts": 1556429036,
+      "max_ts": 1556429036,
+      "example_row_0based": 757241
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7f:c0bc",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429096,
+      "max_ts": 1556429096,
+      "example_row_0based": 762864
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff60:cae1",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429156,
+      "max_ts": 1556429156,
+      "example_row_0based": 763224
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff63:caba",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429216,
+      "max_ts": 1556429216,
+      "example_row_0based": 763363
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff68:4dc6",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429276,
+      "max_ts": 1556429276,
+      "example_row_0based": 763470
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffbb:1f34",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429336,
+      "max_ts": 1556429336,
+      "example_row_0based": 763572
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff72:6f11",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429396,
+      "max_ts": 1556429396,
+      "example_row_0based": 763651
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff70:c547",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429456,
+      "max_ts": 1556429456,
+      "example_row_0based": 763732
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff88:624f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429516,
+      "max_ts": 1556429516,
+      "example_row_0based": 763803
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff03:92d4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429576,
+      "max_ts": 1556429576,
+      "example_row_0based": 763883
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff15:98bd",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429636,
+      "max_ts": 1556429636,
+      "example_row_0based": 763959
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff0e:cba0",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429696,
+      "max_ts": 1556429696,
+      "example_row_0based": 764072
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff3c:25a2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429756,
+      "max_ts": 1556429756,
+      "example_row_0based": 764146
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffc5:84f3",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429816,
+      "max_ts": 1556429816,
+      "example_row_0based": 764221
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff12:325b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429876,
+      "max_ts": 1556429876,
+      "example_row_0based": 764312
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff05:57f2",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429936,
+      "max_ts": 1556429936,
+      "example_row_0based": 764381
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff11:d200",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556429996,
+      "max_ts": 1556429996,
+      "example_row_0based": 764529
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff9b:e9a6",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430056,
+      "max_ts": 1556430056,
+      "example_row_0based": 764592
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff8b:856f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430116,
+      "max_ts": 1556430116,
+      "example_row_0based": 764672
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fffd:1af4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430176,
+      "max_ts": 1556430176,
+      "example_row_0based": 764757
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff13:a547",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430236,
+      "max_ts": 1556430236,
+      "example_row_0based": 764843
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff27:34b9",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430296,
+      "max_ts": 1556430296,
+      "example_row_0based": 764916
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7a:4c8",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430356,
+      "max_ts": 1556430356,
+      "example_row_0based": 765020
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff74:e8a8",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430416,
+      "max_ts": 1556430416,
+      "example_row_0based": 765106
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffb6:b162",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430476,
+      "max_ts": 1556430476,
+      "example_row_0based": 765180
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffc9:2249",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430536,
+      "max_ts": 1556430536,
+      "example_row_0based": 765250
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffdc:cbd4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430596,
+      "max_ts": 1556430596,
+      "example_row_0based": 765360
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff9e:ebc3",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430656,
+      "max_ts": 1556430656,
+      "example_row_0based": 765430
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa6:2bdd",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430716,
+      "max_ts": 1556430716,
+      "example_row_0based": 765890
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff5d:8df1",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430776,
+      "max_ts": 1556430776,
+      "example_row_0based": 765979
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff3b:4170",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430836,
+      "max_ts": 1556430836,
+      "example_row_0based": 766054
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff9a:ee57",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430896,
+      "max_ts": 1556430896,
+      "example_row_0based": 766148
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff7c:70d5",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556430956,
+      "max_ts": 1556430956,
+      "example_row_0based": 766243
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff2:61ff",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431016,
+      "max_ts": 1556431016,
+      "example_row_0based": 766336
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffed:19f7",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431076,
+      "max_ts": 1556431076,
+      "example_row_0based": 766400
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff19:3f3d",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431136,
+      "max_ts": 1556431136,
+      "example_row_0based": 766464
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff76:ddbb",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431196,
+      "max_ts": 1556431196,
+      "example_row_0based": 766559
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff8b:86ad",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431256,
+      "max_ts": 1556431256,
+      "example_row_0based": 766640
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff0b:17fd",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431316,
+      "max_ts": 1556431316,
+      "example_row_0based": 766713
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffe1:9707",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431376,
+      "max_ts": 1556431376,
+      "example_row_0based": 766796
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff38:3db9",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431436,
+      "max_ts": 1556431436,
+      "example_row_0based": 766873
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff2:e865",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431496,
+      "max_ts": 1556431496,
+      "example_row_0based": 766958
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff42:179",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431556,
+      "max_ts": 1556431556,
+      "example_row_0based": 767028
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff2d:3f0",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431616,
+      "max_ts": 1556431616,
+      "example_row_0based": 767104
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff09:6f2b",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431676,
+      "max_ts": 1556431676,
+      "example_row_0based": 767177
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff74:9155",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431736,
+      "max_ts": 1556431736,
+      "example_row_0based": 767266
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa7:e083",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431796,
+      "max_ts": 1556431796,
+      "example_row_0based": 767344
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffbf:74b6",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431856,
+      "max_ts": 1556431856,
+      "example_row_0based": 767410
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff75:8460",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431916,
+      "max_ts": 1556431916,
+      "example_row_0based": 767493
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff89:2374",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556431976,
+      "max_ts": 1556431976,
+      "example_row_0based": 767563
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff62:9099",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432036,
+      "max_ts": 1556432036,
+      "example_row_0based": 767637
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff00:3a00",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432096,
+      "max_ts": 1556432096,
+      "example_row_0based": 767727
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff71:5897",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432156,
+      "max_ts": 1556432156,
+      "example_row_0based": 767820
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffc1:a2f7",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432216,
+      "max_ts": 1556432216,
+      "example_row_0based": 767903
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffac:2d22",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432276,
+      "max_ts": 1556432276,
+      "example_row_0based": 767985
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffed:7f1f",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432336,
+      "max_ts": 1556432336,
+      "example_row_0based": 768076
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff2e:f32a",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432396,
+      "max_ts": 1556432396,
+      "example_row_0based": 768149
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff5b:3330",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432456,
+      "max_ts": 1556432456,
+      "example_row_0based": 768225
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffd8:bfe0",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432516,
+      "max_ts": 1556432516,
+      "example_row_0based": 768303
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff60:30ad",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432576,
+      "max_ts": 1556432576,
+      "example_row_0based": 768371
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff11:50aa",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432636,
+      "max_ts": 1556432636,
+      "example_row_0based": 768466
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff58:686",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432696,
+      "max_ts": 1556432696,
+      "example_row_0based": 768527
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff0f:fb14",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432756,
+      "max_ts": 1556432756,
+      "example_row_0based": 768611
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff1d:9a01",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432816,
+      "max_ts": 1556432816,
+      "example_row_0based": 768686
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff06:a609",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432876,
+      "max_ts": 1556432876,
+      "example_row_0based": 768759
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffa7:90fa",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432936,
+      "max_ts": 1556432936,
+      "example_row_0based": 768842
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ffd7:4fbf",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556432996,
+      "max_ts": 1556432996,
+      "example_row_0based": 768911
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fff9:1dd4",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556433056,
+      "max_ts": 1556433056,
+      "example_row_0based": 768992
+    },
+    {
+      "partition": "22",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:fffd:735a",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556433116,
+      "max_ts": 1556433116,
+      "example_row_0based": 769104
+    },
+    {
+      "partition": "23",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff46:d904",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556548065,
+      "max_ts": 1556548065,
+      "example_row_0based": 333234
+    },
+    {
+      "partition": "23",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff76:fcc9",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556548125,
+      "max_ts": 1556548125,
+      "example_row_0based": 333782
+    },
+    {
+      "partition": "23",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff6d:b496",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556548185,
+      "max_ts": 1556548185,
+      "example_row_0based": 334928
+    },
+    {
+      "partition": "23",
+      "label": "0",
+      "type": "normal",
+      "src_ip": "0",
+      "dst_ip": "ff02::1:ff69:5a3e",
+      "proto": "icmp",
+      "service": "-",
+      "conn_state": "OTH",
+      "count": 1,
+      "min_ts": 1556548245,
+      "max_ts": 1556548245,
+      "example_row_0based": 335231
+    }
+  ],
+  "time_range_utc": [
+    "2019-04-02 15:53:49+00:00",
+    "2019-04-29 14:30:45+00:00"
+  ],
+  "unique_5tuples": 233,
+  "unique_ts_5tuples": 562,
+  "top_5tuples": [
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:ff00:6bf2",
+        "136",
+        "icmp"
+      ],
+      "count": 43
+    },
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:ff11:d910",
+        "136",
+        "icmp"
+      ],
+      "count": 41
+    },
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:ff08:6ac5",
+        "136",
+        "icmp"
+      ],
+      "count": 41
+    },
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:ffaa:955f",
+        "136",
+        "icmp"
+      ],
+      "count": 41
+    },
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:fff7:2593",
+        "136",
+        "icmp"
+      ],
+      "count": 41
+    },
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:ffb7:7044",
+        "136",
+        "icmp"
+      ],
+      "count": 41
+    },
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:ffdd:190f",
+        "136",
+        "icmp"
+      ],
+      "count": 41
+    },
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:ff72:bf47",
+        "136",
+        "icmp"
+      ],
+      "count": 41
+    },
+    {
+      "key": [
+        "0",
+        "133",
+        "ff02::2",
+        "134",
+        "icmp"
+      ],
+      "count": 39
+    },
+    {
+      "key": [
+        "0",
+        "135",
+        "ff02::1:ff80:bd11",
+        "136",
+        "icmp"
+      ],
+      "count": 39
+    }
+  ],
+  "neighbor_values": {
+    "duration": [
+      {
+        "value": "0",
+        "count": 773
+      },
+      {
+        "value": "0.000022",
+        "count": 11
+      },
+      {
+        "value": "0.000023",
+        "count": 8
+      },
+      {
+        "value": "0.000024",
+        "count": 8
+      },
+      {
+        "value": "0.000026",
+        "count": 8
+      },
+      {
+        "value": "0.000027",
+        "count": 7
+      },
+      {
+        "value": "0.000029",
+        "count": 5
+      },
+      {
+        "value": "0.000021",
+        "count": 4
+      },
+      {
+        "value": "0.000031",
+        "count": 4
+      },
+      {
+        "value": "0.00002",
+        "count": 4
+      },
+      {
+        "value": "0.000028",
+        "count": 3
+      },
+      {
+        "value": "0.00003",
+        "count": 3
+      }
+    ],
+    "src_bytes": [
+      {
+        "value": "0.0.0.0",
+        "count": 869
+      }
+    ],
+    "dst_bytes": [
+      {
+        "value": "0",
+        "count": 869
+      }
+    ],
+    "conn_state": [
+      {
+        "value": "OTH",
+        "count": 869
+      }
+    ],
+    "src_pkts": [
+      {
+        "value": "1",
+        "count": 773
+      },
+      {
+        "value": "2",
+        "count": 94
+      },
+      {
+        "value": "3",
+        "count": 2
+      }
+    ],
+    "dst_pkts": [
+      {
+        "value": "0",
+        "count": 869
+      }
+    ],
+    "src_ip_bytes": [
+      {
+        "value": "64",
+        "count": 656
+      },
+      {
+        "value": "128",
+        "count": 88
+      },
+      {
+        "value": "72",
+        "count": 77
+      },
+      {
+        "value": "48",
+        "count": 35
+      },
+      {
+        "value": "76",
+        "count": 4
+      },
+      {
+        "value": "144",
+        "count": 3
+      },
+      {
+        "value": "96",
+        "count": 3
+      },
+      {
+        "value": "192",
+        "count": 1
+      },
+      {
+        "value": "136",
+        "count": 1
+      },
+      {
+        "value": "312",
+        "count": 1
+      }
+    ],
+    "dst_ip_bytes": [
+      {
+        "value": "0",
+        "count": 869
+      }
+    ]
+  }
+}

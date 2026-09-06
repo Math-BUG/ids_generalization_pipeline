@@ -1,0 +1,12 @@
+{
+  "python": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+  "pandas": "2.3.3",
+  "numpy": "2.3.4",
+  "pyarrow": "22.0.0",
+  "parquet_code_hashes_verified": {
+    "scripts\\audit_ton_iot_schema.py": true,
+    "src\\ids_pipeline\\schema.py": true,
+    "src\\ids_pipeline\\dataset_schema.py": true
+  },
+  "schema_files_modified_by_checkpoint": false
+}

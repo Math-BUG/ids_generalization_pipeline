@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Convert a directory of CSV files to one Parquet file per CSV.
 
-The converter does a conservative schema pass before writing. This matters for
-RAPIDS/cuDF: multi-file Parquet reads require every partition to expose the same
-column names and compatible Arrow types.
+TON_IoT uses a versioned semantic schema and a header-only inventory. Other
+datasets retain the conservative inference fallback. Matching column names and
+Arrow types make the resulting partitions compatible with multi-file cuDF reads.
 """
 
 from __future__ import annotations
@@ -11,9 +11,15 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
+
+# Preserve direct script execution without requiring an editable installation.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import pandas as pd
 from pandas.api import types as ptypes
+from ids_pipeline.dataset_schema import is_ton_iot, normalize_dataset_schema, read_csv_preserving_schema
+from ids_pipeline.schema import TON_IOT_SCHEMA, TON_IOT_SCHEMA_VERSION
 
 
 def parse_args() -> argparse.Namespace:
@@ -43,10 +49,12 @@ def main() -> None:
         "files": [],
     }
 
-    print(f"INFERRING common schema from {len(csv_files)} CSV file(s)")
+    print(f"RESOLVING common schema for {len(csv_files)} CSV file(s)")
     schema, columns = infer_common_schema(csv_files)
     manifest["schema"] = schema
     manifest["columns"] = columns
+    if is_ton_iot(columns):
+        manifest["semantic_schema_version"] = TON_IOT_SCHEMA_VERSION
 
     for csv_path in csv_files:
         rel = csv_path.relative_to(input_dir)
@@ -57,8 +65,10 @@ def main() -> None:
             continue
 
         print(f"READ {csv_path}")
-        df = pd.read_csv(csv_path, low_memory=False)
-        df = normalize_to_common_schema(df, schema, columns)
+        df = read_csv_preserving_schema(csv_path)
+        df = normalize_to_common_schema(
+            df, schema, columns, report_path=parquet_path.with_suffix(".schema.json"),
+        )
         print(f"WRITE {parquet_path} shape={df.shape}")
         df.to_parquet(parquet_path, index=False, compression=args.compression, engine="pyarrow")
         manifest["files"].append(
@@ -78,14 +88,23 @@ def main() -> None:
 
 
 def infer_common_schema(csv_files: list[Path]) -> tuple[dict[str, str], list[str]]:
-    """Infer one stable schema for all CSV partitions.
+    """Resolve the explicit TON_IoT schema, or infer a generic fallback.
 
-    The policy is intentionally simple:
+    Only the fallback uses the following inference policy:
     - any object/category/string column becomes pandas string;
     - numeric columns stay numeric, with int partitions promoted to float if
       another partition has the same column as float;
     - missing columns are added later as nullable values.
     """
+
+    # The known dataset needs only a header pass, not a data-dependent type vote.
+    headers = [pd.read_csv(path, nrows=0).columns.tolist() for path in csv_files]
+    union = list(dict.fromkeys(col for header in headers for col in header))
+    if is_ton_iot(union):
+        return {
+            col: TON_IOT_SCHEMA[col].storage_dtype if col in TON_IOT_SCHEMA else "string"
+            for col in union
+        }, union
 
     families_by_col: dict[str, set[str]] = {}
     columns: list[str] = []
@@ -127,6 +146,8 @@ def normalize_to_common_schema(
     df: pd.DataFrame,
     schema: dict[str, str],
     columns: list[str],
+    *,
+    report_path: Path | None = None,
 ) -> pd.DataFrame:
     out = df.copy()
     for col in columns:
@@ -134,6 +155,13 @@ def normalize_to_common_schema(
             out[col] = pd.NA
 
     out = out[columns]
+    if is_ton_iot(columns):
+        out, _ = normalize_dataset_schema(out, report_path=report_path)
+        # Registered types always win, including when callers supply an old schema.
+        for col in columns:
+            if col not in TON_IOT_SCHEMA:
+                out[col] = out[col].astype("string")
+        return out
     for col, target_dtype in schema.items():
         if target_dtype == "string":
             out[col] = out[col].astype("string")

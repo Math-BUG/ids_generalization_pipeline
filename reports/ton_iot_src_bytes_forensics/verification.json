@@ -1,0 +1,138 @@
+{
+  "passed": 33,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "869 target rows",
+      "passed": true
+    },
+    {
+      "check": "unique partition and logical row identities",
+      "passed": true
+    },
+    {
+      "check": "all 46 raw fields match header; 45 delimiters; no quotes",
+      "passed": true
+    },
+    {
+      "check": "all complete raw records roundtrip strictly",
+      "passed": true
+    },
+    {
+      "check": "all raw record hashes match",
+      "passed": true
+    },
+    {
+      "check": "all records remain identical on second original CSV read",
+      "passed": true
+    },
+    {
+      "check": "869 invalid source IPs; 869 valid destinations",
+      "passed": true
+    },
+    {
+      "check": "only src_bytes fails current production rules",
+      "passed": true
+    },
+    {
+      "check": "all label/type pairs consistent",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: partition",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: label",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: type",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: src_ip",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: dst_ip",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: src_port",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: dst_port",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: proto",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: service",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: conn_state",
+      "passed": true
+    },
+    {
+      "check": "summary reconciles: date_utc",
+      "passed": true
+    },
+    {
+      "check": "Parquet comparison 1",
+      "passed": true
+    },
+    {
+      "check": "Parquet comparison 2",
+      "passed": true
+    },
+    {
+      "check": "Parquet comparison 3",
+      "passed": true
+    },
+    {
+      "check": "Parquet comparison 4",
+      "passed": true
+    },
+    {
+      "check": "Parquet comparison 5",
+      "passed": true
+    },
+    {
+      "check": "Parquet comparison 6",
+      "passed": true
+    },
+    {
+      "check": "Parquet comparison 7",
+      "passed": true
+    },
+    {
+      "check": "all three pattern counts reconcile",
+      "passed": true
+    },
+    {
+      "check": "partition pattern counts reconcile",
+      "passed": true
+    },
+    {
+      "check": "869 records and 562 distinct full rows",
+      "passed": true
+    },
+    {
+      "check": "production/checkpoint SHA256 unchanged: scripts\\audit_ton_iot_schema.py",
+      "passed": true
+    },
+    {
+      "check": "production/checkpoint SHA256 unchanged: src\\ids_pipeline\\schema.py",
+      "passed": true
+    },
+    {
+      "check": "production/checkpoint SHA256 unchanged: src\\ids_pipeline\\dataset_schema.py",
+      "passed": true
+    }
+  ]
+}

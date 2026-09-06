@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import glob
 import logging
+import os
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
 from .backend import requested_backend
+from .dataset_schema import is_ton_iot, normalize_dataset_schema, read_csv_preserving_schema
+from .data_quality_policy import DataQualityPopulation, source_fingerprint, assert_source_unchanged
 
 LOGGER = logging.getLogger(__name__)
 
@@ -20,6 +23,8 @@ def load_dataset(
     sample_size: int | None = None,
     random_state: int = 42,
     compute_backend: str = "cpu",
+    schema_report_path: str | Path | None = None,
+    data_quality_report_path: str | Path | None = None,
 ) -> pd.DataFrame:
     if data_path.startswith("synthetic://"):
         size_text = data_path.split("://", 1)[1] or "300"
@@ -30,11 +35,46 @@ def load_dataset(
     if not files:
         raise FileNotFoundError(f"No CSV/Parquet files found for data_path={data_path!r}")
 
-    if _all_parquet(files) and requested_backend(compute_backend) in {"gpu", "auto"}:
-        df = _read_parquet_with_cudf(files, require_cudf=requested_backend(compute_backend) == "gpu")
-    else:
-        frames = [_read_one_file(path) for path in files]
-        df = pd.concat(frames, ignore_index=True) if len(frames) > 1 else frames[0]
+    # Read sources independently so original file/row identity survives filtering,
+    # including the cuDF path. No provenance columns are exposed as model features.
+    population = DataQualityPopulation()
+    root = Path(os.path.commonpath([str(path.resolve().parent) for path in files]))
+    frames, ton_flags, original_offset = [], [], 0
+    for path in files:
+        before = path.stat()
+        if path.suffix.lower() in {".parquet", ".pq"} and requested_backend(compute_backend) in {"gpu", "auto"}:
+            frame = _read_parquet_with_cudf([path], require_cudf=requested_backend(compute_backend) == "gpu")
+        else:
+            frame = _read_one_file(path)
+        raw_count = len(frame)
+        if len(files) > 1:
+            frame.index = pd.RangeIndex(original_offset, original_offset + raw_count)
+        original_offset += raw_count
+        ton_flags.append(is_ton_iot(frame.columns))
+        if ton_flags[-1]:
+            fingerprint = source_fingerprint(path)
+            if (before.st_size, before.st_mtime_ns) != (fingerprint["bytes"], fingerprint["mtime_ns"]):
+                raise RuntimeError(f"Source changed while reading: {path}")
+            source_id = path.resolve().relative_to(root).as_posix()
+            population.register_file(source_id, fingerprint, source_path=str(path.resolve()))
+            frame = population.apply(frame, source_id=source_id, row_offset=0)
+            assert_source_unchanged(path, fingerprint)
+        frames.append(frame)
+    if any(ton_flags) and not all(ton_flags):
+        raise ValueError("Cannot mix TON_IoT and unrecognized partitions in one population")
+    df = pd.concat(frames, ignore_index=False) if len(frames) > 1 else frames[0]
+    if is_ton_iot(df.columns):
+        if data_quality_report_path is None and schema_report_path is not None:
+            data_quality_report_path = Path(schema_report_path).with_name("data_quality_report.json")
+        quality_report = population.save(data_quality_report_path)
+        LOGGER.info("Data quality: original=%d quarantined=%d eligible=%d population=%s",
+                    quality_report["original_rows"], quality_report["quarantined_rows"],
+                    quality_report["eligible_rows"], quality_report["population_id"])
+        df, report = normalize_dataset_schema(df, report_path=schema_report_path)
+        df.attrs["schema_version"] = report["schema_version"]
+        df.attrs["data_quality_report"] = quality_report
+        df.attrs["data_quality_population_id"] = quality_report["population_id"]
+        LOGGER.info("Applied semantic schema %s; unknown columns=%s", report["schema_version"], report["unknown_columns"])
     if sample_size and sample_size < len(df):
         df = df.sample(n=sample_size, random_state=random_state).reset_index(drop=True)
     LOGGER.info("Loaded dataset with shape=%s from %d file(s)", df.shape, len(files))
@@ -55,7 +95,7 @@ def _read_one_file(path: Path) -> pd.DataFrame:
     suffix = path.suffix.lower()
     LOGGER.info("Reading %s", path)
     if suffix == ".csv":
-        return pd.read_csv(path, low_memory=False)
+        return read_csv_preserving_schema(path)
     if suffix in {".parquet", ".pq"}:
         return pd.read_parquet(path)
     raise ValueError(f"Unsupported file extension for {path}. Use CSV or Parquet.")

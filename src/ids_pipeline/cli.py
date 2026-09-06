@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 from pathlib import Path
 from typing import Any
@@ -15,7 +16,8 @@ from .config import PipelineConfig, config_to_dict, load_config
 from .data_loading import load_dataset
 from .feature_policy import FeaturePolicy, apply_proxy_feature_policies
 from .leakage_checks import write_forbidden_columns_check
-from .preprocessing import fit_transform_preprocessing
+from .preprocessing import fit_transform_preprocessing, describe_feature_transformations, _select_log_cols
+from .schema import TON_IOT_SCHEMA
 from .profiling import Profiler
 from .representatives import build_cluster_representatives
 from .splitting import create_splits, save_splits
@@ -74,6 +76,8 @@ def run_experiment(
             resolved_data_path,
             random_state=config.random_state,
             compute_backend=config.compute_backend,
+            schema_report_path=output_dir / "schema_normalization_report.json",
+            data_quality_report_path=output_dir / "data_quality_report.json",
         )
     write_json(
         output_dir / "dataset_info.json",
@@ -82,6 +86,7 @@ def run_experiment(
             "columns": int(df.shape[1]),
             "data_path": resolved_data_path,
             "compute_backend": config.compute_backend,
+            "data_quality_population_id": df.attrs.get("data_quality_population_id"),
         },
     )
 
@@ -105,7 +110,15 @@ def run_experiment(
         "selected_features": feature_cols,
         "n_selected_features": len(feature_cols),
         **proxy_metadata,
+        **policy.selection_metadata(feature_cols),
     }
+    if policy.name == "behavioral_strict":
+        numeric_cols = [c for c in feature_cols if TON_IOT_SCHEMA[c].model_treatment == "numeric"]
+        log_cols = _select_log_cols(numeric_cols, config.log1p_columns) if config.log1p_numeric else []
+        selected_payload.update(
+            transformation_status="configured_not_fitted",
+            feature_transformations=describe_feature_transformations(feature_cols, log_cols),
+        )
     write_json(output_dir / "selected_features.json", selected_payload)
     write_forbidden_columns_check(
         output_dir / "forbidden_columns_check.json",
@@ -129,6 +142,18 @@ def run_experiment(
 
     with profiler.track("preprocessing_svd"):
         X, _bundle = fit_transform_preprocessing(df, splits, feature_cols, config, output_dir)
+
+    if policy.name == "behavioral_strict":
+        fitted = json.loads((output_dir / "artifacts/preprocessing_metadata.json").read_text(encoding="utf-8"))
+        selected_payload.update(
+            transformation_status="fitted_on_train",
+            feature_transformations=fitted["feature_transformations"],
+            conn_state_encoding=fitted["conn_state_encoding"],
+            quantitative_output_order=fitted["numeric_cols"],
+            dimensionality_reduction={"algorithm": fitted["reducer"], "components": fitted["svd_components_effective"]},
+            transformed_shapes=fitted["transformed_shapes"],
+        )
+        write_json(output_dir / "selected_features.json", selected_payload)
 
     with profiler.track("clustering"):
         clustering = fit_predict_clustering(X, df, splits, feature_cols, config, output_dir)

@@ -18,7 +18,10 @@ from sklearn.preprocessing import FunctionTransformer, OneHotEncoder, StandardSc
 
 from .backend import resolve_backend, to_numpy_array
 from .config import PipelineConfig
+from .dataset_schema import is_ton_iot, model_feature_types, normalize_dataset_schema
 from .leakage_checks import check_for_leakage_columns
+from .schema import DEFAULT_LOG1P_COLUMNS, TON_IOT_SCHEMA_VERSION, TON_IOT_SCHEMA
+from .nominal_encoding import ConnStateOneHot
 from .utils import ensure_dir, write_json
 
 LOGGER = logging.getLogger(__name__)
@@ -51,13 +54,20 @@ def fit_transform_preprocessing(
         context="preprocessing fit",
     )
 
-    X_train_df = df.iloc[splits["train"]][feature_cols].copy()
-    X_val_df = df.iloc[splits["val"]][feature_cols].copy()
-    X_test_df = df.iloc[splits["test"]][feature_cols].copy()
-
-    numeric_cols = X_train_df.select_dtypes(include=[np.number, "bool"]).columns.tolist()
-    categorical_cols = [c for c in feature_cols if c not in numeric_cols]
-    log_cols = _select_log_cols(numeric_cols, config.log1p_patterns) if config.log1p_numeric else []
+    # Validate direct callers too. This is stateless; all fitted statistics remain
+    # below, after the split. Never use validation/test values to infer model roles.
+    features, schema_report = normalize_dataset_schema(
+        df[feature_cols], report_path=Path(output_dir) / "preprocessing_schema_report.json",
+    )
+    numeric_cols, categorical_cols = model_feature_types(
+        features, feature_cols, strict=is_ton_iot(df.columns),
+    )
+    X_train_df = features.iloc[splits["train"]].copy()
+    X_val_df = features.iloc[splits["val"]].copy()
+    X_test_df = features.iloc[splits["test"]].copy()
+    log_cols = _select_log_cols(numeric_cols, config.log1p_columns) if config.log1p_numeric else []
+    if config.log1p_numeric and config.log1p_columns is None:
+        LOGGER.info("Using explicit log1p column list; legacy log1p_patterns is ignored")
 
     X_train_df = apply_log1p(X_train_df, log_cols)
     X_val_df = apply_log1p(X_val_df, log_cols)
@@ -125,10 +135,16 @@ def fit_transform_preprocessing(
     write_json(
         artifact_dir / "preprocessing_metadata.json",
         {
+            "schema_version": TON_IOT_SCHEMA_VERSION,
+            "unregistered_columns": schema_report["unknown_columns"],
             "feature_cols": feature_cols,
             "numeric_cols": numeric_cols,
             "categorical_cols": categorical_cols,
             "log_cols": log_cols,
+            "conn_state_encoding": (preprocessor.named_transformers_["conn_state"].metadata()
+                                    if "conn_state" in categorical_cols else None),
+            "feature_transformations": describe_feature_transformations(feature_cols, log_cols),
+            "reducer": None if svd is None else "TruncatedSVD",
             "svd_components_effective": None if svd is None else int(svd.n_components),
             "transformed_shapes": {k: list(v.shape) for k, v in {"train": X_train, "val": X_val, "test": X_test}.items()},
         },
@@ -166,12 +182,13 @@ def _fit_transform_gpu_preprocessing(
         parts_test.append(test_num)
         gpu_metadata["numeric_stats"] = numeric_stats
 
-    if categorical_cols:
+    ordinal_cols = [c for c in categorical_cols if c != "conn_state"]
+    if ordinal_cols:
         train_cat, val_cat, test_cat, categorical_maps = _gpu_categorical_code_arrays(
             X_train_df,
             X_val_df,
             X_test_df,
-            categorical_cols,
+            ordinal_cols,
             config.onehot_min_frequency,
             config.gpu_max_categories_per_col,
         )
@@ -179,7 +196,16 @@ def _fit_transform_gpu_preprocessing(
         parts_val.append(val_cat)
         parts_test.append(test_cat)
         gpu_metadata["categorical_maps"] = categorical_maps
-        gpu_metadata["categorical_output_columns"] = categorical_cols
+        gpu_metadata["categorical_output_columns"] = list(ordinal_cols)
+
+    if "conn_state" in categorical_cols:
+        encoder = ConnStateOneHot().fit(X_train_df[["conn_state"]])
+        parts_train.append(encoder.transform_gpu(X_train_df[["conn_state"]]))
+        parts_val.append(encoder.transform_gpu(X_val_df[["conn_state"]]))
+        parts_test.append(encoder.transform_gpu(X_test_df[["conn_state"]]))
+        gpu_metadata["conn_state_encoder"] = encoder
+        gpu_metadata["conn_state_encoding"] = encoder.metadata()
+        gpu_metadata.setdefault("categorical_output_columns", []).extend(encoder.get_feature_names_out().tolist())
 
     if not parts_train:
         raise ValueError("No feature columns available after applying FeaturePolicy.")
@@ -220,12 +246,16 @@ def _fit_transform_gpu_preprocessing(
         artifact_dir / "preprocessing_metadata.json",
         {
             "backend": "gpu",
+            "schema_version": TON_IOT_SCHEMA_VERSION,
             "feature_cols": feature_cols,
             "numeric_cols": numeric_cols,
             "categorical_cols": categorical_cols,
             "log_cols": log_cols,
             "onehot_min_frequency": config.onehot_min_frequency,
-            "gpu_categorical_encoding": "frequency_limited_ordinal",
+            "gpu_categorical_encoding": "one_hot" if categorical_cols == ["conn_state"] else "per_column",
+            "legacy_ordinal_columns": ordinal_cols,
+            "conn_state_encoding": gpu_metadata.get("conn_state_encoding"),
+            "feature_transformations": describe_feature_transformations(feature_cols, log_cols),
             "gpu_max_categories_per_col": config.gpu_max_categories_per_col,
             "categorical_output_columns": gpu_metadata.get("categorical_output_columns", []),
             "reducer": reducer_name,
@@ -248,9 +278,9 @@ def _gpu_numeric_arrays(
 ) -> tuple[Any, Any, Any, dict[str, Any]]:
     import cupy as cp
 
-    train = X_train_df[numeric_cols].apply(pd.to_numeric, errors="coerce")
-    val = X_val_df[numeric_cols].apply(pd.to_numeric, errors="coerce")
-    test = X_test_df[numeric_cols].apply(pd.to_numeric, errors="coerce")
+    train = X_train_df[numeric_cols].astype("float64")
+    val = X_val_df[numeric_cols].astype("float64")
+    test = X_test_df[numeric_cols].astype("float64")
 
     medians = train.median(numeric_only=True).fillna(0.0)
     train = train.fillna(medians)
@@ -280,6 +310,9 @@ def _gpu_categorical_code_arrays(
     max_categories_per_col: int,
 ) -> tuple[Any, Any, Any, dict[str, Any]]:
     import cupy as cp
+
+    if "conn_state" in categorical_cols:
+        raise ValueError("conn_state must use ConnStateOneHot, never ordinal model coordinates")
 
     min_frequency = max(1, int(onehot_min_frequency or 1))
     max_categories = max(1, int(max_categories_per_col or 64))
@@ -370,7 +403,8 @@ def build_preprocessor(
             ]
         )
         transformers.append(("num", numeric_pipeline, numeric_cols))
-    if categorical_cols:
+    other_categorical_cols = [c for c in categorical_cols if c != "conn_state"]
+    if other_categorical_cols:
         categorical_pipeline = Pipeline(
             steps=[
                 ("to_string", FunctionTransformer(_categoricals_to_string, validate=False)),
@@ -378,7 +412,9 @@ def build_preprocessor(
                 ("onehot", _make_onehot(onehot_min_frequency)),
             ]
         )
-        transformers.append(("cat", categorical_pipeline, categorical_cols))
+        transformers.append(("cat", categorical_pipeline, other_categorical_cols))
+    if "conn_state" in categorical_cols:
+        transformers.append(("conn_state", ConnStateOneHot(), ["conn_state"]))
     if not transformers:
         raise ValueError("No feature columns available after applying FeaturePolicy.")
     return ColumnTransformer(transformers=transformers, remainder="drop", sparse_threshold=0.3)
@@ -414,14 +450,39 @@ def _make_onehot(onehot_min_frequency: int | None) -> OneHotEncoder:
         return OneHotEncoder(**kwargs, sparse=True)
 
 
-def _select_log_cols(numeric_cols: list[str], patterns: list[str]) -> list[str]:
-    lowered_patterns = [p.lower() for p in patterns]
-    return [c for c in numeric_cols if any(p in c.lower() for p in lowered_patterns)]
+def _select_log_cols(numeric_cols: list[str], columns: list[str] | None = None) -> list[str]:
+    requested = set(DEFAULT_LOG1P_COLUMNS if columns is None else columns)
+    # Explicit overrides also cannot log a nominal code or a timestamp by accident.
+    invalid = requested - set(DEFAULT_LOG1P_COLUMNS)
+    if invalid:
+        raise ValueError(f"log1p_columns contains columns without a declared log1p domain: {sorted(invalid)}")
+    return [c for c in numeric_cols if c in requested]
+
+
+def describe_feature_transformations(feature_cols: list[str], log_cols: list[str]) -> dict:
+    """Describe registered transformations without learning from any split."""
+    result = {}
+    for col in feature_cols:
+        spec = TON_IOT_SCHEMA.get(col)
+        if spec is None:
+            continue
+        if col == "conn_state":
+            transforms = ["semantic_normalization", "training_mode_imputation", "one_hot_train_vocabulary_unknown_all_zero"]
+        elif spec.model_treatment == "numeric":
+            transforms = ["semantic_normalization"] + (["log1p"] if col in log_cols else [])
+            transforms += ["training_median_imputation", "training_standardization"]
+        else:
+            transforms = ["semantic_normalization", "backend_specific_categorical_encoding"]
+        result[col] = {"semantic_type": spec.semantic_type, "model_treatment": spec.model_treatment,
+                       "transformations": transforms}
+    return result
 
 
 def apply_log1p(df: pd.DataFrame, log_cols: list[str]) -> pd.DataFrame:
     out = df.copy()
     for col in log_cols:
-        values = pd.to_numeric(out[col], errors="coerce")
-        out[col] = np.log1p(np.clip(values, a_min=0, a_max=None))
+        values = pd.to_numeric(out[col], errors="raise").astype("float64")
+        if np.isinf(values).any() or (values < 0).any():
+            raise ValueError(f"log1p requires finite nonnegative values or missing values: {col}")
+        out[col] = np.log1p(values)
     return out

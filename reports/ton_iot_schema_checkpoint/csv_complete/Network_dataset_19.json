@@ -1,0 +1,1491 @@
+{
+  "file": "Network_dataset_19.csv",
+  "path": "D:\\IC\\Dataset\\Network_dataset_19.csv",
+  "source_before": {
+    "bytes": 156962122,
+    "mtime_ns": 1763755025108287000
+  },
+  "columns_present": [
+    "ts",
+    "src_ip",
+    "src_port",
+    "dst_ip",
+    "dst_port",
+    "proto",
+    "service",
+    "duration",
+    "src_bytes",
+    "dst_bytes",
+    "conn_state",
+    "missed_bytes",
+    "src_pkts",
+    "src_ip_bytes",
+    "dst_pkts",
+    "dst_ip_bytes",
+    "dns_query",
+    "dns_qclass",
+    "dns_qtype",
+    "dns_rcode",
+    "dns_AA",
+    "dns_RD",
+    "dns_RA",
+    "dns_rejected",
+    "ssl_version",
+    "ssl_cipher",
+    "ssl_resumed",
+    "ssl_established",
+    "ssl_subject",
+    "ssl_issuer",
+    "http_trans_depth",
+    "http_method",
+    "http_uri",
+    "http_referrer",
+    "http_version",
+    "http_request_body_len",
+    "http_response_body_len",
+    "http_status_code",
+    "http_user_agent",
+    "http_orig_mime_types",
+    "http_resp_mime_types",
+    "weird_name",
+    "weird_addl",
+    "weird_notice",
+    "label",
+    "type"
+  ],
+  "columns_absent": [
+    "uid"
+  ],
+  "columns_additional": [],
+  "missing_required_columns": [],
+  "rows": 1000000,
+  "chunks": 10,
+  "expected_rows_from_metadata": null,
+  "columns": {
+    "ts": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "src_ip": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {}
+    },
+    "src_port": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dst_ip": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {}
+    },
+    "dst_port": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "proto": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {}
+    },
+    "service": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 222800,
+      "recognized_missing": 222800,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 222800
+      },
+      "issues": {}
+    },
+    "duration": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "src_bytes": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dst_bytes": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "conn_state": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {}
+    },
+    "missed_bytes": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "src_pkts": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "src_ip_bytes": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dst_pkts": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dst_ip_bytes": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dns_query": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996793,
+      "recognized_missing": 996793,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996793
+      },
+      "issues": {}
+    },
+    "dns_qclass": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dns_qtype": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dns_rcode": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dns_AA": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996793,
+      "recognized_missing": 996793,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996793
+      },
+      "issues": {
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dns_RD": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996793,
+      "recognized_missing": 996793,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996793
+      },
+      "issues": {
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dns_RA": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996793,
+      "recognized_missing": 996793,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996793
+      },
+      "issues": {
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "dns_rejected": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996793,
+      "recognized_missing": 996793,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996793
+      },
+      "issues": {
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "ssl_version": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 1000000,
+      "recognized_missing": 1000000,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 1000000
+      },
+      "issues": {}
+    },
+    "ssl_cipher": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 1000000,
+      "recognized_missing": 1000000,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 1000000
+      },
+      "issues": {}
+    },
+    "ssl_resumed": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 1000000,
+      "recognized_missing": 1000000,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 1000000
+      },
+      "issues": {
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "ssl_established": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 1000000,
+      "recognized_missing": 1000000,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 1000000
+      },
+      "issues": {
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "ssl_subject": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 1000000,
+      "recognized_missing": 1000000,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 1000000
+      },
+      "issues": {}
+    },
+    "ssl_issuer": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 1000000,
+      "recognized_missing": 1000000,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 1000000
+      },
+      "issues": {}
+    },
+    "http_trans_depth": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996972,
+      "recognized_missing": 996972,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996972
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "http_method": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996972,
+      "recognized_missing": 996972,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996972
+      },
+      "issues": {}
+    },
+    "http_uri": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996972,
+      "recognized_missing": 996972,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996972
+      },
+      "issues": {}
+    },
+    "http_referrer": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 999999,
+      "recognized_missing": 999999,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 999999
+      },
+      "issues": {}
+    },
+    "http_version": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 997000,
+      "recognized_missing": 997000,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 997000
+      },
+      "issues": {}
+    },
+    "http_request_body_len": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "http_response_body_len": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "http_status_code": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "http_user_agent": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 996972,
+      "recognized_missing": 996972,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 996972
+      },
+      "issues": {}
+    },
+    "http_orig_mime_types": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 998859,
+      "recognized_missing": 998859,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 998859
+      },
+      "issues": {}
+    },
+    "http_resp_mime_types": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 997042,
+      "recognized_missing": 997042,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 997042
+      },
+      "issues": {}
+    },
+    "weird_name": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 999991,
+      "recognized_missing": 999991,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 999991
+      },
+      "issues": {}
+    },
+    "weird_addl": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 1000000,
+      "recognized_missing": 1000000,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 1000000
+      },
+      "issues": {}
+    },
+    "weird_notice": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 999991,
+      "recognized_missing": 999991,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 999991
+      },
+      "issues": {
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "label": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "missing_required": {
+          "count": 0,
+          "examples": []
+        },
+        "conversion_failure": {
+          "count": 0,
+          "examples": []
+        },
+        "infinite": {
+          "count": 0,
+          "examples": []
+        },
+        "unsafe_integer_precision": {
+          "count": 0,
+          "examples": []
+        },
+        "domain_violation": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    },
+    "type": {
+      "observed_rows": 1000000,
+      "native_nulls": 0,
+      "registered_sentinels": 0,
+      "recognized_missing": 0,
+      "invalid_cells": 0,
+      "negative_nonnegative_domain": 0,
+      "nonintegral": 0,
+      "ports_out_of_range": 0,
+      "invalid_label": 0,
+      "unexpected_boolean": 0,
+      "physical_dtypes": {
+        "CSV text (no intrinsic dtype)": 1000000
+      },
+      "pandas_dtypes": {
+        "string": 1000000
+      },
+      "sentinel_tokens": {
+        "": 0,
+        "-": 0
+      },
+      "issues": {
+        "missing_required": {
+          "count": 0,
+          "examples": []
+        }
+      }
+    }
+  },
+  "values_compatible": true,
+  "source_after": {
+    "bytes": 156962122,
+    "mtime_ns": 1763755025108287000
+  },
+  "source_unchanged_size_mtime": true,
+  "row_count_matches_metadata": true,
+  "compatible": true
+}

@@ -33,6 +33,8 @@ class PipelineConfig:
     gpu_max_categories_per_col: int = 64
     log1p_numeric: bool = True
     log1p_patterns: list[str] = field(default_factory=lambda: ["bytes", "pkts", "packets", "count", "duration"])
+    # log1p_patterns remains parseable for old YAMLs; selection now uses exact names.
+    log1p_columns: list[str] | None = None
 
     selected_k: int = 3
     cluster_batch_size: int = 64

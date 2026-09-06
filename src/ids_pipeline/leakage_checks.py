@@ -10,6 +10,7 @@ import pandas as pd
 
 from .schema import DATASET_ID_COLUMNS, IP_COLUMNS, RAW_IDENTITY_COLUMNS, SERVICE_COLUMNS, TARGET_COLUMNS
 from .utils import write_json
+from .feature_policy import BEHAVIORAL_STRICT_FEATURES, BEHAVIORAL_STRICT_VERSION
 
 
 class LeakageError(ValueError):
@@ -69,6 +70,12 @@ def check_for_leakage_columns(
         raise LeakageError(
             f"Leakage columns detected before {context}: {leaked}. "
             f"feature_policy={feature_policy!r}"
+        )
+
+    if feature_policy == "behavioral_strict" and tuple(feature_cols) != BEHAVIORAL_STRICT_FEATURES:
+        raise LeakageError(
+            f"{BEHAVIORAL_STRICT_VERSION} requires exactly this ordered feature list before {context}: "
+            f"{list(BEHAVIORAL_STRICT_FEATURES)}; received {feature_cols}"
         )
 
     if df is not None:
