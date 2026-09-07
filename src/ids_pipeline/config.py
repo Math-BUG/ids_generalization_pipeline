@@ -50,6 +50,13 @@ class PipelineConfig:
 
     random_forest_estimators: int = 100
     random_state: int = 42
+    # None inherits the legacy random_state independently; no stage seed feeds another.
+    split_seed: int | None = None
+    clustering_seed: int | None = None
+    selection_seed: int | None = None
+    model_seed: int | None = None
+    selection_budget: int | str | None = None
+    selection_method: str | None = None
     n_jobs: int = 1
     log_level: str = "INFO"
 
@@ -57,6 +64,20 @@ class PipelineConfig:
 
     def with_updates(self, **updates: Any) -> "PipelineConfig":
         return replace(self, **updates)
+
+    def seed_for(self, stage: str) -> int:
+        if stage not in {"split", "clustering", "selection", "model"}:
+            raise ValueError(f"Unknown seed stage: {stage}")
+        value = getattr(self, stage + "_seed")
+        value = self.random_state if value is None else value
+        if isinstance(value, bool) or not isinstance(value, int) or not 0 <= value < 2**32:
+            raise ValueError(f"{stage}_seed must be an integer in [0, 2**32)")
+        return value
+
+    def for_stage(self, stage: str) -> "PipelineConfig":
+        """Adapter for frozen APIs that still consume random_state."""
+        seeds = {s + "_seed": self.seed_for(s) for s in ("split", "clustering", "selection", "model")}
+        return replace(self, random_state=self.seed_for(stage), **seeds)
 
 
 def load_config(path: str | Path) -> PipelineConfig:
@@ -70,4 +91,6 @@ def load_config(path: str | Path) -> PipelineConfig:
 
 def config_to_dict(config: PipelineConfig) -> dict[str, Any]:
     payload = dict(config.__dict__)
+    payload["effective_seeds"] = {s: config.seed_for(s) for s in ("split", "clustering", "selection", "model")}
+    payload["selection_mode"] = "legacy" if config.selection_budget is None else "total_budget"
     return payload

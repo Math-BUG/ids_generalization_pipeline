@@ -24,6 +24,8 @@ from .backend import resolve_backend, to_gpu_array, to_numpy_array
 from .config import PipelineConfig
 from .leakage_checks import check_for_leakage_columns
 from .profiling import Profiler
+from .selection_budget import (FrozenTrainingPopulation, Selection, validate_budget_config,
+                               prepare_fit_selection, resolve_budget)
 from .utils import ensure_dir, write_json
 
 
@@ -38,7 +40,25 @@ def train_random_forest(
     cluster_labels: dict[str, np.ndarray] | None = None,
     representatives: dict[str, Any] | None = None,
     profiler: Profiler | None = None,
+    selection: Selection | None = None,
 ) -> dict[str, Any]:
+    validate_budget_config(config)
+    selection_context = None
+    if config.selection_budget is not None:
+        if representatives is not None:
+            raise ValueError('Budget mode cannot consume legacy representatives, including synthetic points')
+        directory = config.extra.get('frozen_splits_dir')
+        if not directory:
+            raise ValueError('Budget training requires frozen_splits_dir')
+        population = FrozenTrainingPopulation.load(directory)
+        population.bind(df, splits, config)
+        if selection is None:
+            selection = Selection.accept(population, config.selection_budget, config.seed_for('selection'))
+        selection.validate(population, config.selection_budget, config.seed_for('selection'))
+        selection.save_summary(population, Path(output_dir) / 'selection_summary.json')
+        selection_context = (population, selection, splits)
+    elif selection is not None:
+        raise ValueError('A selection requires an explicit selection_budget')
     check_for_leakage_columns(
         df,
         feature_cols,
@@ -67,6 +87,7 @@ def train_random_forest(
                 backend,
                 cluster_labels,
                 representatives,
+                selection_context,
             )
         else:
             with profiler.track(timer_name):
@@ -81,6 +102,7 @@ def train_random_forest(
                     backend,
                     cluster_labels,
                     representatives,
+                    selection_context,
                 )
         target_metrics[target] = metrics
 
@@ -112,13 +134,17 @@ def _train_one_target(
     backend: str,
     cluster_labels: dict[str, np.ndarray] | None,
     representatives: dict[str, Any] | None,
+    selection_context=None,
 ) -> dict[str, Any]:
     y = _target_arrays(target, df, splits, config, cluster_labels)
     X_train = X["train"]
     y_train = y["train"]
 
     train_n_original = int(len(y_train))
-    if config.use_representatives_for_supervised:
+    if selection_context is not None:
+        population, selection, _ = selection_context
+        X_train, y_train = prepare_fit_selection(X, y_train, splits, population, selection, config)
+    elif config.use_representatives_for_supervised:
         if representatives is None:
             raise ValueError("use_representatives_for_supervised=true but representatives were not provided")
         X_train = representatives["X"]
@@ -127,7 +153,7 @@ def _train_one_target(
     train_n_used = int(len(y_train))
     compression_ratio = float(train_n_used / train_n_original) if train_n_original else None
 
-    model_bundle, X_eval = _fit_model(X_train, y_train, X, config, backend)
+    model_bundle, X_eval = _fit_model(X_train, y_train, X, config, backend, selection_context=selection_context)
     joblib.dump(model_bundle, artifact_dir / f"random_forest_{target}.joblib")
 
     val_metrics = _evaluate_split(model_bundle, X_eval["val"], y["val"], split="val", backend=backend)
@@ -146,6 +172,7 @@ def _train_one_target(
         "train_n_samples_original": train_n_original,
         "train_n_samples_used": train_n_used,
         "compression_ratio": compression_ratio,
+        "selection_hash": None if selection_context is None else selection_context[1].selection_hash,
         "val": val_metrics,
         "test": test_metrics,
     }
@@ -179,20 +206,23 @@ def _fit_model(
     X_eval_source: dict[str, Any],
     config: PipelineConfig,
     backend: str,
+    *, selection_context=None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
+    _validate_fit_budget(X_train, y_train, config, selection_context)
     encoder = LabelEncoder()
     y_encoded = encoder.fit_transform(_as_str(y_train)).astype(np.int32)
 
     if backend == "gpu":
-        model, X_eval = _fit_gpu_random_forest(X_train, y_encoded, X_eval_source, config)
+        model, X_eval = _fit_gpu_random_forest(X_train, y_encoded, X_eval_source, config, selection_context=selection_context)
         model_name = "cuML RandomForestClassifier"
     else:
         model = RandomForestClassifier(
             n_estimators=config.random_forest_estimators,
-            random_state=config.random_state,
+            random_state=config.seed_for('model'),
             n_jobs=config.n_jobs,
             class_weight="balanced_subsample",
         )
+        _validate_fit_budget(X_train, y_encoded, config, selection_context)
         model.fit(X_train, y_encoded)
         X_eval = X_eval_source
         model_name = "RandomForestClassifier"
@@ -205,7 +235,9 @@ def _fit_gpu_random_forest(
     y_train_encoded: np.ndarray,
     X_eval_source: dict[str, Any],
     config: PipelineConfig,
+    *, selection_context=None,
 ) -> tuple[Any, dict[str, Any]]:
+    _validate_fit_budget(X_train, y_train_encoded, config, selection_context)
     import cupy as cp
     from cuml.ensemble import RandomForestClassifier as CuMLRandomForestClassifier
 
@@ -214,11 +246,27 @@ def _fit_gpu_random_forest(
     y_gpu = cp.asarray(y_train_encoded, dtype=cp.int32)
     model = CuMLRandomForestClassifier(
         n_estimators=config.random_forest_estimators,
-        random_state=config.random_state,
+        random_state=config.seed_for('model'),
         n_streams=max(1, min(int(config.n_jobs), 16)),
     )
+    _validate_fit_budget(X_train_gpu, y_gpu, config, selection_context)
     model.fit(X_train_gpu, y_gpu)
     return model, X_gpu
+
+
+def _validate_fit_budget(X_train, y_train, config, context):
+    validate_budget_config(config)
+    if config.selection_budget is None:
+        return
+    if context is None:
+        raise ValueError('RF fit in budget mode requires a verified real-row selection context')
+    population, selection, splits = context
+    selection.validate(population, config.selection_budget, config.seed_for('selection'))
+    if not np.array_equal(splits['train'], population.train_indices):
+        raise ValueError('Frozen training population changed before fit')
+    b = resolve_budget(config.selection_budget, len(population.train_indices))
+    if X_train.shape[0] != b or len(y_train) != b:
+        raise ValueError('RF fit must receive exactly B feature and target rows')
 
 
 def _predict_encoded(model_bundle: dict[str, Any], X: Any, *, backend: str) -> np.ndarray:

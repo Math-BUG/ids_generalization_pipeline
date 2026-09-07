@@ -22,6 +22,8 @@ from .profiling import Profiler
 from .representatives import build_cluster_representatives
 from .splitting import create_splits, save_splits
 from .supervised import train_random_forest
+from .selection_budget import FrozenTrainingPopulation, Selection, validate_budget_config
+from .selection_methods import METHODS, TrainStrata, select_from_training_frame
 from .utils import ensure_dir, set_seed, setup_logging, write_json
 
 LOGGER = logging.getLogger(__name__)
@@ -55,10 +57,24 @@ def run_experiment(
     *,
     stage: str = "all",
     data_path: str | None = None,
+    selection: Selection | None = None,
 ) -> dict[str, Any]:
     if stage not in STAGES:
         raise ValueError(f"Unknown stage={stage!r}. Minimal version supports {sorted(STAGES)}.")
 
+    validate_budget_config(config)
+    method = config.selection_method
+    if method is not None:
+        if method not in METHODS or config.selection_budget is None:
+            raise ValueError('selection_method requires a supported method and selection_budget')
+        if selection is not None:
+            raise ValueError('Provide selection_method or an explicit selection, not both')
+        if method.startswith('cluster_') and (config.feature_policy != 'behavioral_strict' or config.selected_k != 30):
+            raise ValueError('Cluster budget methods require behavioral_strict/2.0.0 and k=30')
+    if selection is not None and config.selection_budget is None:
+        raise ValueError('selection requires selection_budget')
+    if config.selection_budget is not None and not config.extra.get('frozen_splits_dir'):
+        raise ValueError('Budget mode requires frozen_splits_dir; splits must not be regenerated')
     output_dir = ensure_dir(output_dir)
     ensure_dir(output_dir / "artifacts")
     set_seed(config.random_state)
@@ -131,8 +147,32 @@ def run_experiment(
     )
 
     with profiler.track("split"):
-        splits = create_splits(df, config)
-        save_splits(splits, output_dir, df=df, config=config)
+        from .split_protocols import SplitValidationError
+        try:
+            split_config = config.for_stage('split')
+            splits = create_splits(df, split_config)
+        except SplitValidationError as exc:
+            write_json(output_dir / "split_failure_diagnostics.json", exc.diagnostics)
+            raise
+        if config.selection_budget is None:
+            save_splits(splits, output_dir, df=df, config=split_config)
+
+    if config.selection_budget is not None:
+        population = FrozenTrainingPopulation.load(config.extra['frozen_splits_dir'])
+        write_json(output_dir / 'split_reference.json', {'frozen_splits_dir': str(population.directory),
+                                                        'frozen_split_hash': population.split_hash})
+        write_json(output_dir / 'selection_budget.json', population.budget_report(config.selection_budget, config.seed_for('selection')))
+        if selection is not None:
+            selection.validate(population, config.selection_budget, config.seed_for('selection'))
+        elif stage != 'prepare' and method is None:
+            selection = Selection.accept(population, config.selection_budget, config.seed_for('selection'))
+        elif stage != 'prepare' and not method.startswith('cluster_'):
+            result = select_from_training_frame(population, config.selection_budget, config.seed_for('selection'), method,
+                                                df, label_col=config.label_col, type_col=config.type_col)
+            selection = result.selection
+            result.save(population, output_dir)
+        if selection is not None:
+            selection.save_summary(population, output_dir / 'selection_summary.json')
 
     if stage == "prepare":
         profiling_payload = profiler.to_dict()
@@ -156,7 +196,14 @@ def run_experiment(
         write_json(output_dir / "selected_features.json", selected_payload)
 
     with profiler.track("clustering"):
-        clustering = fit_predict_clustering(X, df, splits, feature_cols, config, output_dir)
+        clustering = fit_predict_clustering(X, df, splits, feature_cols, config.for_stage('clustering'), output_dir)
+
+    if method is not None and method.startswith('cluster_'):
+        strata = TrainStrata.from_values(population, 'cluster', splits['train'], clustering['labels']['train'])
+        result = select_from_training_frame(population, config.selection_budget, config.seed_for('selection'), method,
+                                            df, clusters=strata)
+        selection = result.selection
+        result.save(population, output_dir)
 
     if stage == "cluster":
         profiling_payload = profiler.to_dict()
@@ -169,17 +216,13 @@ def run_experiment(
         }
 
     with profiler.track("representatives"):
-        y_train_dict = _training_targets_for_representatives(df, splits, config, clustering["labels"])
-        representatives = build_cluster_representatives(
-            X["train"],
-            y_train_dict,
-            clustering["labels"]["train"],
-            clustering["distances"]["train"],
-            config,
-            effective_backend,
-            output_dir,
-            train_indices=splits["train"],
-        )
+        representatives = None
+        if config.selection_budget is None:
+            y_train_dict = _training_targets_for_representatives(df, splits, config, clustering["labels"])
+            representatives = build_cluster_representatives(
+                X["train"], y_train_dict, clustering["labels"]["train"], clustering["distances"]["train"],
+                config.for_stage('selection'), effective_backend, output_dir, train_indices=splits["train"],
+            )
 
     if stage == "representatives":
         profiling_payload = profiler.to_dict()
@@ -188,7 +231,7 @@ def run_experiment(
         return {
             "selected_features": selected_payload,
             "clustering": clustering["metrics"],
-            "representatives": representatives["metadata"],
+            "representatives": None if representatives is None else representatives["metadata"],
             "profiling": profiling_payload,
         }
 
@@ -203,6 +246,7 @@ def run_experiment(
             cluster_labels=clustering["labels"],
             representatives=representatives,
             profiler=profiler,
+            selection=selection,
         )
 
     profiling_payload = profiler.to_dict()

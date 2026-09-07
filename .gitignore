@@ -12,6 +12,7 @@ build/
 
 outputs/*
 !outputs/.gitkeep
+reports/
 
 *.log
 *.out
