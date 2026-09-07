@@ -1,8 +1,0 @@
-{
-  "gpu": "NVIDIA GeForce GTX 1650",
-  "driver": "595.97",
-  "memory_mib": 4096,
-  "cupy_importable": false,
-  "cuml_importable": false,
-  "wsl_probe": "Wsl/EnumerateDistros/Service/E_ACCESSDENIED"
-}

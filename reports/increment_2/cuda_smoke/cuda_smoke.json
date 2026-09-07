@@ -1,7 +1,0 @@
-{
-  "status": "skipped",
-  "requested_rows": 20000,
-  "k": 30,
-  "real_cuda_executed": false,
-  "reason": "Required GPU backend packages unavailable: cupy, cuml"
-}
