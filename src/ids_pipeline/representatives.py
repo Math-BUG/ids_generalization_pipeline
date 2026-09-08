@@ -25,8 +25,6 @@ def build_cluster_representatives(
     *,
     train_indices: np.ndarray | None = None,
 ) -> dict[str, Any]:
-    if config.selection_budget is not None:
-        raise ValueError('Legacy representatives cannot implement selection_budget; use the real-row budget contract')
     strategy = config.representative_strategy
     if strategy == "full":
         result = _full(X_train, y_train_dict, cluster_ids_train, train_indices)
