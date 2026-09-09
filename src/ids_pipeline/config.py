@@ -41,6 +41,8 @@ class PipelineConfig:
     cluster_n_init: int = 3
     cluster_max_iter: int = 50
     silhouette_sample_size: int = 200
+    # Optional large per-row CSV; does not affect clustering results or metrics.
+    export_cluster_assignments: bool = True
 
     representative_strategy: str = "full"
     use_representatives_for_supervised: bool = False

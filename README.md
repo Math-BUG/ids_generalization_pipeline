@@ -125,8 +125,10 @@ O script carrega os modulos oficiais:
 
 ```bash
 module --force purge
-module load GCCcore/12.2.0
-module load CUDA/12.6.0
+module load Python/3.13.5-GCCcore-14.3.0
+module load CUDA/12.9.1
+source .venv/bin/activate
+export IDS_COMPUTE_BACKEND=gpu
 ```
 
 Para testar CuPy/cuML com acesso real a GPU, submeta o job curto:
@@ -199,12 +201,14 @@ Arquivos principais:
 - `profiling.json`: tempos e uso aproximado de RAM.
 - `selected_features.json`: features usadas pelo modelo.
 - `forbidden_columns_check.json`: resultado da checagem anti-leakage.
-- `cluster_assignments.csv`: clusters para train/val/test.
+- `cluster_assignments.csv`: clusters para train/val/test, quando `export_cluster_assignments: true` (padrao para configs antigas).
 - `classification_report.txt`: relatorio supervisionado no teste.
 - `confusion_matrix.csv`: matriz de confusao no teste.
 - `artifacts/preprocessing_bundle.joblib`: imputers, scaler, encoder e SVD.
 - `artifacts/minibatch_kmeans.joblib`: clusterer treinado.
 - `artifacts/random_forest.joblib`: classificador treinado.
+
+O config `configs/ton_iot_behavioral_strict_gpu.yaml` define `export_cluster_assignments: false`: o pipeline nao monta o DataFrame de exportacao nem escreve esse CSV. Labels, distances, metricas e o retorno do clustering permanecem disponiveis. Essa opcao nao apaga CSVs de execucoes anteriores; use um diretorio de saida novo para cada execucao.
 
 Para conferir que `no_raw_ip_port` nao vazou IPs, portas ou rotulos:
 

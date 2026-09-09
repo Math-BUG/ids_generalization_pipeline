@@ -21,18 +21,17 @@ echo "date: $(date)"
 echo "pwd: $(pwd)"
 
 module --force purge
-module load GCCcore/12.2.0
-module load CUDA/12.6.0
+module load Python/3.13.5-GCCcore-14.3.0
+module load CUDA/12.9.1
 
 nvidia-smi
 
 PROJECT_DIR="${SLURM_SUBMIT_DIR:-$(pwd)}"
 cd "$PROJECT_DIR"
 
-if [ -d ".venv" ]; then
-  source .venv/bin/activate
-fi
+source .venv/bin/activate
 
+export IDS_COMPUTE_BACKEND=gpu
 bash scripts/check_gpu_rapids.sh
 
 echo "Finalizado em: $(date)"

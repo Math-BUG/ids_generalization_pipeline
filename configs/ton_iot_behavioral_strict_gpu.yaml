@@ -22,6 +22,7 @@ cluster_batch_size: 16384
 cluster_n_init: 5
 cluster_max_iter: 100
 silhouette_sample_size: 20000
+export_cluster_assignments: false
 
 representative_strategy: full
 use_representatives_for_supervised: false

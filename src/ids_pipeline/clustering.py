@@ -51,20 +51,21 @@ def fit_predict_clustering(
         clusterer, labels, distances = _fit_cpu_minibatch_kmeans(X, config)
         joblib.dump(clusterer, artifact_dir / "minibatch_kmeans.joblib")
 
-    assignment_rows = []
-    for split, idx in splits.items():
-        assignment_rows.append(
-            pd.DataFrame(
-                {
-                    "split": split,
-                    "row_index": idx,
-                    "cluster_id": labels[split],
-                    "cluster_distance": distances[split],
-                }
+    if config.export_cluster_assignments:
+        assignment_rows = []
+        for split, idx in splits.items():
+            assignment_rows.append(
+                pd.DataFrame(
+                    {
+                        "split": split,
+                        "row_index": idx,
+                        "cluster_id": labels[split],
+                        "cluster_distance": distances[split],
+                    }
+                )
             )
-        )
-    assignments = pd.concat(assignment_rows, ignore_index=True)
-    assignments.to_csv(output_dir / "cluster_assignments.csv", index=False)
+        assignments = pd.concat(assignment_rows, ignore_index=True)
+        assignments.to_csv(output_dir / "cluster_assignments.csv", index=False)
 
     metrics = compute_clustering_metrics(X, df, splits, labels, clusterer, config, backend=backend)
     write_json(output_dir / "metrics_clustering.json", metrics)
