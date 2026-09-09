@@ -1,0 +1,31 @@
+# Split-only reproduction of the audited Increment 3 reference.
+# These parameters enter the split hash; do not substitute timestamp_unit: auto.
+dataset_name: ton_iot_network_full
+split_strategy: group_stratified
+group_cols: [src_ip, dst_ip, service, proto]
+label_col: label
+type_col: type
+timestamp_col: ts
+timestamp_unit: s
+temporal_bucket_freq: 1s
+test_size: 0.25
+val_size: 0.20
+random_state: 42
+group_split_tolerance: 0.02
+group_split_candidates: 16
+split_min_class_support: 1
+split_small_support_threshold: 30
+split_export_csv: false
+
+checkpoint_reference:
+  protocol_version: group_stratified/2.0.0
+  files: 23
+  original_rows: 22339021
+  quarantined_rows: 869
+  eligible_rows: 22338152
+  counts:
+    train: 13575269
+    val: 3244049
+    test: 5518834
+  type_classes: 10
+  split_hash: sha256:828c57acef5ca3a953762a2dcf836dafd6b8dd513dd476c88ba924841a5f0a2a

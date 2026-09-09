@@ -1,0 +1,31 @@
+#!/bin/bash
+#SBATCH --job-name=ids_1e_smoke
+#SBATCH --partition=scientific
+#SBATCH --qos=scientific-qos
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=256G
+#SBATCH --gres=gpu:1
+#SBATCH --time=04:00:00
+#SBATCH --output=phase_1e_integration_only_%j.out
+#SBATCH --error=phase_1e_integration_only_%j.err
+
+set -euo pipefail
+echo 'integration_only=true scientific_result=false phase=1E'
+module --force purge
+module load Python/3.13.5-GCCcore-14.3.0
+module load CUDA/12.9.1
+cd "${SLURM_SUBMIT_DIR:?Submit from the project root}"
+source .venv/bin/activate
+export IDS_COMPUTE_BACKEND=gpu
+export PYTHONPATH="$PWD/src:${PYTHONPATH:-}"
+export PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-32}"
+export MKL_NUM_THREADS="$OMP_NUM_THREADS"
+export OPENBLAS_NUM_THREADS="$OMP_NUM_THREADS"
+export NUMEXPR_NUM_THREADS="$OMP_NUM_THREADS"
+export BLIS_NUM_THREADS="$OMP_NUM_THREADS"
+
+python -B scripts/run_phase_1e_real_gpu_smoke.py \
+  --config configs/phase_1e_real_gpu_smoke.yaml

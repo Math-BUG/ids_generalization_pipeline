@@ -1,0 +1,35 @@
+#!/bin/bash
+#SBATCH --job-name=ids_split_v2
+#SBATCH --partition=scientific
+#SBATCH --qos=scientific-qos
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=128G
+#SBATCH --time=12:00:00
+#SBATCH --output=split_checkpoint_%j.out
+#SBATCH --error=split_checkpoint_%j.err
+
+set -euo pipefail
+module --force purge
+module load Python/3.13.5-GCCcore-14.3.0
+module load CUDA/12.9.1
+cd "${SLURM_SUBMIT_DIR:?Submit from the project directory}"
+source .venv/bin/activate
+export PYTHONPATH="$PWD/src:${PYTHONPATH:-}"
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"
+export MKL_NUM_THREADS="$OMP_NUM_THREADS"
+export OPENBLAS_NUM_THREADS="$OMP_NUM_THREADS"
+export NUMEXPR_NUM_THREADS="$OMP_NUM_THREADS"
+
+# Split computation uses the unchanged pandas/NumPy implementation; no GPU requested.
+CHECKPOINT="${1:?Pass the Increment 1 Parquet data_quality_report.json as the first argument}"
+DATA_ROOT="${2:-$HOME/dados/datasets/TON_IoT_parquet}"
+SPLIT_OUTPUT="${3:-$HOME/dados/ids_generalization_splits/group_stratified_v2}"
+
+python -u scripts/validate_ton_iot_group_split.py \
+  --config configs/ton_iot_group_stratified_checkpoint.yaml \
+  --checkpoint "$CHECKPOINT" \
+  --data-root "$DATA_ROOT" \
+  --output "$SPLIT_OUTPUT" \
+  --chunk-size 100000
