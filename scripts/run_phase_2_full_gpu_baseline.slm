@@ -1,0 +1,71 @@
+#!/bin/bash
+#SBATCH --job-name=ids_phase2_full
+#SBATCH --partition=scientific
+#SBATCH --qos=scientific-qos
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=256G
+#SBATCH --gres=gpu:1
+#SBATCH --time=12:00:00
+#SBATCH --no-requeue
+#SBATCH --output=phase_2_full_gpu_%j.out
+#SBATCH --error=phase_2_full_gpu_%j.err
+
+set -euo pipefail
+umask 077
+cd "${SLURM_SUBMIT_DIR:?Submit from the project root}"
+module --force purge
+module load Python/3.13.5-GCCcore-14.3.0
+module load CUDA/12.9.1
+source .venv/bin/activate
+
+export IDS_COMPUTE_BACKEND=gpu
+export PYTHONPATH="$PWD/src:${PYTHONPATH:-}"
+export PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:?Missing CPU allocation}"
+export MKL_NUM_THREADS="$OMP_NUM_THREADS"
+export OPENBLAS_NUM_THREADS="$OMP_NUM_THREADS"
+export NUMEXPR_NUM_THREADS="$OMP_NUM_THREADS"
+export BLIS_NUM_THREADS="$OMP_NUM_THREADS"
+
+config="configs/phase_2_full_gpu_baseline.yaml"
+output="/storage/dados/es112688/ids_generalization_outputs/phase_2_full_gpu_baseline_group_stratified"
+output_parent="${output%/*}"
+evidence_prefix="$output_parent/phase_2_job_${SLURM_JOB_ID:?Missing job ID}"
+
+test -f "$config"
+test -f scripts/run_phase_2_full_gpu_baseline.py
+test -f provenance/phase_2_source_provenance.json
+test -d "$HOME/dados/datasets/TON_IoT_parquet"
+test -r /storage/dados/es112688/ids_generalization_splits/group_stratified_v2/reuse_split.yaml
+if [[ -e "$output" || -L "$output" ]]; then
+    echo "Refusing existing scientific output: $output" >&2
+    ls -ld -- "$output"
+    du -sh -- "$output"
+    find "$output" -maxdepth 1 -printf '%f\n' | sed -n '1,20p'
+    exit 2
+fi
+mkdir -p "$output_parent"
+export IDS_PHASE2_TIME_FILE="${evidence_prefix}.time.txt"
+export IDS_PHASE2_ALLOCATION_FILE="${evidence_prefix}.allocation.txt"
+
+scontrol show job "$SLURM_JOB_ID" > "$IDS_PHASE2_ALLOCATION_FILE"
+df -h "$output_parent"
+module list 2>&1
+python --version
+nvidia-smi -L
+echo 'phase=2 scientific_result=true integration_only=false baseline_type=gpu_extension exact_replication_of_original_article=false'
+
+set +e
+if [[ -x /usr/bin/time ]]; then
+    /usr/bin/time -v -o "$IDS_PHASE2_TIME_FILE" \
+        python -B scripts/run_phase_2_full_gpu_baseline.py --config "$config"
+else
+    echo 'GNU time unavailable; stage profiling remains enabled.' > "$IDS_PHASE2_TIME_FILE"
+    python -B scripts/run_phase_2_full_gpu_baseline.py --config "$config"
+fi
+run_status=$?
+set -e
+cat "$IDS_PHASE2_TIME_FILE"
+exit "$run_status"

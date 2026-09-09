@@ -1,0 +1,89 @@
+dataset_name: ton_iot_network_full
+data_path: /home/es112688/dados/datasets/TON_IoT_parquet
+output_dir: /storage/dados/es112688/ids_generalization_outputs/phase_2_full_gpu_baseline_group_stratified
+phase: "2"
+scientific_result: true
+integration_only: false
+baseline_type: gpu_extension
+exact_replication_of_original_article: false
+phase_1g_omitted_by_project_decision: true
+methodological_reference: docs/phase_1f_gpu_methodological_equivalence.md
+source_provenance_path: provenance/phase_2_source_provenance.json
+
+compute_backend: gpu
+strict_gpu: true
+feature_policy: behavioral_strict
+expected_feature_policy_version: behavioral_strict/2.0.0
+expected_selected_features:
+  - duration
+  - src_bytes
+  - dst_bytes
+  - conn_state
+  - missed_bytes
+  - src_pkts
+  - src_ip_bytes
+  - dst_pkts
+  - dst_ip_bytes
+label_col: label
+type_col: type
+
+split_strategy: group_stratified
+frozen_splits_dir: /storage/dados/es112688/ids_generalization_splits/group_stratified_v2
+reuse_split_config: /storage/dados/es112688/ids_generalization_splits/group_stratified_v2/reuse_split.yaml
+expected_split_protocol_version: group_stratified/2.0.0
+expected_split_hash: sha256:828c57acef5ca3a953762a2dcf836dafd6b8dd513dd476c88ba924841a5f0a2a
+group_cols: [src_ip, dst_ip, service, proto]
+test_size: 0.25
+val_size: 0.20
+timestamp_col: ts
+timestamp_unit: s
+temporal_bucket_freq: 1s
+timestamp_policy: drop
+service_policy: drop
+group_split_tolerance: 0.02
+group_split_candidates: 16
+split_min_class_support: 1
+split_small_support_threshold: 30
+split_export_csv: false
+
+expected_files: 23
+expected_original_rows: 22339021
+expected_quarantined_rows: 869
+expected_eligible_rows: 22338152
+expected_schema_version: ton_iot_network/1.0.0
+expected_data_quality_policy_version: ton_iot_known_corruption/1.0.0
+expected_full_split_rows: {train: 13575269, val: 3244049, test: 5518834}
+expected_type_classes:
+  - backdoor
+  - ddos
+  - dos
+  - injection
+  - mitm
+  - normal
+  - password
+  - ransomware
+  - scanning
+  - xss
+
+svd_components: 50
+onehot_min_frequency: 10
+gpu_max_categories_per_col: 64
+log1p_numeric: true
+log1p_columns: null  # lista explícita do schema congelado
+
+selected_k: 30
+cluster_batch_size: 16384  # compatibilidade; ignorado pelo KMeans GPU atual
+cluster_n_init: 5         # compatibilidade; ignorado pelo KMeans GPU atual
+cluster_max_iter: 100
+silhouette_sample_size: 20000
+export_cluster_assignments: false
+
+representative_strategy: full
+use_representatives_for_supervised: false
+representatives_per_cluster: 20  # legado inativo; não será chamado
+boundary_per_cluster: 5         # legado inativo; não será chamado
+targets: [label, type, cluster_id]
+random_forest_estimators: 150
+random_state: 42
+n_jobs: 32
+log_level: INFO
