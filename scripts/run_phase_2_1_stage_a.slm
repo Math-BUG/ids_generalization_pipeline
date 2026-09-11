@@ -1,0 +1,44 @@
+#!/bin/bash
+#SBATCH --partition=scientific
+#SBATCH --qos=scientific-qos
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=256G
+#SBATCH --gres=gpu:a100:1
+#SBATCH --no-requeue
+#SBATCH --job-name=ids_21_stage_a
+#SBATCH --output=phase_2_1_stage_a_%A_%a.out
+#SBATCH --error=phase_2_1_stage_a_%A_%a.err
+#SBATCH --time=12:00:00
+#SBATCH --array=0-3%1
+
+set -euo pipefail
+umask 077
+cd "${SLURM_SUBMIT_DIR:?Submit from project root}"
+module --force purge
+module load Python/3.13.5-GCCcore-14.3.0
+module load CUDA/12.9.1
+source .venv/bin/activate
+export IDS_COMPUTE_BACKEND=gpu
+export PYTHONPATH="$PWD/src:$PWD/scripts:${PYTHONPATH:-}"
+export PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:?}"
+export MKL_NUM_THREADS="$OMP_NUM_THREADS"
+export OPENBLAS_NUM_THREADS="$OMP_NUM_THREADS"
+export NUMEXPR_NUM_THREADS="$OMP_NUM_THREADS"
+config=configs/phase_2_1_clustering_optimization.yaml
+parent=/storage/dados/es112688/ids_generalization_outputs
+mkdir -p "$parent"
+evidence="$parent/phase_2_1_${SLURM_JOB_ID:?}_${SLURM_ARRAY_TASK_ID:-single}"
+scontrol show job "$SLURM_JOB_ID" > "${evidence}.allocation.txt"
+df -h "$parent"
+module list 2>&1
+python --version
+nvidia-smi -L
+runner=(python -B)
+if [[ -x /usr/bin/time ]]; then
+    runner=(/usr/bin/time -v -o "${evidence}.time.txt" python -B)
+fi
+representations=(R0 R10 R15 R20)
+"${runner[@]}" scripts/run_phase_2_1_clustering.py --config "$config" --stage A --representation "${representations[$SLURM_ARRAY_TASK_ID]}"

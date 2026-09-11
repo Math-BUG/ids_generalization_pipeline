@@ -467,6 +467,9 @@ def run(config):
             artifact_inventory(output)
             report['validity']['checks']['clustering_gpu'] = True
             report['stage'] = 'supervised'
+            report['gpu_prediction'] = dict(batch_rows=supervised.GPU_PREDICTION_BATCH_ROWS,
+                methods=['predict', 'predict_proba'], all_rows=True, preserve_order=True,
+                metrics_scope='complete_split', cpu_inference_fallback=False)
             save_manifest(output, report)
             validate_config(config)
             gpu_matrices(X, counts)

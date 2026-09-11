@@ -27,6 +27,35 @@ from .profiling import Profiler
 from .utils import ensure_dir, write_json
 
 
+# Operational inference bound, not a training/subsampling parameter. The real
+# Phase 2 run hit nvforest's per-call input limit on the full validation matrix.
+GPU_PREDICTION_BATCH_ROWS = 65_536
+
+
+def _gpu_predict_batched(model: Any, X: Any, *, method: str) -> np.ndarray:
+    """Infer every row on GPU; gather only outputs on host in original order.
+
+    Metrics are computed once from the assembled outputs, never averaged over
+    batches. Model errors propagate: there is no CPU or partial-output fallback.
+    """
+    predict = getattr(model, method)
+    n_rows = int(X.shape[0])
+    if n_rows == 0:
+        return np.asarray(to_numpy_array(predict(X)))
+    output = None
+    for start in range(0, n_rows, GPU_PREDICTION_BATCH_ROWS):
+        stop = min(start + GPU_PREDICTION_BATCH_ROWS, n_rows)
+        batch = np.asarray(to_numpy_array(predict(X[start:stop])))
+        if batch.ndim == 0 or batch.shape[0] != stop - start:
+            raise ValueError(f"GPU {method} returned an unexpected number of rows")
+        if output is None:
+            output = np.empty((n_rows, *batch.shape[1:]), dtype=batch.dtype)
+        elif batch.shape[1:] != output.shape[1:] or batch.dtype != output.dtype:
+            raise ValueError(f"GPU {method} changed output shape/dtype between batches")
+        output[start:stop] = batch
+    return output
+
+
 def train_random_forest(
     X: dict[str, Any],
     df: pd.DataFrame,
@@ -223,7 +252,7 @@ def _fit_gpu_random_forest(
 
 def _predict_encoded(model_bundle: dict[str, Any], X: Any, *, backend: str) -> np.ndarray:
     model = model_bundle["model"]
-    pred = to_numpy_array(model.predict(X)) if backend == "gpu" else model.predict(X)
+    pred = _gpu_predict_batched(model, X, method="predict") if backend == "gpu" else model.predict(X)
     return np.asarray(pred, dtype=np.int32)
 
 
@@ -237,8 +266,10 @@ def _predict_proba(model_bundle: dict[str, Any], X: Any, *, backend: str) -> np.
     model = model_bundle["model"]
     if not hasattr(model, "predict_proba"):
         return None
+    if backend == "gpu":
+        return _gpu_predict_batched(model, X, method="predict_proba")
     try:
-        proba = to_numpy_array(model.predict_proba(X)) if backend == "gpu" else model.predict_proba(X)
+        proba = model.predict_proba(X)
         return np.asarray(proba)
     except Exception:
         return None

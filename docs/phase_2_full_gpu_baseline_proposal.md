@@ -695,3 +695,50 @@ fi
 Se quota não estiver configurada, apenas registrar a resposta/indisponibilidade; isso não equivale a
 afirmar quota ilimitada. Não reduzir RAM ou alterar os demais recursos automaticamente para agendar.
 O job final ainda depende da aprovação do usuário e da avaliação desses resultados operacionais.
+
+## 15. Correção operacional após o job 5444
+
+O usuário forneceu os logs `.out` e `.err` do job 5444. A tentativa terminou com
+exit status 1 após 27min35,35s. O carregamento registrou 22.339.021 linhas originais,
+869 quarentenadas e 22.338.152 elegíveis, com schema aplicado sem colunas desconhecidas.
+O TruncatedSVD GPU executou com 20 componentes efetivos, conforme a regra congelada.
+O traceback aponta para `nvforest` durante `model.predict` na validação do primeiro
+RF (alvo `label`), após seu `fit` e gravação do modelo. O fluxo já havia passado
+pelo clustering e suas guardas; isso não constitui aprovação do baseline completo.
+
+Erro observado: `RuntimeError: Input size too large! Input should be at most 954434.`
+A chamada anterior entregava as 3.244.049 linhas de validação de uma vez. A causa
+imediata demonstrada é o limite de entrada por chamada; não há evidência nesse
+traceback de falta de RAM. GNU time registrou MaxRSS=27.302.492 KiB (26,04 GiB de
+RAM de host), sem swaps. Isso não mede pico de VRAM e não justifica reduzir os
+256 GiB solicitados para uma execução que não completou todos os alvos.
+
+A correção em `supervised.py` divide exclusivamente a inferência GPU em fatias
+contíguas de até 65.536 linhas, para `predict` e `predict_proba`. O modelo recebe
+fatias da matriz GPU; apenas os resultados são reunidos em host, na ordem original.
+Todas as linhas participam das métricas, calculadas uma única vez para cada split
+completo. Não há média de métricas de lotes, seleção de subconjunto, novo fit,
+mudança de hiperparâmetros ou inferência CPU. Erros de inferência GPU propagam-se,
+inclusive em `predict_proba`, para impedir perda silenciosa das métricas binárias.
+Saídas com número de linhas, dimensões ou dtype inconsistentes entre lotes falham.
+O limite operacional escolhido está abaixo do limite observado; não se afirma
+que 954.434 seja uma constante universal para qualquer floresta/backend.
+
+O manifesto passa a registrar `gpu_prediction`, incluindo tamanho de lote,
+métodos, preservação da ordem, uso de todas as linhas e métricas por split completo.
+YAML, Slurm, recursos, schema, quarentena, features, split, redutor, KMeans e
+construção/fit do RF permanecem inalterados. A proveniência deve ser regenerada
+na origem e transferida junto com o código corrigido.
+
+Testes de regressão usam doubles locais de GPU com limite de quatro linhas,
+incluindo saídas binárias, de dez e de trinta classes, lotes parciais, ordem,
+equivalência das métricas globais, falhas e rejeição de conversão das features
+para host. Os testes de integração pequenos da Fase 2 também forçam múltiplos
+lotes. Não foi realizada nova execução CUDA real ou submissão nesta correção.
+Validação local da correção: 87 testes direcionados passaram em 23,96s; a suíte
+completa passou com 289 testes em 48,65s (`-o addopts= -q -p no:cacheprovider`).
+
+O diretório remoto da tentativa 5444 deve ser preservado, assim como seus logs e
+manifesto INVALID. Não foi acessado, removido ou renomeado localmente. O executor
+continua recusando qualquer output existente; uma nova submissão requer antes
+organizar explicitamente essa tentativa, sem sobrescrever os artefatos antigos.

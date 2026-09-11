@@ -1,0 +1,95 @@
+phase: '2.1'
+scientific_result: true
+experiment_type: clustering_optimization
+compute_backend: gpu
+strict_gpu: true
+parent_baseline_dir: /storage/dados/es112688/ids_generalization_outputs/phase_2_full_gpu_baseline_group_stratified
+parent_experiment_id: phase2_20260909T232019.249671Z_5452
+data_path: /home/es112688/dados/datasets/TON_IoT_parquet
+frozen_splits_dir: /storage/dados/es112688/ids_generalization_splits/group_stratified_v2
+output_dir: /storage/dados/es112688/ids_generalization_outputs/phase_2_1_clustering_optimization
+expected_population_id: sha256:81cf4c6e2c8b9a887a6542fbd7d10a0d0b1af4c068e869cd6810658b82cf6c99
+expected_split_hash: sha256:828c57acef5ca3a953762a2dcf836dafd6b8dd513dd476c88ba924841a5f0a2a
+expected_original_rows: 22339021
+expected_quarantined_rows: 869
+expected_eligible_rows: 22338152
+expected_split_rows:
+  train: 13575269
+  val: 3244049
+  test: 5518834
+feature_policy_version: behavioral_strict/2.0.0
+export_cluster_assignments: false
+development_sample:
+  size: 1000000
+  seed_sequence:
+  - 2026
+  - 21
+  bit_generator: PCG64
+metric_sample_a:
+  size: 20000
+  seed_sequence:
+  - 2026
+  - 21
+  - 1
+  bit_generator: PCG64
+metric_sample_b:
+  size: 20000
+  seed: 42
+  source: parent_silhouette_algorithm
+stability_scope: development_1M
+preprocessing_source: frozen_parent_bundle
+reducer_fit_scope: full_train
+reducer_seed: 42
+representations:
+  R0: 0
+  R10: 10
+  R15: 15
+  R20: 20
+k_values:
+- 10
+- 15
+- 20
+- 25
+- 30
+- 40
+- 50
+- 60
+clustering_seeds:
+- 42
+- 123
+- 2026
+kmeans:
+  init: scalable-k-means++
+  max_iter: 100
+  tol: 0.0001
+  n_init: auto
+  oversampling_factor: 2.0
+  max_samples_per_batch: 32768
+  device_buffer_samples: 0
+  init_size: 0
+  output_type: null
+  verbose: false
+metrics_backend: sklearn_cpu
+metrics_working_memory_mib: 512
+external_prediction_batch_rows: 65536
+degeneracy_flags:
+  version: clustering_degeneracy/1.0.0
+  invalidate_run: false
+  automatically_exclude_from_pareto: false
+  thresholds:
+    max_cluster_fraction: 0.9
+    microcluster_fractions:
+      lt10: 0.5
+      lt100: 0.5
+      lt1000: 0.5
+    min_normalized_entropy: 0.5
+    min_effective_clusters_ratio: 0.25
+    top5_cluster_fraction: 0.95
+    top10_cluster_fraction: 0.99
+promotion:
+  max_finalists: 3
+  require_all_seeds: true
+  require_all_requested_clusters: true
+  method: pareto_then_documented_approval
+  external_metrics_allowed: false
+source_provenance_path: provenance/phase_2_1_source_provenance.json

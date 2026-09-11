@@ -103,6 +103,7 @@ def prepare(monkeypatch, config, fallback=False):
 
 @pytest.mark.parametrize('fallback', [False, True])
 def test_full_population_orchestration_tiny_fixture(real_small_sources, gpu_doubles, tmp_path, monkeypatch, fallback):
+    monkeypatch.setattr(supervised, 'GPU_PREDICTION_BATCH_ROWS', 17)
     config, original, frozen = tiny_config(real_small_sources, tmp_path)
     prepare(monkeypatch, config, fallback)
     events, seen = [], {}
@@ -153,6 +154,8 @@ def test_full_population_orchestration_tiny_fixture(real_small_sources, gpu_doub
     assert report['clustering']['algorithmic_difference_from_original'] is True
     assert report['supervised']['difference_from_original_balanced_subsample'] is True
     assert report['supervised']['class_weight'] is None
+    assert report['gpu_prediction']['batch_rows'] == 17
+    assert report['gpu_prediction']['metrics_scope'] == 'complete_split'
     assert report['preprocessing']['end_to_end_gpu'] is False
     assert report['preprocessing']['svd_components_requested'] == 50
     assert report['preprocessing']['svd_components_effective'] == 9  # 8 quantities + 2 states - 1

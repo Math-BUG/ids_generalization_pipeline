@@ -1,0 +1,987 @@
+{
+  "baseline_type": "gpu_extension",
+  "clustering": {
+    "algorithm": "cuML KMeans",
+    "algorithmic_difference_from_original": true,
+    "backend": "gpu",
+    "configured_but_not_forwarded": {
+      "cluster_batch_size": 16384,
+      "cluster_n_init": 5
+    },
+    "current_algorithm": "cuML KMeans",
+    "export_cluster_assignments": false,
+    "implementation": "cuml.cluster.kmeans.KMeans",
+    "k": 30,
+    "metric_scopes": {
+      "calinski_harabasz": "full_train_cpu",
+      "davies_bouldin": "full_train_cpu",
+      "external": "each_full_split_cpu",
+      "inertia": "full_train",
+      "silhouette": "train_sample",
+      "silhouette_sample_size": 20000
+    },
+    "original_algorithm": "MiniBatchKMeans",
+    "parameters_effective": {
+      "device_buffer_samples": 0,
+      "init": "scalable-k-means++",
+      "init_size": 0,
+      "max_iter": 100,
+      "max_samples_per_batch": 32768,
+      "n_clusters": 30,
+      "n_init": "auto",
+      "output_type": null,
+      "oversampling_factor": 2.0,
+      "random_state": 42,
+      "tol": 0.0001,
+      "verbose": false
+    },
+    "random_state": 42
+  },
+  "code_sha256": {
+    "configs/phase_2_full_gpu_baseline.yaml": "07dee7d1714ed34ea0e01d3338399a3952153068ca5d0cd587a95d03c115a5dd",
+    "configs/ton_iot_behavioral_strict_gpu.yaml": "6fbd82eb6a5f3e7dca63993cd9486418847508fc68d05b0c1efff1ecc03c9051",
+    "configs/ton_iot_group_stratified_checkpoint.yaml": "df096f66bccdcb3627c0239c4f5d8d440106bb83aefb56cbf8eb85ab45adda2c",
+    "docs/phase_1f_gpu_methodological_equivalence.md": "d4e6d98f9687f270989fb29fc752f70183d32004427912a6fc2a2e0517e0065f",
+    "docs/phase_2_full_gpu_baseline_proposal.md": "46a53b2334a9e793a8010c27a9bb66fff24f8aa2418479c421a68f682dcdeafd",
+    "pyproject.toml": "bcc2e9601621896f5ca1e21e62141e22e489489de970cfc659b7fbf34a1bb808",
+    "scripts/run_phase_1e_real_gpu_smoke.py": "ed957e0feb60dd97bb4d4bfcc72b878519f8f7f5d8dddd0b6e1220801503eb46",
+    "scripts/run_phase_2_full_gpu_baseline.py": "4b70819bc3cecf443780303b76f3a96395fbe2eff09e210167553c3260c10a7b",
+    "scripts/run_phase_2_full_gpu_baseline.slm": "2713ef797603b415e6f5926a4b27839eca711ef6217cb641fc34fbd69a1d4825",
+    "src/ids_pipeline/__init__.py": "7e2be2ae695fdc1fef126a1f194ce995c4dd42c1c76403e6f65c60b8755f3eee",
+    "src/ids_pipeline/backend.py": "8d46d0d66482388df712cd19b5eac1f69c89206507180bffb3ad84441e255f45",
+    "src/ids_pipeline/cli.py": "739a9126dd053e4b951a74ad6d678dcd5d513dc659ace57d2715ef2e9fdfefc2",
+    "src/ids_pipeline/clustering.py": "11c9efde951b84c7e40b16abef0eb16357d6fb1a793c0ce1688b2f81150161b9",
+    "src/ids_pipeline/config.py": "80eb3f8a68ad3b49fa55cfe63227141ea170df7a6067d0bc6e7f0b9d269e33d8",
+    "src/ids_pipeline/data_loading.py": "2737b23824a99b6635c1ecc088ddf44f4b105129a29f0719ef18e07d5b40ca52",
+    "src/ids_pipeline/data_quality_policy.py": "8eb723290265374cd05bb281dffaccca1ffeeca6dded2504772d8d520924b4e6",
+    "src/ids_pipeline/dataset_schema.py": "a796d3379df3b35a16c4c4f3e03d9f50d6736859d3d17c46634690ef0b2d80c3",
+    "src/ids_pipeline/feature_policy.py": "5255d738ffa69518328b7a0482b5767b5221c0009844dfa74d69c0c791919d2a",
+    "src/ids_pipeline/leakage_checks.py": "7838ac5e1423bcd0ed08a2d563da782ede56b30f9e4cfc63fe5a95145f59a9d3",
+    "src/ids_pipeline/nominal_encoding.py": "b0ad149356d7f1a382c1c8213a407a6a020eae13233bb707a43f96ed12fb5ece",
+    "src/ids_pipeline/preprocessing.py": "cf7d43ab30fb8873c8a2f38053d6690662f7fd65cee12ddcac44a570b9ff117a",
+    "src/ids_pipeline/profiling.py": "4475985062e43183b18447c02a544ad174f7b5fb3cea78eeac40e0d30ce15b71",
+    "src/ids_pipeline/representatives.py": "1c79ebab1310e2eef235ad46cc110a02418de2d00665d647981eb011466e5f61",
+    "src/ids_pipeline/schema.py": "ee994cffaadc33eb5f2d7efdafa7ca34133ef403ef5d3c0add5c7a52e493649e",
+    "src/ids_pipeline/split_protocols.py": "0d4154341adc6585b8c0510ca34d093ee42f7dcd544cb7aafa611f0e32f489df",
+    "src/ids_pipeline/splitting.py": "d4f68d57b5bb1a67ad6fe41247f6076d23a70c29d1cb9157d5d4ed95b2e66d49",
+    "src/ids_pipeline/supervised.py": "c70b7e52e96c300e8ec84fedaeeef007409ba8ab2aca69c6824181e9a6bd0725",
+    "src/ids_pipeline/utils.py": "e333b640e1fb374ddcd042ec75ac6e8384ff359dab49af628741cce0bc7bf470",
+    "tests/conftest.py": "27f8d68ecd5863b21e990ff04296dfee3d11146f297674d831af1be4a4bd6504",
+    "tests/test_behavioral_strict_v2.py": "a80867ee001e9380a605b3ef993e7d0473d952d122d05706bbd8cbdc3a527bc1",
+    "tests/test_cluster_assignment_export.py": "61db8c31947d220283bb8d74100cbef7f56f50fb75d21dec0ab9b33402e2244c",
+    "tests/test_data_quality_policy.py": "95c896c363dc25924631dbfaf3a948361f86c2595a43890b614c5ffa826b142a",
+    "tests/test_dataset_schema.py": "9eefdc7d3dde962e047d70afc9668c1b858d2dec058495dc58c967a98024b053",
+    "tests/test_feature_policy.py": "7df13cb4ed0f21e19ac3e4d9d441f8bc9370903008d53ba467f51a401b3df8e7",
+    "tests/test_gpu_prediction_batching.py": "9d7dfa4b4aaa25b07215f9596917ee360fce94a4ed8f8b5cc2ebd19f222dadbb",
+    "tests/test_group_split_checkpoint_job.py": "0cf26c7c148df647683fea9275399fd92ab2145f66ae2e7d38f6be9c7b4ebcd8",
+    "tests/test_metrics_binary.py": "18a38bf8672fd021895e3fee3c55d08524fdbfc179276237633f39f345b5e1b6",
+    "tests/test_no_leakage.py": "7ddfd3e46a7b23b7469c5c2064feb87dce44335da4b550298b53aa8479b0bf01",
+    "tests/test_phase_1e_real_gpu_smoke.py": "a8510f9fd1545596c8a3762b4576cb66922c32d8fb2b1076c7ee64ce278edbab",
+    "tests/test_phase_2_full_gpu_baseline.py": "ada0bf55bed85585108d9d2f3d44e8e5052adee8f50ecd8d3587171828cd43f4",
+    "tests/test_pipeline_small.py": "2b2846ee2b289d70f7ea834c7b1709f2383c14bb12470f71433b0e462d7fbae6",
+    "tests/test_proxy_policy.py": "f3d1287701ad668806b11abb2d1117704adf8f61871368b5bfd3f9ec0e0c6830",
+    "tests/test_representatives.py": "f0249786b682ea3f2ac003495b39a5f2a3038d0fb67314b1ca0c9ff766b96f1e",
+    "tests/test_schema_audit.py": "9148ff9430f2a2060e7ca4e85cde6abf7784b1473da9eefbbaa17030228b0b14",
+    "tests/test_split_protocols_v2.py": "0967cfc50e135f4bc5700abb2e724afe8a1a4d460048843fd4c0892742267a4b",
+    "tests/test_splitting_group_temporal.py": "cb507745ed440710214f20d66639534cf8f95a1678691efbbed2f667c8777b4b",
+    "tests/test_supervised_multitarget.py": "d50210aa94490baf821d6ae96286de01f6e23f5294f8391ae006c82276061eb0"
+  },
+  "code_snapshot_hash": "sha256:996af854b5e64a5ec91e7ebdce571bf7121ddd34e6d811db053057ad127d8b1c",
+  "completed_at_utc": "2026-09-09T23:53:04.310500+00:00",
+  "data": {
+    "data_path": "/home/es112688/dados/datasets/TON_IoT_parquet",
+    "data_quality_policy_version": "ton_iot_known_corruption/1.0.0",
+    "dataset": "ton_iot_network_full",
+    "eligible_rows": 22338152,
+    "files": 23,
+    "io_backend": "cudf",
+    "io_cudf_attempted_files": 23,
+    "io_fallback_files": 0,
+    "io_fallback_reason": null,
+    "io_gpu_fallback": false,
+    "ordered_source_ids": [
+      "Network_dataset_1.parquet",
+      "Network_dataset_10.parquet",
+      "Network_dataset_11.parquet",
+      "Network_dataset_12.parquet",
+      "Network_dataset_13.parquet",
+      "Network_dataset_14.parquet",
+      "Network_dataset_15.parquet",
+      "Network_dataset_16.parquet",
+      "Network_dataset_17.parquet",
+      "Network_dataset_18.parquet",
+      "Network_dataset_19.parquet",
+      "Network_dataset_2.parquet",
+      "Network_dataset_20.parquet",
+      "Network_dataset_21.parquet",
+      "Network_dataset_22.parquet",
+      "Network_dataset_23.parquet",
+      "Network_dataset_3.parquet",
+      "Network_dataset_4.parquet",
+      "Network_dataset_5.parquet",
+      "Network_dataset_6.parquet",
+      "Network_dataset_7.parquet",
+      "Network_dataset_8.parquet",
+      "Network_dataset_9.parquet"
+    ],
+    "original_rows": 22339021,
+    "population_id": "sha256:81cf4c6e2c8b9a887a6542fbd7d10a0d0b1af4c068e869cd6810658b82cf6c99",
+    "quarantined_rows": 869,
+    "schema_version": "ton_iot_network/1.0.0"
+  },
+  "exact_replication_of_original_article": false,
+  "experiment_id": "phase2_20260909T232019.249671Z_5452",
+  "features": {
+    "added_by_timestamp_policy": [],
+    "categorical_features": [
+      "conn_state"
+    ],
+    "conn_state_encoding": {
+      "all_missing_training_fallback": "__MISSING__",
+      "drop": null,
+      "encoding": "one_hot",
+      "fit_split": "train",
+      "frequency_grouping": false,
+      "indicator_scaling": "none",
+      "missing": "training_mode",
+      "mode": "REJ",
+      "output_columns": [
+        "conn_state=\"OTH\"",
+        "conn_state=\"REJ\"",
+        "conn_state=\"RSTO\"",
+        "conn_state=\"RSTOS0\"",
+        "conn_state=\"RSTR\"",
+        "conn_state=\"RSTRH\"",
+        "conn_state=\"S0\"",
+        "conn_state=\"S1\"",
+        "conn_state=\"S2\"",
+        "conn_state=\"S3\"",
+        "conn_state=\"SF\"",
+        "conn_state=\"SH\"",
+        "conn_state=\"SHR\""
+      ],
+      "unknown": "all_zero",
+      "vocabulary": [
+        "OTH",
+        "REJ",
+        "RSTO",
+        "RSTOS0",
+        "RSTR",
+        "RSTRH",
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "SF",
+        "SH",
+        "SHR"
+      ]
+    },
+    "feature_policy": "behavioral_strict",
+    "feature_policy_version": "behavioral_strict/2.0.0",
+    "found_features": [
+      "duration",
+      "src_bytes",
+      "dst_bytes",
+      "conn_state",
+      "missed_bytes",
+      "src_pkts",
+      "src_ip_bytes",
+      "dst_pkts",
+      "dst_ip_bytes"
+    ],
+    "numeric_features": [
+      "duration",
+      "src_bytes",
+      "dst_bytes",
+      "missed_bytes",
+      "src_pkts",
+      "src_ip_bytes",
+      "dst_pkts",
+      "dst_ip_bytes"
+    ],
+    "removed_by_service_policy": [],
+    "removed_by_timestamp_policy": [],
+    "requested_features": [
+      "duration",
+      "src_bytes",
+      "dst_bytes",
+      "conn_state",
+      "missed_bytes",
+      "src_pkts",
+      "src_ip_bytes",
+      "dst_pkts",
+      "dst_ip_bytes"
+    ],
+    "selected_features": [
+      "duration",
+      "src_bytes",
+      "dst_bytes",
+      "conn_state",
+      "missed_bytes",
+      "src_pkts",
+      "src_ip_bytes",
+      "dst_pkts",
+      "dst_ip_bytes"
+    ],
+    "semantic_types": {
+      "conn_state": "nominal",
+      "dst_bytes": "count",
+      "dst_ip_bytes": "count",
+      "dst_pkts": "count",
+      "duration": "continuous",
+      "missed_bytes": "count",
+      "src_bytes": "count",
+      "src_ip_bytes": "count",
+      "src_pkts": "count"
+    },
+    "service_policy": "drop",
+    "timestamp_policy": "drop"
+  },
+  "git_commit_sha": "bd46536ebdbbe4aeac96ffafd29cc0ba07d433b7",
+  "git_dirty": true,
+  "git_pending_changes": [
+    " M docs/phase_2_full_gpu_baseline_proposal.md",
+    " M scripts/run_phase_2_full_gpu_baseline.py",
+    " M src/ids_pipeline/supervised.py",
+    " M tests/test_phase_2_full_gpu_baseline.py",
+    "?? tests/test_gpu_prediction_batching.py"
+  ],
+  "gpu_prediction": {
+    "all_rows": true,
+    "batch_rows": 65536,
+    "cpu_inference_fallback": false,
+    "methods": [
+      "predict",
+      "predict_proba"
+    ],
+    "metrics_scope": "complete_split",
+    "preserve_order": true
+  },
+  "hardware": {
+    "CUDA_VISIBLE_DEVICES": "5",
+    "SLURM_JOB_ID": "5452",
+    "allocation_evidence_path": "/storage/dados/es112688/ids_generalization_outputs/phase_2_job_5452.allocation.txt",
+    "cpus_allocated": "32",
+    "cuda_device": 0,
+    "gpu_memory_bytes": 85094825984,
+    "gpu_model": "NVIDIA A100-SXM4-80GB",
+    "gpu_uuids": "GPU-b74e64b4-ff88-4b31-a68d-8c8dfe4017dc\nGPU-daf088a1-fefa-a6ea-86b6-217142493f69\nGPU-47f194b3-05d1-4141-ebb9-f66ce161efa6\nGPU-b2c0966d-3cfa-d27d-a66b-54480faec6a3\nGPU-61c55097-c8ff-12f8-484d-c37ecece91c2\nGPU-0dc7edca-a930-a34f-af6c-a73e20a2dab0\nGPU-abe482c9-d214-52e4-7285-145692e2628e\nGPU-d78e2104-db02-51aa-2674-3cbacff03a6c",
+    "hostname": "cluster-gpu-ufv",
+    "ram_allocated_mib": "262144"
+  },
+  "integration_only": false,
+  "methodological_reference": "docs/phase_1f_gpu_methodological_equivalence.md",
+  "phase": "2",
+  "phase_1g_omitted_by_project_decision": true,
+  "preprocessing": {
+    "conn_state_encoding": {
+      "all_missing_training_fallback": "__MISSING__",
+      "drop": null,
+      "encoding": "one_hot",
+      "fit_split": "train",
+      "frequency_grouping": false,
+      "indicator_scaling": "none",
+      "missing": "training_mode",
+      "mode": "REJ",
+      "output_columns": [
+        "conn_state=\"OTH\"",
+        "conn_state=\"REJ\"",
+        "conn_state=\"RSTO\"",
+        "conn_state=\"RSTOS0\"",
+        "conn_state=\"RSTR\"",
+        "conn_state=\"RSTRH\"",
+        "conn_state=\"S0\"",
+        "conn_state=\"S1\"",
+        "conn_state=\"S2\"",
+        "conn_state=\"S3\"",
+        "conn_state=\"SF\"",
+        "conn_state=\"SH\"",
+        "conn_state=\"SHR\""
+      ],
+      "unknown": "all_zero",
+      "vocabulary": [
+        "OTH",
+        "REJ",
+        "RSTO",
+        "RSTOS0",
+        "RSTR",
+        "RSTRH",
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "SF",
+        "SH",
+        "SHR"
+      ]
+    },
+    "encoded_dimension_after_reduction": 20,
+    "encoded_dimension_before_reduction": 21,
+    "end_to_end_gpu": false,
+    "feature_transformations": {
+      "conn_state": {
+        "model_treatment": "categorical",
+        "semantic_type": "nominal",
+        "transformations": [
+          "semantic_normalization",
+          "training_mode_imputation",
+          "one_hot_train_vocabulary_unknown_all_zero"
+        ]
+      },
+      "dst_bytes": {
+        "model_treatment": "numeric",
+        "semantic_type": "count",
+        "transformations": [
+          "semantic_normalization",
+          "log1p",
+          "training_median_imputation",
+          "training_standardization"
+        ]
+      },
+      "dst_ip_bytes": {
+        "model_treatment": "numeric",
+        "semantic_type": "count",
+        "transformations": [
+          "semantic_normalization",
+          "log1p",
+          "training_median_imputation",
+          "training_standardization"
+        ]
+      },
+      "dst_pkts": {
+        "model_treatment": "numeric",
+        "semantic_type": "count",
+        "transformations": [
+          "semantic_normalization",
+          "log1p",
+          "training_median_imputation",
+          "training_standardization"
+        ]
+      },
+      "duration": {
+        "model_treatment": "numeric",
+        "semantic_type": "continuous",
+        "transformations": [
+          "semantic_normalization",
+          "log1p",
+          "training_median_imputation",
+          "training_standardization"
+        ]
+      },
+      "missed_bytes": {
+        "model_treatment": "numeric",
+        "semantic_type": "count",
+        "transformations": [
+          "semantic_normalization",
+          "log1p",
+          "training_median_imputation",
+          "training_standardization"
+        ]
+      },
+      "src_bytes": {
+        "model_treatment": "numeric",
+        "semantic_type": "count",
+        "transformations": [
+          "semantic_normalization",
+          "log1p",
+          "training_median_imputation",
+          "training_standardization"
+        ]
+      },
+      "src_ip_bytes": {
+        "model_treatment": "numeric",
+        "semantic_type": "count",
+        "transformations": [
+          "semantic_normalization",
+          "log1p",
+          "training_median_imputation",
+          "training_standardization"
+        ]
+      },
+      "src_pkts": {
+        "model_treatment": "numeric",
+        "semantic_type": "count",
+        "transformations": [
+          "semantic_normalization",
+          "log1p",
+          "training_median_imputation",
+          "training_standardization"
+        ]
+      }
+    },
+    "imputation": "training_median_numeric_and_training_mode_conn_state",
+    "log1p_columns": [
+      "duration",
+      "src_bytes",
+      "dst_bytes",
+      "missed_bytes",
+      "src_pkts",
+      "src_ip_bytes",
+      "dst_pkts",
+      "dst_ip_bytes"
+    ],
+    "matrix_backend": "cupy_gpu",
+    "numeric_preparation_backend": "pandas_cpu",
+    "preprocessing_backend": "gpu",
+    "preprocessing_execution": "hybrid_pandas_cupy",
+    "reduction_algorithm": "TruncatedSVD",
+    "reduction_backend": "gpu",
+    "reduction_implementation": "cuml.decomposition.tsvd.TruncatedSVD",
+    "scaling": "training_statistics_numeric_only",
+    "statistics_backend": "pandas_cpu",
+    "svd_components_effective": 20,
+    "svd_components_requested": 50,
+    "transformed_shapes": {
+      "test": [
+        5518834,
+        20
+      ],
+      "train": [
+        13575269,
+        20
+      ],
+      "val": [
+        3244049,
+        20
+      ]
+    }
+  },
+  "scientific_result": true,
+  "software": {
+    "cuda_driver_api_version": 12090,
+    "cuda_runtime_version": 12090,
+    "cuda_toolkit_version": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Tue_May_27_02:21:03_PDT_2025\nCuda compilation tools, release 12.9, V12.9.86\nBuild cuda_12.9.r12.9/compiler.36037853_0",
+    "cudf_version": "26.08.01",
+    "cuml_version": "26.08.00",
+    "cupy_version": "14.2.0",
+    "gcc": "gcc (GCC) 14.3.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "numpy_version": "2.4.6",
+    "nvidia_driver_version": "575.57.08\n575.57.08\n575.57.08\n575.57.08\n575.57.08\n575.57.08\n575.57.08\n575.57.08",
+    "packages": {
+      "joblib": "1.6.0",
+      "psutil": "7.2.2",
+      "pyarrow": "23.0.1",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.1"
+    },
+    "pandas_version": "3.0.3",
+    "python_version": "3.13.5"
+  },
+  "split": {
+    "class_coverage": {
+      "label": {
+        "closed_set_test_classes": [
+          "0",
+          "1"
+        ],
+        "first_seen_test": [],
+        "first_seen_validation": [],
+        "known_in_train": [
+          "0",
+          "1"
+        ],
+        "splits": {
+          "test": {
+            "below_minimum": [],
+            "counts": {
+              "0": 199017,
+              "1": 5319817
+            },
+            "missing": [],
+            "small_support": {}
+          },
+          "train": {
+            "below_minimum": [],
+            "counts": {
+              "0": 476942,
+              "1": 13098327
+            },
+            "missing": [],
+            "small_support": {}
+          },
+          "val": {
+            "below_minimum": [],
+            "counts": {
+              "0": 119552,
+              "1": 3124497
+            },
+            "missing": [],
+            "small_support": {}
+          }
+        },
+        "unseen_from_train_in_test": []
+      },
+      "type": {
+        "closed_set_test_classes": [
+          "backdoor",
+          "ddos",
+          "dos",
+          "injection",
+          "mitm",
+          "normal",
+          "password",
+          "ransomware",
+          "scanning",
+          "xss"
+        ],
+        "first_seen_test": [],
+        "first_seen_validation": [],
+        "known_in_train": [
+          "backdoor",
+          "ddos",
+          "dos",
+          "injection",
+          "mitm",
+          "normal",
+          "password",
+          "ransomware",
+          "scanning",
+          "xss"
+        ],
+        "splits": {
+          "test": {
+            "below_minimum": [],
+            "counts": {
+              "backdoor": 80060,
+              "ddos": 1598523,
+              "dos": 645393,
+              "injection": 113580,
+              "mitm": 263,
+              "normal": 199017,
+              "password": 434638,
+              "ransomware": 28042,
+              "scanning": 1888335,
+              "xss": 530983
+            },
+            "missing": [],
+            "small_support": {}
+          },
+          "train": {
+            "below_minimum": [],
+            "counts": {
+              "backdoor": 427793,
+              "ddos": 3477237,
+              "dos": 2611234,
+              "injection": 270506,
+              "mitm": 631,
+              "normal": 476942,
+              "password": 1017417,
+              "ransomware": 43919,
+              "scanning": 4013097,
+              "xss": 1236493
+            },
+            "missing": [],
+            "small_support": {}
+          },
+          "val": {
+            "below_minimum": [],
+            "counts": {
+              "backdoor": 263,
+              "ddos": 1089248,
+              "dos": 118701,
+              "injection": 68573,
+              "mitm": 158,
+              "normal": 119552,
+              "password": 266513,
+              "ransomware": 844,
+              "scanning": 1238729,
+              "xss": 341468
+            },
+            "missing": [],
+            "small_support": {}
+          }
+        },
+        "unseen_from_train_in_test": []
+      }
+    },
+    "expected_hash": "sha256:828c57acef5ca3a953762a2dcf836dafd6b8dd513dd476c88ba924841a5f0a2a",
+    "frozen_splits_dir": "/storage/dados/es112688/ids_generalization_splits/group_stratified_v2",
+    "group_columns": [
+      "src_ip",
+      "dst_ip",
+      "service",
+      "proto"
+    ],
+    "group_overlap": {
+      "n_test_groups": 11365,
+      "n_train_groups": 11251,
+      "n_val_groups": 11379,
+      "ok": true,
+      "train_test_overlap": 0,
+      "train_val_overlap": 0,
+      "val_test_overlap": 0
+    },
+    "hash_match": true,
+    "identity_hashes": {
+      "test": "sha256:69b212ea2ba8ab36e9aa15ad8996d240e5a7007c6da421defc41cc7539af7002",
+      "train": "sha256:c20b10ebfe0db013ae778d74f1c76340cbe77412e902ad14fb9117097f98c3f2",
+      "val": "sha256:0b6f4906d8729314784b2f26449b712a9e02c3d1bdae6982e2dbb1fd7025a793"
+    },
+    "index_hashes": {
+      "test": "sha256:a105eed71d5921be471e4e23f6f042229827a8f1c663ee18456289ca8c609dae",
+      "train": "sha256:8a91dc737257b56a3e121fd6e76917fed1957a6bb6cfcc897d15e96e1bf2fb38",
+      "val": "sha256:bfaba2c2855faae6df68ebf7622f5150a3f7d96fae9bc72a5375ab514840d6cd"
+    },
+    "observed_hash": "sha256:828c57acef5ca3a953762a2dcf836dafd6b8dd513dd476c88ba924841a5f0a2a",
+    "parameters": {
+      "group_candidates": 16,
+      "group_cols": [
+        "src_ip",
+        "dst_ip",
+        "service",
+        "proto"
+      ],
+      "group_tolerance": 0.02,
+      "label_col": "label",
+      "minimum_class_support": 1,
+      "small_support_threshold": 30,
+      "temporal_bucket_freq": "1s",
+      "test_size": 0.25,
+      "timestamp_col": "ts",
+      "timestamp_unit": "s",
+      "type_col": "type",
+      "val_size": 0.2,
+      "val_size_definition": "fraction of non-test population"
+    },
+    "protocol": "group_stratified",
+    "protocol_version": "group_stratified/2.0.0",
+    "regenerated": false,
+    "test_rows": 5518834,
+    "train_rows": 13575269,
+    "val_rows": 3244049
+  },
+  "stage": "complete",
+  "started_at_utc": "2026-09-09T23:20:19.249658+00:00",
+  "status": "APPROVED",
+  "supervised": {
+    "backend": "gpu",
+    "class_weight": null,
+    "difference_from_original_balanced_subsample": true,
+    "estimators": 150,
+    "implementation": "cuml.ensemble.RandomForestClassifier",
+    "per_target_implementations": {
+      "cluster_id": "cuml.ensemble.randomforestclassifier.RandomForestClassifier",
+      "label": "cuml.ensemble.randomforestclassifier.RandomForestClassifier",
+      "type": "cuml.ensemble.randomforestclassifier.RandomForestClassifier"
+    },
+    "per_target_parameters_effective": {
+      "cluster_id": {
+        "bootstrap": true,
+        "class_weight": null,
+        "max_batch_size": 4096,
+        "max_depth": null,
+        "max_features": "sqrt",
+        "max_leaves": -1,
+        "max_samples": 1.0,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_bins": 128,
+        "n_estimators": 150,
+        "n_streams": 16,
+        "oob_score": false,
+        "output_type": null,
+        "random_state": 42,
+        "split_criterion": "gini",
+        "verbose": false
+      },
+      "label": {
+        "bootstrap": true,
+        "class_weight": null,
+        "max_batch_size": 4096,
+        "max_depth": null,
+        "max_features": "sqrt",
+        "max_leaves": -1,
+        "max_samples": 1.0,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_bins": 128,
+        "n_estimators": 150,
+        "n_streams": 16,
+        "oob_score": false,
+        "output_type": null,
+        "random_state": 42,
+        "split_criterion": "gini",
+        "verbose": false
+      },
+      "type": {
+        "bootstrap": true,
+        "class_weight": null,
+        "max_batch_size": 4096,
+        "max_depth": null,
+        "max_features": "sqrt",
+        "max_leaves": -1,
+        "max_samples": 1.0,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_bins": 128,
+        "n_estimators": 150,
+        "n_streams": 16,
+        "oob_score": false,
+        "output_type": null,
+        "random_state": 42,
+        "split_criterion": "gini",
+        "verbose": false
+      }
+    },
+    "per_target_train_rows": {
+      "cluster_id": 13575269,
+      "label": 13575269,
+      "type": 13575269
+    },
+    "random_state": 42,
+    "sample_weight_supplied": false,
+    "targets": [
+      "label",
+      "type",
+      "cluster_id"
+    ],
+    "training_index_hash": "sha256:8a91dc737257b56a3e121fd6e76917fed1957a6bb6cfcc897d15e96e1bf2fb38"
+  },
+  "timing": {
+    "continuous_vram_peak_measured": false,
+    "gnu_time_path": "/storage/dados/es112688/ids_generalization_outputs/phase_2_job_5452.time.txt",
+    "note": "Preprocessing and reduction measured together; per-target stage includes fit, prediction, metrics and I/O. VRAM/RAM sampled at boundaries.",
+    "preprocessing_seconds": null,
+    "reduction_seconds": null,
+    "rf_fit_only_measured": false,
+    "scope": "stage_wall_time_including_metrics_and_io",
+    "stages": {
+      "clustering": {
+        "gpu_vram_after_mb": 2288.875,
+        "gpu_vram_before_mb": 2236.875,
+        "rss_after_mb": 16864.55078125,
+        "rss_before_mb": 16790.63671875,
+        "seconds": 314.33730973675847
+      },
+      "loading": {
+        "gpu_vram_after_mb": 478.875,
+        "gpu_vram_before_mb": 422.875,
+        "rss_after_mb": 20583.71875,
+        "rss_before_mb": 704.8359375,
+        "seconds": 198.16874620504677
+      },
+      "preprocessing_and_reduction": {
+        "gpu_vram_after_mb": 2234.875,
+        "gpu_vram_before_mb": 478.875,
+        "rss_after_mb": 16788.71875,
+        "rss_before_mb": 15764.3984375,
+        "seconds": 46.04944463260472
+      },
+      "split_loading_validation": {
+        "gpu_vram_after_mb": 478.875,
+        "gpu_vram_before_mb": 478.875,
+        "rss_after_mb": 16163.6875,
+        "rss_before_mb": 20583.71875,
+        "seconds": 63.94468352384865
+      },
+      "supervised_cluster_id": {
+        "gpu_vram_after_mb": 2300.875,
+        "gpu_vram_before_mb": 2300.875,
+        "rss_after_mb": 17593.7890625,
+        "rss_before_mb": 17655.22265625,
+        "seconds": 296.400393711403
+      },
+      "supervised_label": {
+        "gpu_vram_after_mb": 2300.875,
+        "gpu_vram_before_mb": 2288.875,
+        "rss_after_mb": 16920.5390625,
+        "rss_before_mb": 16864.55078125,
+        "seconds": 490.8563519809395
+      },
+      "supervised_total": {
+        "gpu_vram_after_mb": 2300.875,
+        "gpu_vram_before_mb": 2288.875,
+        "rss_after_mb": 17593.7890625,
+        "rss_before_mb": 16864.55078125,
+        "seconds": 1203.1344101075083
+      },
+      "supervised_type": {
+        "gpu_vram_after_mb": 2300.875,
+        "gpu_vram_before_mb": 2300.875,
+        "rss_after_mb": 17655.22265625,
+        "rss_before_mb": 16920.5390625,
+        "seconds": 415.87349001318216
+      },
+      "supplemental_reporting": {
+        "gpu_vram_after_mb": 2300.875,
+        "gpu_vram_before_mb": 2300.875,
+        "rss_after_mb": 17614.1953125,
+        "rss_before_mb": 17593.7890625,
+        "seconds": 131.47948467731476
+      },
+      "total": {
+        "gpu_vram_after_mb": 2300.875,
+        "gpu_vram_before_mb": 422.875,
+        "rss_after_mb": 17614.1953125,
+        "rss_before_mb": 190.5078125,
+        "seconds": 1962.8618323132396
+      }
+    }
+  },
+  "validity": {
+    "artifact_inventory": [
+      {
+        "bytes": 54304280,
+        "path": "artifacts/cuml_kmeans.joblib"
+      },
+      {
+        "bytes": 5158,
+        "path": "artifacts/preprocessing_bundle.joblib"
+      },
+      {
+        "bytes": 4587,
+        "path": "artifacts/preprocessing_metadata.json"
+      },
+      {
+        "bytes": 206633118,
+        "path": "artifacts/random_forest_cluster_id.joblib"
+      },
+      {
+        "bytes": 95956634,
+        "path": "artifacts/random_forest_label.joblib"
+      },
+      {
+        "bytes": 318746191,
+        "path": "artifacts/random_forest_type.joblib"
+      },
+      {
+        "bytes": 326,
+        "path": "classification_report.txt"
+      },
+      {
+        "bytes": 1838,
+        "path": "classification_report_cluster_id.txt"
+      },
+      {
+        "bytes": 326,
+        "path": "classification_report_label.txt"
+      },
+      {
+        "bytes": 758,
+        "path": "classification_report_type.txt"
+      },
+      {
+        "bytes": 7199,
+        "path": "cluster_distribution.json"
+      },
+      {
+        "bytes": 989,
+        "path": "clustering_metadata.json"
+      },
+      {
+        "bytes": 56,
+        "path": "confusion_matrix.csv"
+      },
+      {
+        "bytes": 2451,
+        "path": "confusion_matrix_cluster_id.csv"
+      },
+      {
+        "bytes": 56,
+        "path": "confusion_matrix_label.csv"
+      },
+      {
+        "bytes": 635,
+        "path": "confusion_matrix_type.csv"
+      },
+      {
+        "bytes": 55925,
+        "path": "data_quality_report.json"
+      },
+      {
+        "bytes": 1353,
+        "path": "dataset_info.json"
+      },
+      {
+        "bytes": 5130,
+        "path": "effective_config.json"
+      },
+      {
+        "bytes": 153,
+        "path": "forbidden_columns_check.json"
+      },
+      {
+        "bytes": 19891,
+        "path": "metrics_by_class.json"
+      },
+      {
+        "bytes": 1090,
+        "path": "metrics_clustering.json"
+      },
+      {
+        "bytes": 4721,
+        "path": "metrics_supervised.json"
+      },
+      {
+        "bytes": 2936,
+        "path": "pipeline.log"
+      },
+      {
+        "bytes": 8874,
+        "path": "preprocessing_schema_report.json"
+      },
+      {
+        "bytes": 2468,
+        "path": "profiling.json"
+      },
+      {
+        "bytes": 35151,
+        "path": "schema_report.json"
+      },
+      {
+        "bytes": 4866,
+        "path": "selected_features.json"
+      },
+      {
+        "bytes": 5694,
+        "path": "source_provenance.json"
+      },
+      {
+        "bytes": 6122,
+        "path": "split_manifest_observed.json"
+      },
+      {
+        "bytes": 4674,
+        "path": "split_reference.json"
+      },
+      {
+        "bytes": 2572,
+        "path": "target_distributions.json"
+      },
+      {
+        "bytes": 2402,
+        "path": "validation_confusion_matrices/cluster_id.csv"
+      },
+      {
+        "bytes": 55,
+        "path": "validation_confusion_matrices/label.csv"
+      },
+      {
+        "bytes": 618,
+        "path": "validation_confusion_matrices/type.csv"
+      }
+    ],
+    "checks": {
+      "clustering_gpu": true,
+      "complete_training_rows": true,
+      "configuration": true,
+      "cuda_environment": true,
+      "frozen_hash": true,
+      "metrics": true,
+      "population": true,
+      "preprocessing": true,
+      "quarantine": true,
+      "schema": true,
+      "source_provenance": true,
+      "split_invariants": true,
+      "supervised_gpu": true,
+      "unchanged_indices": true
+    },
+    "cluster_assignments_created": false,
+    "error": null
+  }
+}
