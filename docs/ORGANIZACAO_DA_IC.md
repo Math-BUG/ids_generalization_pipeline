@@ -29,3 +29,5 @@ O `README.md` existente tem instruções operacionais e deve continuar funcionan
 - [SBCUP 2026 — agrupamento + classificação](https://github.com/Math-BUG/iot-fog-ids-two-phase)
 
 O arquivo `Fontes_projeto_IDS/artigo/Artigo_SBCUP_2026.pdf` é uma cópia de referência já presente neste repositório; a versão canônica do artigo deve ficar no repositório SBCUP. Remoção desta cópia deve ser feita apenas após conferir e transferir o arquivo, sem perda de conteúdo.
+
+- [SIA 2026 — painel e resumo aprovado](https://github.com/Math-BUG/sia-2026-iot-ids)
