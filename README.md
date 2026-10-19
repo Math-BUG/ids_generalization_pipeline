@@ -1,3 +1,15 @@
+# Generalização de IDS em redes IoT
+
+Este repositório continua a investigação iniciada na [abordagem em duas fases apresentada no SBCUP 2026](https://github.com/Math-BUG/iot-fog-ids-two-phase), com ênfase em protocolos de avaliação, vazamento de informação, políticas de atributos, experimentos em maior escala e processamento GPU.
+
+**Estado do projeto:** existem resultados consolidados da fase 2 em [`resultados_fase_2/`](resultados_fase_2/), documentação metodológica em [`docs/`](docs/) e código de preparação e execução da fase 2.1. A existência de scripts da fase 2.1 não significa a execução completa da grade científica proposta. Ainda não há comprovação de generalização entre datasets distintos.
+
+**[Índice dos materiais e relação com os outros dois repositórios](docs/ORGANIZACAO_DA_IC.md).**
+
+Trabalhos relacionados: [ERAD-SE 2026 — CPU/GPU](https://github.com/Math-BUG/experimento_erad) · [SBCUP 2026 — agrupamento e classificação](https://github.com/Math-BUG/iot-fog-ids-two-phase).
+
+---
+
 # IDS Generalization Pipeline
 
 Versao minima funcional para testar um pipeline IoT/NIDS no ClusterGPU/UFV usando apenas pandas + scikit-learn.
